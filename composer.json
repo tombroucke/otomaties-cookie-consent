@@ -11,7 +11,10 @@
             "email": "tom@tombroucke.be"
         }
     ],
-    "require": {},
+    "require": {
+        "composer/installers": "^1.0 || ^2.0",
+        "stoutlogic/acf-builder": "^1.12"
+    },
     "keywords": ["wordpress", "plugin", "cookie", "consent"],
     "type": "wordpress-plugin"
 }
