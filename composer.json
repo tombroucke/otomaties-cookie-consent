@@ -1,0 +1,17 @@
+{
+    "name": "tombroucke/otomaties-cookie-consent",
+    "autoload": {
+        "psr-4": {
+            "Otomaties\\CookieConsent\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tom Broucke",
+            "email": "tom@tombroucke.be"
+        }
+    ],
+    "require": {},
+    "keywords": ["wordpress", "plugin", "cookie", "consent"],
+    "type": "wordpress-plugin"
+}
