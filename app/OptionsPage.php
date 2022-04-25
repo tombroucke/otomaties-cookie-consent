@@ -187,63 +187,63 @@ class OptionsPage
                 'commonScripts' => [
                     [
                         'name' => 'cc_cookie',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => sprintf(__('%d days', 'otomaties-cookie-consent'), 182),
                         'description' => __('Tracks your cookie consent', 'otomaties-cookie-consent'),
                         'regex' => false,
                     ],
                     [
                         'name' => 'wc_cart_created',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => __('session', 'otomaties-cookie-consent'),
                         'description' => __('Necessary for the shopping cart functionality on the website.', 'otomaties-cookie-consent'),
                         'regex' => false,
                     ],
                     [
                         'name' => 'woocommerce_cart_hash',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => __('session', 'otomaties-cookie-consent'),
                         'description' => __('Necessary for the shopping cart functionality on the website to remember the chosen products - This also allows the website to promote related products to the visitor, based on the content of the shopping cart.', 'otomaties-cookie-consent'),
                         'regex' => false,
                     ],
                     [
                         'name' => 'woocommerce_items_in_cart',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => __('session', 'otomaties-cookie-consent'),
                         'description' => __('Contains information about the cart as a whole and help WooCommerce know when the cart data changes.', 'otomaties-cookie-consent'),
                         'regex' => true,
                     ],
                     [
                         'name' => 'wc_fragments_*',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => __('session', 'otomaties-cookie-consent'),
                         'description' => '',
                         'regex' => true,
                     ],
                     [
                         'name' => 'wp_woocommerce_session_*',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => sprintf(__('%d days', 'otomaties-cookie-consent'), 2),
                         'description' => __('Contains a unique code for each customer so that it knows where to find the cart data in the database for each customer.', 'otomaties-cookie-consent'),
                         'regex' => true,
                     ],
                     [
                         'name' => 'wordpress_*',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => sprintf(__('%d weeks', 'otomaties-cookie-consent'), 2),
                         'description' => __('Stores your authentication details. Its use is limited to the admin area.', 'otomaties-cookie-consent'),
                         'regex' => true,
                     ],
                     [
                         'name' => 'wordpress_logged_in_*',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => sprintf(__('%d weeks', 'otomaties-cookie-consent'), 2),
                         'description' => __('This cookie indicates when you’re logged in, and who you are, for most interface use.', 'otomaties-cookie-consent'),
                         'regex' => true,
                     ],
                     [
                         'name' => 'wordpress_settings-*',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => sprintf(__('%d weeks', 'otomaties-cookie-consent'), 2),
                         'description' => __('WordPress also sets a few wp-settings-{time}-[UID] cookies. The number on the end is your individual user ID from the user’s database table. This is used to customize your view of admin interface, and possibly also the main site interface.', 'otomaties-cookie-consent'),
                         'regex' => true,
@@ -257,49 +257,49 @@ class OptionsPage
                 'commonScripts' => [
                     [
                         'name' => '_ga',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '2 ' . __('years', 'otomaties-cookie-consent'),
                         'description' => __('Used to distinguish users.', 'otomaties-cookie-consent'),
                         'regex' => false,
                     ],
                     [
                         'name' => '_gid',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '24 ' . __('hours', 'otomaties-cookie-consent'),
                         'description' => __('Used to distinguish users.', 'otomaties-cookie-consent'),
                         'regex' => false,
                     ],
                     [
                         'name' => '_ga_*',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '2 ' . __('years', 'otomaties-cookie-consent'),
                         'description' => __('Used to persist session state.', 'otomaties-cookie-consent'),
                         'regex' => true,
                     ],
                     [
                         'name' => '_gac_gb_*',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '90 ' . __('days', 'otomaties-cookie-consent'),
                         'description' => __('Contains campaign related information', 'otomaties-cookie-consent'),
                         'regex' => true,
                     ],
                     [
                         'name' => '_gat',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '1 ' . __('minute', 'otomaties-cookie-consent'),
                         'description' => __('Used to distinguish users.', 'otomaties-cookie-consent'),
                         'regex' => false,
                     ],
                     [
                         'name' => '_gac_*',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '90 ' . __('days', 'otomaties-cookie-consent'),
                         'description' => __('Contains campaign related information', 'otomaties-cookie-consent'),
                         'regex' => true,
                     ],
                     [
                         'name' => '_gat_*',
-                        'domain' => $_SERVER['SERVER_NAME'],
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '1 ' . __('minute', 'otomaties-cookie-consent'),
                         'description' => __('Read and filter requests from bots.', 'otomaties-cookie-consent'),
                         'regex' => true,
@@ -434,7 +434,7 @@ class OptionsPage
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if (!empty($array)): ?>
+                    <?php if (!empty($array)) : ?>
                         <?php foreach ($array as $cookie) : ?>
                             <tr>
                                 <td>
