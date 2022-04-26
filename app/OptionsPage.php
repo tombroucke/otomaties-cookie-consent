@@ -21,7 +21,7 @@ class OptionsPage
                 'menu_title'    => __('Cookie consent', 'otomaties-cookie-consent'),
                 'menu_slug'     => 'cookie-consent-settings',
                 'icon_url'      => Assets::find('images/cookie.png'),
-                'capability'    => 'edit_posts',
+                'capability'    => apply_filters('otomaties_cookie_consent_settings_capability', 'edit_posts'),
                 'redirect'      => false,
             )
         );
