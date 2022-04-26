@@ -37,9 +37,21 @@ register_deactivation_hook(__FILE__, '\\Otomaties\\CookieConsent\\Deactivator::d
  */
 function init()
 {
-    if (! function_exists('get_plugin_data')) {
+    if (!function_exists('get_field')) {
+        add_action('admin_notices', function () {
+            ?>
+            <div class="notice notice-error">
+                <p><?php _e('<strong>Otomaties cookie consent</strong> is inactive. Please install & activate <strong>Advanced Custom Fields Pro</strong>.', 'otomaties-jobs') ?></p>
+            </div>
+            <?php
+        });
+        return;
+    }
+
+    if (!function_exists('get_plugin_data')) {
         require_once(ABSPATH . 'wp-admin/includes/plugin.php');
     }
+
     $pluginData = \get_plugin_data(__FILE__);
     $pluginData['pluginName'] = basename(__FILE__, '.php');
 

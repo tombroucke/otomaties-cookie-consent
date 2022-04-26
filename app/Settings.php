@@ -10,24 +10,24 @@ class Settings
 
     public function consentModal()
     {
-        $description = get_field('occ_consent_modal_description', 'option') ?: __('Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.', 'otomaties-cookie-consent');
-        $description .= ' ' . sprintf('<button type="button" data-cc="c-settings" class="cc-link">%s</button>', get_field('occ_consent_modal_settings_button_label', 'option') ?: __('Let me choose', 'otomaties-cookie-consent'));
+        $description = DefaultStrings::value('occ_consent_modal_description');
+        $description .= ' ' . sprintf('<button type="button" data-cc="c-settings" class="cc-link">%s</button>', DefaultStrings::value('occ_consent_modal_settings_button_label'));
         return [
-            'title' => get_field('occ_consent_modal_title', 'option') ?: __('We use cookies 🍪', 'otomaties-cookie-consent'),
+            'title' => DefaultStrings::value('occ_consent_modal_title'),
             'description' => $description,
-            'accept' => get_field('occ_consent_modal_accept_button_label', 'option') ?: __('Accept all', 'otomaties-cookie-consent'),
-            'reject' => get_field('occ_consent_modal_reject_button_label', 'option') ?: __('Reject all', 'otomaties-cookie-consent'),
+            'accept' => DefaultStrings::value('occ_consent_modal_accept_button_label'),
+            'reject' => DefaultStrings::value('occ_consent_modal_reject_button_label'),
         ];
     }
 
     public function settingsModal()
     {
         return [
-            'title' =>  get_field('occ_settings_modal_title', 'option') ?: __('Cookie preferences', 'otomaties-cookie-consent'),
-            'saveSettingsBtn' =>  get_field('occ_settings_modal_save_settings_button_label', 'option') ?: __('Save settings', 'otomaties-cookie-consent'),
-            'acceptAllBtn' =>  get_field('occ_settings_modal_accept_all_button_label', 'option') ?: __('Accept all', 'otomaties-cookie-consent'),
-            'rejectAllBtn' =>  get_field('occ_settings_modal_reject_all_button_label', 'option') ?: __('Reject all', 'otomaties-cookie-consent'),
-            'closeBtnlabel' =>  get_field('occ_settings_modal_close_button_label', 'option') ?: __('Close', 'otomaties-cookie-consent'),
+            'title' =>  DefaultStrings::value('occ_settings_modal_title'),
+            'saveSettingsBtn' =>  DefaultStrings::value('occ_settings_modal_save_settings_button_label'),
+            'acceptAllBtn' =>  DefaultStrings::value('occ_settings_modal_accept_all_button_label'),
+            'rejectAllBtn' =>  DefaultStrings::value('occ_settings_modal_reject_all_button_label'),
+            'closeBtnlabel' =>  DefaultStrings::value('occ_settings_modal_close_button_label'),
             'cookieTableHeaders' => [
                 'name' => __('Name', 'otomaties-cookie-consent'),
                 'domain' => __('Domain', 'otomaties-cookie-consent'),
@@ -40,8 +40,8 @@ class Settings
     public function usage()
     {
         $usage = [
-            'title' => get_field('occ_settings_modal_cookie_usage_title', 'option') ?: __('Cookie usage', 'otomaties-cookie-consent'),
-            'description' => get_field('occ_settings_modal_cookie_usage_description', 'option') ?: __('We use cookies to ensure the basic functionalities of this website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.', 'otomaties-cookie-consent'),
+            'title' => DefaultStrings::value('occ_settings_modal_cookie_usage_title'),
+            'description' => DefaultStrings::value('occ_settings_modal_cookie_usage_description'),
         ];
         if (get_privacy_policy_url()) {
             $usage['description'] = $usage['description'] . ' ' . sprintf(__('For more details relative to cookies and other sensitive data, please read the full <a href="%s" class="cc-link">privacy policy</a>.', 'otomaties-cookie-consent'), get_privacy_policy_url());
@@ -51,11 +51,11 @@ class Settings
 
     public function moreInformation()
     {
-        $description = get_field('occ_settings_modal_more_information_description', 'option') ?: __('For any queries in relation to our policy on cookies and your choices, please [contact_link].', 'otomaties-cookie-consent');
+        $description = DefaultStrings::value('occ_settings_modal_more_information_description');
 
         $contactPage = get_field('occ_settings_modal_contact_page', 'option');
         $moreInformation = [
-            'title' => get_field('occ_settings_modal_more_information_title', 'option') ?: __('More information', 'otomaties-cookie-consent'),
+            'title' => DefaultStrings::value('occ_settings_modal_more_information_title'),
             'description' => $description,
         ];
 

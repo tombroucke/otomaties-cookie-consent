@@ -46,23 +46,23 @@ class OptionsPage
             ])
                 ->addText('occ_consent_modal_title', [
                     'label' => __('Title', 'otomaties-cookie-consent'),
-                    'default_value' => __('We use cookies 🍪', 'otomaties-cookie-consent'),
+                    'default_value' => DefaultStrings::get('occ_consent_modal_title'),
                 ])
                 ->addTextarea('occ_consent_modal_description', [
                     'label' => __('Description', 'otomaties-cookie-consent'),
-                    'default_value' => __('Hi, this website uses essential cookies to ensure its proper operation and tracking cookies to understand how you interact with it. The latter will be set only after consent.', 'otomaties-cookie-consent'),
+                    'default_value' => DefaultStrings::get('occ_consent_modal_description'),
                 ])
                 ->addText('occ_consent_modal_settings_button_label', [
                     'label' => __('Settings button label', 'otomaties-cookie-consent'),
-                    'default_value' => __('Let me choose', 'otomaties-cookie-consent')
+                    'default_value' => DefaultStrings::get('occ_consent_modal_settings_button_label'),
                 ])
                 ->addText('occ_consent_modal_accept_button_label', [
                     'label' => __('Accept button label', 'otomaties-cookie-consent'),
-                    'default_value' => __('Accept all', 'otomaties-cookie-consent')
+                    'default_value' => DefaultStrings::get('occ_consent_modal_accept_button_label'),
                 ])
                 ->addText('occ_consent_modal_reject_button_label', [
                     'label' => __('Reject button label', 'otomaties-cookie-consent'),
-                    'default_value' => __('Reject all', 'otomaties-cookie-consent')
+                    'default_value' => DefaultStrings::get('occ_consent_modal_reject_button_label'),
                 ])
                 ->addSelect('occ_consent_modal_trigger_in_menu', [
                     'label' => __('Add cookie settings to menu', 'otomaties-cookie-consent'),
@@ -76,7 +76,7 @@ class OptionsPage
                         'box' => __('Box', 'otomaties-cookie-consent'),
                         'bar' => __('Bar', 'otomaties-cookie-consent'),
                     ],
-                    'default_value' => 'box'
+                    'default_value' => 'cloud'
                 ])
                 ->addSelect('occ_consent_modal_position', [
                     'label' => __('Layout', 'otomaties-cookie-consent'),
@@ -91,7 +91,7 @@ class OptionsPage
                         'middle right' => __('Middle right', 'otomaties-cookie-consent'),
                         'bottom right' => __('Bottom right', 'otomaties-cookie-consent'),
                     ],
-                    'default_value' => 'bottom right'
+                    'default_value' => 'bottom center'
                 ])
                 ->addSelect('occ_consent_modal_transition', [
                     'label' => __('Layout', 'otomaties-cookie-consent'),
@@ -110,19 +110,19 @@ class OptionsPage
             ])
                 ->addText('occ_settings_modal_title', [
                     'label' => __('Title', 'otomaties-cookie-consent'),
-                    'default_value' => __('Cookie preferences', 'otomaties-cookie-consent')
+                    'default_value' => DefaultStrings::get('occ_settings_modal_title'),
                 ])
                 ->addText('occ_settings_modal_cookie_usage_title', [
                     'label' => __('Cookie usage title', 'otomaties-cookie-consent'),
-                    'default_value' => __('Cookie usage', 'otomaties-cookie-consent')
+                    'default_value' => DefaultStrings::get('occ_settings_modal_cookie_usage_title'),
                 ])
                 ->addTextarea('occ_settings_modal_cookie_usage_description', [
                     'label' => __('Cookie usage description', 'otomaties-cookie-consent'),
-                    'default_value' => __('We use cookies to ensure the basic functionalities of this website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.', 'otomaties-cookie-consent')
+                    'default_value' => DefaultStrings::get('occ_settings_modal_cookie_usage_description'),
                 ])
                 ->addText('occ_settings_modal_more_information_title', [
                     'label' => __('More information title', 'otomaties-cookie-consent'),
-                    'default_value' => __('More information', 'otomaties-cookie-consent')
+                    'default_value' => DefaultStrings::get('occ_settings_modal_more_information_title'),
                 ])
                 ->addPostObject('occ_settings_modal_contact_page', [
                     'label' => __('Contact page', 'otomaties-cookie-consent'),
@@ -132,23 +132,23 @@ class OptionsPage
                 ])
                 ->addTextarea('occ_settings_modal_more_information_description', [
                     'label' => __('More information description', 'otomaties-cookie-consent'),
-                    'default_value' => sprintf(__('For any queries in relation to our policy on cookies and your choices, please [contact_link].', 'otomaties-cookie-consent'), get_permalink(get_field('occ_settings_modal_contact_page', 'option')))
+                    'default_value' => DefaultStrings::get('occ_settings_modal_more_information_description'),
                 ])
                 ->addText('occ_settings_modal_save_settings_button_label', [
                     'label' => __('Save settings button label', 'otomaties-cookie-consent'),
-                    'default_value' => __('Save settings', 'otomaties-cookie-consent')
+                    'default_value' => DefaultStrings::get('occ_settings_modal_save_settings_button_label'),
                 ])
                 ->addText('occ_settings_modal_accept_all_button_label', [
                     'label' => __('Accept all button label', 'otomaties-cookie-consent'),
-                    'default_value' => __('Accept all', 'otomaties-cookie-consent')
+                    'default_value' => DefaultStrings::get('occ_settings_modal_accept_all_button_label'),
                 ])
                 ->addText('occ_settings_modal_reject_all_button_label', [
                     'label' => __('Reject all button label', 'otomaties-cookie-consent'),
-                    'default_value' => __('Reject all', 'otomaties-cookie-consent'),
+                    'default_value' => DefaultStrings::get('occ_settings_modal_reject_all_button_label'),
                 ])
                 ->addText('occ_settings_modal_close_button_label', [
                     'label' => __('Close button label', 'otomaties-cookie-consent'),
-                    'default_value' => __('Close', 'otomaties-cookie-consent'),
+                    'default_value' => DefaultStrings::get('occ_settings_modal_close_button_label'),
                 ])
                 ->addSelect('occ_settings_modal_layout', [
                     'label' => __('Layout', 'otomaties-cookie-consent'),
@@ -182,8 +182,8 @@ class OptionsPage
         $categories = [
             'necessary' => [
                 'name' => __('Necessary', 'otomaties-cookie-consent'),
-                'defaultTitle' => __('Strictly necessary cookies', 'otomaties-cookie-consent'),
-                'defaultDescription' => __('These cookies are essential for the proper functioning of this website. Without these cookies, the website would not work properly', 'otomaties-cookie-consent'),
+                'defaultTitle' => DefaultStrings::get('occ_necessary_title'),
+                'defaultDescription' => DefaultStrings::get('occ_necessary_description'),
                 'commonScripts' => [
                     [
                         'name' => 'cc_cookie',
@@ -252,8 +252,8 @@ class OptionsPage
             ],
             'analytics' => [
                 'name' => __('Analytics', 'otomaties-cookie-consent'),
-                'defaultTitle' => __('Performance and Analytics cookies', 'otomaties-cookie-consent'),
-                'defaultDescription' => __('These cookies allow the website to remember the choices you have made in the past', 'otomaties-cookie-consent'),
+                'defaultTitle' => DefaultStrings::get('occ_analytics_title'),
+                'defaultDescription' => DefaultStrings::get('occ_analytics_description'),
                 'commonScripts' => [
                     [
                         'name' => '_ga',
@@ -308,8 +308,8 @@ class OptionsPage
             ],
             'targeting' => [
                 'name' => __('Targeting', 'otomaties-cookie-consent'),
-                'defaultTitle' => __('Advertisement and Targeting cookies', 'otomaties-cookie-consent'),
-                'defaultDescription' => __('These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you', 'otomaties-cookie-consent'),
+                'defaultTitle' => DefaultStrings::get('occ_targeting_title'),
+                'defaultDescription' => DefaultStrings::get('occ_targeting_description'),
                 'commonScripts' => [],
             ]
         ];
@@ -372,41 +372,9 @@ class OptionsPage
         $extraInformation .= '<li>';
         $extraInformation .=  __('Add <code>c_darkmode</code> to <code>&lt;body&gt;</code> in order to enable darkmode.', 'otomaties-cookie-consent');
         $extraInformation .= '</li>';
-        $extraInformation .= '<li><code>';
-        $extraInformation .= '
-        .theme_turquoise{
-            --cc-bg: #161a1c;
-            --cc-text: #d8e5ea;
-            --cc-btn-primary-bg: #60fed2;
-            --cc-btn-primary-text: #000;
-            --cc-btn-primary-hover-bg: #4dd4ae;
-            --cc-btn-secondary-bg: #242c31;
-            --cc-btn-secondary-text: var(--cc-text);
-            --cc-btn-secondary-hover-bg: #2b353c;
-            --cc-toggle-bg-off: #667481;
-            --cc-toggle-bg-on: var(--cc-btn-primary-bg);
-            --cc-toggle-bg-readonly: #343e45;
-            --cc-toggle-knob-bg: var(--cc-cookie-category-block-bg);
-            --cc-toggle-knob-icon-color: var(--cc-bg);
-            --cc-cookie-category-block-bg: #1e2428;
-            --cc-cookie-category-block-bg-hover: #242c31;
-            --cc-section-border: #222a30;
-            --cc-block-text: #bac9cf;
-            --cc-cookie-table-border: #2b3035;
-            --cc-overlay-bg: rgba(4, 6, 8, .85);
-            --cc-webkit-scrollbar-bg: #2c343a;
-            --cc-webkit-scrollbar-bg-hover: #384148;
-        }
-        .theme_turquoise .cc_div a{
-            color: var(--cc-btn-primary-bg);
-        }
-        .theme_turquoise #cc_div #s-hdr{
-            border-bottom: none;
-        }
-        .theme_turquoise .cc_div #c-txt{
-            color: #b0b8c6!important;
-        }';
-        $extraInformation .= '</code></li>';
+        $extraInformation .= '<li>';
+        $extraInformation .= sprintf(__('%s is automatically added to %s', 'otomaties-cookie-consent'), '<code>type="text/plain" data-cookiecategory="analytics"</code>', '<strong><a target="_blank" href="https://wordpress.org/plugins/duracelltomi-google-tag-manager/">Google Tag Manager for WordPress</a> ' . __('by', 'otomaties-cookie-consent') . ' Thomas Geiger</strong>');
+        $extraInformation .= '</li>';
         $extraInformation .= '<li>';
         $extraInformation .= sprintf('<a href="%s" target="_blank">%s</a>', 'https://orestbida.com/demo-projects/cookieconsent/', __('Documentation', 'otomaties-cookie-consent'));
         $extraInformation .= '</li>';

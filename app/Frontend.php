@@ -96,7 +96,7 @@ class Frontend
     }
 
     public function addCookieCategoryToScripts($tag, $handle)
-    {  
+    {
         $categories = ['necessary', 'analytics', 'targeting'];
         foreach ($categories as $categoryKey) {
             $blockScripts = get_field('occ_' . $categoryKey . '_block_scripts', 'option');
@@ -113,14 +113,14 @@ class Frontend
         return $tag;
     }
 
-    public function addGtm4WpScriptToAnalyticScripts($tag) {
+    public function addGtm4WpScriptToAnalyticScripts($tag)
+    {
         $tag = str_replace('<script', '<script type="text/plain" data-cookiecategory="analytics"', $tag);
-
-        $tag = str_replace('</script>', 'console.log("script running");</script>', $tag);
         return $tag;
     }
 
-    public function addCookieSettingsMenuItem($items, $args) {
+    public function addCookieSettingsMenuItem($items, $args)
+    {
         $navMenu = get_field('occ_consent_modal_trigger_in_menu', 'option');
         if ($navMenu == 'term_id_' . $args->menu->term_id) {
             $items .= '<li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="' . __('Review cookie settings', 'otomaties-cookie-consent') . '" data-cc="c-settings">' . __('Cookie settings', 'otomaties-cookie-consent') . '</a><li>';

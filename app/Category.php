@@ -37,8 +37,8 @@ class Category
 
     public function information() {
         $information = [
-            'title' => get_field('occ_' . $this->categoryName() . '_title', 'option'),
-            'description' => get_field('occ_' . $this->categoryName() . '_description', 'option'),
+            'title' => DefaultStrings::value('occ_' . $this->categoryName() . '_title'),
+            'description' => DefaultStrings::value('occ_' . $this->categoryName() . '_description'),
             'cookieTable' => $this->cookieTable(),
         ];
         return $information;
