@@ -123,7 +123,7 @@ class Frontend
     {
         $navMenu = get_field('occ_consent_modal_trigger_in_menu', 'option');
         if ($navMenu == 'term_id_' . $args->menu->term_id) {
-            $items .= '<li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="' . __('Review cookie settings', 'otomaties-cookie-consent') . '" data-cc="c-settings">' . __('Cookie settings', 'otomaties-cookie-consent') . '</a><li>';
+            $items .= '<li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="' . __('Review cookie settings', 'otomaties-cookie-consent') . '" data-cc="c-settings">' . __('Cookie settings', 'otomaties-cookie-consent') . '</a></li>';
         }
         return $items;
     }
