@@ -119,6 +119,26 @@ class Frontend
         return $tag;
     }
 
+    public function customGtm4WpScript()
+    {
+
+        if (!function_exists('gtm4wp_wp_header_begin')) {
+            return;
+        }
+
+        $gtm4wp_header_begin_prior = 10;
+        if (isset($GLOBALS['gtm4wp_options']) && $GLOBALS['gtm4wp_options'][ GTM4WP_OPTION_LOADEARLY ]) {
+            $gtm4wp_header_begin_prior = 2;
+        }
+        remove_action('wp_head', 'gtm4wp_wp_header_begin', $gtm4wp_header_begin_prior, 0);
+        add_action('wp_head', function () {
+            ob_start();
+            gtm4wp_wp_header_begin(false);
+            $header = ob_get_clean();
+            echo $this->addGtm4WpScriptToAnalyticScripts($header);
+        }, $gtm4wp_header_begin_prior, 0);
+    }
+
     public function addCookieSettingsMenuItem($items, $args)
     {
         $navMenu = get_field('occ_consent_modal_trigger_in_menu', 'option');

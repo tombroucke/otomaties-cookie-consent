@@ -98,7 +98,8 @@ class Plugin
         $this->loader->add_action('wp_enqueue_scripts', $frontend, 'enqueueScripts');
         $this->loader->add_action('script_loader_tag', $frontend, 'deferScript', 10, 2);
         $this->loader->add_action('script_loader_tag', $frontend, 'addCookieCategoryToScripts', 10, 2);
-        $this->loader->add_filter('gtm4wp_get_the_gtm_tag', $frontend, 'addGtm4WpScriptToAnalyticScripts');
+        $this->loader->add_filter('gtm4wp_get_the_gtm_tag', $frontend, 'addGtm4WpScriptToAnalyticScripts'); // This probably doesn't work anymore, leaving for safety
+        $this->loader->add_action('template_redirect', $frontend, 'customGtm4WpScript');
         $this->loader->add_filter('wp_nav_menu_items', $frontend, 'addCookieSettingsMenuItem', 10, 2);
     }
 
