@@ -59,10 +59,12 @@ class Settings
             'description' => $description,
         ];
 
-        if ($contactPage) {
-            $replaceLink = get_field('occ_settings_modal_contact_page', 'option') && get_post_status(get_field('occ_settings_modal_contact_page', 'option')) ? get_permalink(get_field('occ_settings_modal_contact_page', 'option')) : '#';
-            $moreInformation['description'] = str_replace('[contact_link]', sprintf('<a class="cc-link" href="%s">%s</a>', $replaceLink, __('contact us', 'otomaties-cookie-consent')), $description);
+        if (!$contactPage) {
+            return false;
         }
+
+        $replaceLink = get_field('occ_settings_modal_contact_page', 'option') && get_post_status(get_field('occ_settings_modal_contact_page', 'option')) ? get_permalink(get_field('occ_settings_modal_contact_page', 'option')) : '#';
+        $moreInformation['description'] = str_replace('[contact_link]', sprintf('<a class="cc-link" href="%s">%s</a>', $replaceLink, __('contact us', 'otomaties-cookie-consent')), $description);
         
         return $moreInformation;
     }
@@ -87,15 +89,15 @@ class Settings
     {
         return[
             'consentModal' => [
-                'layout' => get_field('occ_consent_modal_layout', 'option') ?: 'cloud',
-                'position' => get_field('occ_consent_modal_position', 'option') ?: 'bottom center',
-                'transition' => get_field('occ_consent_modal_transition', 'option') ?: 'slide',
-                'swapButtons' => get_field('occ_consent_modal_swap_buttons', 'option') ?: false
+                'layout' => $this->generalOptionField('occ_consent_modal_layout') ?: 'cloud',
+                'position' => $this->generalOptionField('occ_consent_modal_position') ?: 'bottom center',
+                'transition' => $this->generalOptionField('occ_consent_modal_transition') ?: 'slide',
+                'swapButtons' => $this->generalOptionField('occ_consent_modal_swap_buttons') ?: false
             ],
             'settingsModal' => [
-                'layout' => get_field('occ_settings_modal_layout', 'option') ?: 'box',
-                'position' => get_field('occ_settings_modal_position', 'option') ?: 'left',
-                'transition' => get_field('occ_settings_modal_transition', 'option') ?: 'slide'
+                'layout' => $this->generalOptionField('occ_settings_modal_layout') ?: 'box',
+                'position' => $this->generalOptionField('occ_settings_modal_position') ?: 'left',
+                'transition' => $this->generalOptionField('occ_settings_modal_transition') ?: 'slide'
             ]
         ];
     }
@@ -112,5 +114,12 @@ class Settings
             ]
         ];
         return apply_filters('otomaties_cookie_consent_script_variables', $variables);
+    }
+
+    private function generalOptionField($optionKey) {
+        add_filter('acf/settings/current_language', '__return_false');
+        $value = get_field($optionKey, 'option');
+        remove_filter('acf/settings/current_language', '__return_false');
+        return $value;
     }
 }

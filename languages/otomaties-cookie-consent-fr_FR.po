@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Otomaties cookie consent\n"
 "POT-Creation-Date: 2022-04-25 14:12+0200\n"
-"PO-Revision-Date: 2022-09-07 15:15+0200\n"
+"PO-Revision-Date: 2022-09-07 16:50+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -515,7 +515,7 @@ msgstr ""
 
 #: app/Settings.php:64
 msgid "contact us"
-msgstr "contactez-nous"
+msgstr "nous contacter"
 
 #. Plugin Name of the plugin/theme
 msgid "Otomaties cookie consent"
