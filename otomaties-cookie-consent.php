@@ -58,4 +58,5 @@ function init()
     $plugin = new Plugin($pluginData);
     $plugin->run();
 }
-init();
+
+add_action('plugins_loaded', __NAMESPACE__ . '\\init');
