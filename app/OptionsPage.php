@@ -83,7 +83,7 @@ class OptionsPage
                         'bar' => __('Bar', 'otomaties-cookie-consent'),
                     ],
                     'default_value' => 'cloud',
-                    'wpml_cf_preferences' => 0,
+                    'wpml_cf_preferences' => 1,
                 ])
                 ->addSelect('occ_consent_modal_position', [
                     'label' => __('Layout', 'otomaties-cookie-consent'),
@@ -99,7 +99,7 @@ class OptionsPage
                         'bottom right' => __('Bottom right', 'otomaties-cookie-consent'),
                     ],
                     'default_value' => 'bottom center',
-                    'wpml_cf_preferences' => 0,
+                    'wpml_cf_preferences' => 1,
                 ])
                 ->addSelect('occ_consent_modal_transition', [
                     'label' => __('Layout', 'otomaties-cookie-consent'),
@@ -108,12 +108,12 @@ class OptionsPage
                         'slide' => __('Slide', 'otomaties-cookie-consent'),
                     ],
                     'default_value' => 'slide',
-                    'wpml_cf_preferences' => 0,
+                    'wpml_cf_preferences' => 1,
                 ])
                 ->addTrueFalse('occ_consent_modal_swap_buttons', [
                     'label' => __('Swap buttons', 'otomaties-cookie-consent'),
                     'message' => __('Swap reject/accept buttons', 'otomaties-cookie-consent'),
-                    'wpml_cf_preferences' => 0,
+                    'wpml_cf_preferences' => 1,
                 ])
             ->addTab('occ_settings_modal', [
                 'label' => __('Settings modal', 'otomaties-cookie-consent')
@@ -177,7 +177,7 @@ class OptionsPage
                         'bar' => __('Bar', 'otomaties-cookie-consent'),
                     ],
                     'default_value' => 'box',
-                    'wpml_cf_preferences' => 0,
+                    'wpml_cf_preferences' => 1,
                 ])
                 ->addSelect('occ_settings_modal_position', [
                     'label' => __('Layout', 'otomaties-cookie-consent'),
@@ -186,7 +186,7 @@ class OptionsPage
                         'right' => __('Right', 'otomaties-cookie-consent'),
                     ],
                     'default_value' => 'right',
-                    'wpml_cf_preferences' => 0,
+                    'wpml_cf_preferences' => 1,
                 ])
                 ->addSelect('occ_settings_modal_transition', [
                     'label' => __('Transition', 'otomaties-cookie-consent'),
@@ -195,7 +195,7 @@ class OptionsPage
                         'slide' => __('Slide', 'otomaties-cookie-consent'),
                     ],
                     'default_value' => 'slide',
-                    'wpml_cf_preferences' => 0,
+                    'wpml_cf_preferences' => 1,
                 ])
             ->setLocation('options_page', '==', 'cookie-consent-settings');
         acf_add_local_field_group($cookieConsentSettings->build());
@@ -354,15 +354,15 @@ class OptionsPage
                 ->addRepeater('occ_' . $categoryKey . '_cookie_table', [
                     'label' => __('Cookie table', 'otomaties-cookie-consent'),
                     'button_label' => __('Add cookie', 'otomaties-cookie-consent'),
-                    'wpml_cf_preferences' => 3,
+                    'wpml_cf_preferences' => 2,
                 ])
                     ->addText('name', [
                         'label' => __('Name', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 1,
+                        'wpml_cf_preferences' => 2,
                     ])
                     ->addText('domain', [
                         'label' => __('Domain', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 1,
+                        'wpml_cf_preferences' => 2,
                     ])
                     ->addText('expiration', [
                         'label' => __('Expiration', 'otomaties-cookie-consent'),
@@ -374,7 +374,7 @@ class OptionsPage
                     ])
                     ->addTrueFalse('regex', [
                         'label' => __('Regex', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 1,
+                        'wpml_cf_preferences' => 2,
                     ])
                 ->endRepeater()
                 ->addMessage('occ_' . $categoryKey . '_common_scripts', $this->cookiearrayToTable($category['commonScripts']), [
@@ -384,11 +384,11 @@ class OptionsPage
                     'label' => __('Block scripts'),
                     'instructions' => __('This plugin can automatically add the correct cookie categorie for scripts enqueued through <code>wp_enqueue_script()</code>. You can find the ID in the page source or the first parameter of <code>wp_enqueue_script()</code>', 'otomaties-cookie-consent'),
                     'button_label' => __('Add cookie', 'otomaties-cookie-consent'),
-                    'wpml_cf_preferences' => 0,
+                    'wpml_cf_preferences' => 2,
                 ])
                     ->addText('script_id', [
                         'label' => __('Script ID', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 0,
+                        'wpml_cf_preferences' => 2,
                     ])
                 ->endRepeater()
                 ->addMessage('occ_adding_' . $categoryKey . '_scripts_manually', sprintf(__('Add <code>type="text/plain" data-cookiecategory="%s"</code> to your script tag.', 'otomaties-cookie-consent'), $categoryKey), [
