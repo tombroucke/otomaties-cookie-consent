@@ -65,7 +65,7 @@ languages[otomatiesCookieConsent.locale] = {
 }
 
 Object.keys(categories).forEach(key => {
-	if (otomatiesCookieConsent.strings.blocks[key].cookieTable.length || categories[key].enabled) {
+	if (otomatiesCookieConsent.strings.blocks[key].cookieTable.length || categories[key].enabled || otomatiesCookieConsent.showAllCategories) {
 		languages[otomatiesCookieConsent.locale].settings_modal.blocks.push({
 			title: otomatiesCookieConsent.strings.blocks[key].title,
 			description: otomatiesCookieConsent.strings.blocks[key].description,

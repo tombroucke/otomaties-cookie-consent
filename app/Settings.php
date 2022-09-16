@@ -115,6 +115,7 @@ class Settings
                 'blocks' => $this->blocks(),
             ],
             'gtmConsentMode' => get_field('occ_gtm_consent_mode', 'option'),
+            'showAllCategories' => get_field('occ_show_all_categories', 'option'),
         ];
         return apply_filters('otomaties_cookie_consent_script_variables', $variables);
     }

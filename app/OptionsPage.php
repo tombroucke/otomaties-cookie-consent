@@ -203,6 +203,13 @@ class OptionsPage
                 ->addTrueFalse('occ_gtm_consent_mode', [
                     'label' => __('Google Tag Manager consent mode', 'otomaties-cookie-consent'),
                     'instructions' => __('If you use Google Tag Manager, you can enable consent mode. This will prevent GTM from loading until the user has given consent.', 'otomaties-cookie-consent'),
+                    'message' => __('Enable GTM consent mode', 'otomaties-cookie-consent'),
+                    'wpml_cf_preferences' => 1,
+                ])
+                ->addTrueFalse('occ_show_all_categories', [
+                    'label' => __('Show all cookie categories', 'otomaties-cookie-consent'),
+                    'instructions' => __('If enabled, all categories will be shown in the settings modal. If disabled, only categories with cookies will be shown.', 'otomaties-cookie-consent'),
+                    'message' => __('Show all categories', 'otomaties-cookie-consent'),
                     'wpml_cf_preferences' => 1,
                 ])
             ->setLocation('options_page', '==', 'cookie-consent-settings');
@@ -404,7 +411,7 @@ class OptionsPage
                         'wpml_cf_preferences' => 2,
                     ])
                 ->endRepeater()
-                ->addMessage('occ_' . $categoryKey . '_common_scripts', $this->cookiearrayToTable($category['commonScripts']), [
+                ->addMessage('occ_' . $categoryKey . '_common_scripts', $this->cookiearrayToTable($category['commonScripts'], $categoryKey), [
                     'label' => sprintf(__('Common %s scripts', 'otomaties-cookie-consent'), $categoryKey)
                 ])
                 ->addRepeater('occ_' . $categoryKey . '_block_scripts', [
@@ -447,7 +454,7 @@ class OptionsPage
         acf_add_local_field_group($cookieConsentExtraInformation->build());
     }
 
-    public function cookiearrayToTable(array $array)
+    public function cookiearrayToTable(array $array, string $category)
     {
         ob_start();
         ?>
@@ -459,26 +466,30 @@ class OptionsPage
                         <th><?php _e('Expiration', 'otomaties-cookie-consent'); ?></th>
                         <th><?php _e('Description', 'otomaties-cookie-consent'); ?></th>
                         <th><?php _e('Regex', 'otomaties-cookie-consent'); ?></th>
+                        <th><?php _e('Actions', 'otomaties-cookie-consent'); ?></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php if (!empty($array)) : ?>
-                        <?php foreach ($array as $cookie) : ?>
-                            <tr>
-                                <td>
+                        <?php foreach ($array as $key => $cookie) : ?>
+                            <tr class="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>">
+                                <td class="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>--name">
                                     <?php echo $cookie['name']; ?>
                                 </td>
-                                <td>
+                                <td class="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>--domain">
                                     <?php echo $cookie['domain']; ?>
                                 </td>
-                                <td>
+                                <td class="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>--expiration">
                                     <?php echo $cookie['expiration']; ?>
                                 </td>
-                                <td>
+                                <td class="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>--description">
                                     <?php echo $cookie['description']; ?>
                                 </td>
-                                <td>
+                                <td class="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>--regex" data-regex="<?php echo $cookie['regex']; ?>">
                                     <?php echo $cookie['regex'] ? '<span class="dashicons dashicons-yes-alt"></span>' : '<span class="dashicons dashicons-no-alt"></span>'; ?>
+                                </td>
+                                <td>
+                                    <button class="button" data-category="<?php echo $category; ?>" data-common-cookie="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>"><?php _e('Insert', 'otomaties-cookie-consent'); ?></button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
