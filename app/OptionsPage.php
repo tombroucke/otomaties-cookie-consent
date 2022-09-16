@@ -271,6 +271,13 @@ class OptionsPage
                         'description' => __('WordPress also sets a few wp-settings-{time}-[UID] cookies. The number on the end is your individual user ID from the user’s database table. This is used to customize your view of admin interface, and possibly also the main site interface.', 'otomaties-cookie-consent'),
                         'regex' => true,
                     ],
+                    [
+                        'name' => 'wp-wpml_current_language',
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
+                        'expiration' => __('session', 'otomaties-cookie-consent'),
+                        'description' => __('Stores the current language.', 'otomaties-cookie-consent'),
+                        'regex' => true,
+                    ],
                 ],
             ],
             'analytics' => [
