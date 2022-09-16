@@ -97,7 +97,7 @@ class Frontend
 
     public function addCookieCategoryToScripts($tag, $handle)
     {
-        $categories = ['necessary', 'analytics', 'targeting'];
+        $categories = ['necessary', 'analytics', 'advertising', 'personalization', 'security'];
         foreach ($categories as $categoryKey) {
             $blockScripts = get_field('occ_' . $categoryKey . '_block_scripts', 'option');
             if (!$blockScripts || !is_array($blockScripts) || empty($blockScripts)) {
@@ -115,6 +115,9 @@ class Frontend
 
     public function addGtm4WpScriptToAnalyticScripts($tag)
     {
+        if (get_field('occ_gtm_consent_mode', 'option')) {
+            return $tag;
+        }
         $tag = str_replace('<script', '<script type="text/plain" data-cookiecategory="analytics"', $tag);
         return $tag;
     }
@@ -146,5 +149,25 @@ class Frontend
             $items .= '<li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="' . __('Review cookie settings', 'otomaties-cookie-consent') . '" data-cc="c-settings">' . __('Cookie settings', 'otomaties-cookie-consent') . '</a></li>';
         }
         return $items;
+    }
+
+    public function addGoogleConsentMode() {
+        if (!get_field('occ_gtm_consent_mode', 'option')) {
+            return;
+        }
+        ?>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+
+            gtag('consent', 'default', {
+                'ad_storage': 'denied',
+                'analytics_storage': 'denied',
+                'functionality_storage': 'granted',
+                'personalization_storage': 'denied',
+                'security_storage': 'denied',
+            });
+        </script>
+        <?php
     }
 }

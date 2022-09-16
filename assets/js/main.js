@@ -7,6 +7,29 @@ import 'vanilla-cookieconsent';
 var cc = initCookieConsent();
 
 const languages = {};
+const categories = {
+	'necessary' : {
+		enabled: true,
+		readonly: false,
+	},
+	'analytics' : {
+		enabled: false,
+		readonly: false,
+	}, 
+	'advertising' : {
+		enabled: false,
+		readonly: false,
+	}, 
+	'personalization' : {
+		enabled: false,
+		readonly: false,
+	}, 
+	'security' : {
+		enabled: false,
+		readonly: false,
+	}
+};
+
 languages[otomatiesCookieConsent.locale] = {
 	consent_modal: {
 		title: otomatiesCookieConsent.strings.consentModal.title,
@@ -36,37 +59,25 @@ languages[otomatiesCookieConsent.locale] = {
 			{
 				title: otomatiesCookieConsent.strings.blocks.usage.title,
 				description: otomatiesCookieConsent.strings.blocks.usage.description
-			}, {
-				title: otomatiesCookieConsent.strings.blocks.necessary.title,
-				description: otomatiesCookieConsent.strings.blocks.necessary.description,
-				toggle: {
-					value: 'necessary',
-					enabled: true,
-					readonly: true          // cookie categories with readonly=true are all treated as "necessary cookies"
-				},
-				cookie_table: otomatiesCookieConsent.strings.blocks.necessary.cookieTable
-			}, {
-				title: otomatiesCookieConsent.strings.blocks.analytics.title,
-				description: otomatiesCookieConsent.strings.blocks.analytics.description,
-				toggle: {
-					value: 'analytics',     // your cookie category
-					enabled: false,
-					readonly: false
-				},
-				cookie_table: otomatiesCookieConsent.strings.blocks.analytics.cookieTable
-			}, {
-				title: otomatiesCookieConsent.strings.blocks.targeting.title,
-				description: otomatiesCookieConsent.strings.blocks.targeting.description,
-				toggle: {
-					value: 'targeting',
-					enabled: false,
-					readonly: false
-				},
-				cookie_table: otomatiesCookieConsent.strings.blocks.targeting.cookieTable
 			}
 		]
 	}
 }
+
+Object.keys(categories).forEach(key => {
+	if (otomatiesCookieConsent.strings.blocks[key].cookieTable.length || categories[key].enabled) {
+		languages[otomatiesCookieConsent.locale].settings_modal.blocks.push({
+			title: otomatiesCookieConsent.strings.blocks[key].title,
+			description: otomatiesCookieConsent.strings.blocks[key].description,
+			toggle: {
+				value: key,
+				enabled: categories[key].enabled,
+				readonly: categories[key].readonly          // cookie categories with readonly=true are all treated as "necessary cookies"
+			},
+			cookie_table: otomatiesCookieConsent.strings.blocks[key].cookieTable
+		})	
+	}
+});
 
 if (otomatiesCookieConsent.strings.blocks.moreInformation) {
 	languages[otomatiesCookieConsent.locale].settings_modal.blocks.push({
@@ -115,11 +126,89 @@ cc.run({
     },
 
     onAccept: function (cookie) {
-        // ...
+		if (cc.allowedCategory('analytics')) {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'analytics_storage': 'granted'
+				});
+			}
+		}
+		if (cc.allowedCategory('advertising')) {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'ad_storage': 'granted'
+				});
+			}
+		}
+		if (cc.allowedCategory('personalization')) {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'personalization_storage': 'granted',
+				});
+			}
+		}
+		if (cc.allowedCategory('security')) {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'security_storage': 'granted'
+				});
+			}
+		}
     },
 
     onChange: function (cookie, changed_preferences) {
-        // ...
+		if (cc.allowedCategory('analytics')) {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'analytics_storage': 'granted'
+				});
+			}
+		 } else {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'analytics_storage': 'denied'
+				});
+			}
+		 }
+		 if (cc.allowedCategory('advertising')) {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'ad_storage': 'granted'
+				});
+			}
+		 } else {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'ad_storage': 'denied'
+				});
+			}
+		 }
+		 if (cc.allowedCategory('personalization')) {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'personalization_storage': 'granted',
+				});
+			}
+		 } else {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'personalization_storage': 'denied',
+				});
+			}
+		 }
+		 if (cc.allowedCategory('security')) {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'security_storage': 'granted'
+				});
+			}
+		 } else {
+			if(otomatiesCookieConsent.gtmConsentMode) {
+				gtag('consent', 'update', {
+					'security_storage': 'denied'
+				});
+			}
+		 }
     },
 
 	languages: languages,

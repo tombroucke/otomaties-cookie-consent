@@ -75,7 +75,9 @@ class Settings
             'usage' => $this->usage(),
             'necessary' => $this->category('necessary')->information(),
             'analytics' => $this->category('analytics')->information(),
-            'targeting' => $this->category('targeting')->information(),
+            'advertising' => $this->category('advertising')->information(),
+            'personalization' => $this->category('personalization')->information(),
+            'security' => $this->category('security')->information(),
         ];
 
         if ($this->moreInformation()) {
@@ -111,7 +113,8 @@ class Settings
                 'consentModal' => $this->consentModal(),
                 'settingsModal' => $this->settingsModal(),
                 'blocks' => $this->blocks(),
-            ]
+            ],
+            'gtmConsentMode' => get_field('occ_gtm_consent_mode', 'option'),
         ];
         return apply_filters('otomaties_cookie_consent_script_variables', $variables);
     }

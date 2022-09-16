@@ -22,10 +22,14 @@ class DefaultStrings
             'occ_settings_modal_close_button_label' => __('Close', 'otomaties-cookie-consent'),
             'occ_necessary_title' => __('Strictly necessary cookies', 'otomaties-cookie-consent'),
             'occ_necessary_description' => __('These cookies are essential for the proper functioning of this website. Without these cookies, the website would not work properly', 'otomaties-cookie-consent'),
-            'occ_analytics_title' => __('Performance and Analytics cookies', 'otomaties-cookie-consent'),
+            'occ_analytics_title' => __('Analytical cookies', 'otomaties-cookie-consent'),
             'occ_analytics_description' => __('These cookies allow the website to remember the choices you have made in the past', 'otomaties-cookie-consent'),
-            'occ_targeting_title' => __('Advertisement and Targeting cookies', 'otomaties-cookie-consent'),
-            'occ_targeting_description' => __('These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you', 'otomaties-cookie-consent'),
+            'occ_advertising_title' => __('Advertisement and targeting cookies', 'otomaties-cookie-consent'),
+            'occ_advertising_description' => __('These cookies collect information about how you use the website, which pages you visited and which links you clicked on. All of the data is anonymized and cannot be used to identify you', 'otomaties-cookie-consent'),
+            'occ_personalization_title' => __('Personalization cookies', 'otomaties-cookie-consent'),
+            'occ_personalization_description' => __('These cookies store personalisation e.g. video recommendations', 'otomaties-cookie-consent'),
+            'occ_security_title' => __('Security cookies', 'otomaties-cookie-consent'),
+            'occ_security_description' => __('Storage related to security such as authentication functionality, fraud prevention, and other user protection', 'otomaties-cookie-consent'),
         ];
         return $strings[$key] ?? null;
     }

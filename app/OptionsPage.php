@@ -197,6 +197,14 @@ class OptionsPage
                     'default_value' => 'slide',
                     'wpml_cf_preferences' => 1,
                 ])
+            ->addTab('general', [
+                'label' => __('General', 'otomaties-cookie-consent')
+            ])
+                ->addTrueFalse('occ_gtm_consent_mode', [
+                    'label' => __('Google Tag Manager consent mode', 'otomaties-cookie-consent'),
+                    'instructions' => __('If you use Google Tag Manager, you can enable consent mode. This will prevent GTM from loading until the user has given consent.', 'otomaties-cookie-consent'),
+                    'wpml_cf_preferences' => 1,
+                ])
             ->setLocation('options_page', '==', 'cookie-consent-settings');
         acf_add_local_field_group($cookieConsentSettings->build());
 
@@ -336,10 +344,22 @@ class OptionsPage
                     ],
                 ],
             ],
-            'targeting' => [
-                'name' => __('Targeting', 'otomaties-cookie-consent'),
-                'defaultTitle' => DefaultStrings::get('occ_targeting_title'),
-                'defaultDescription' => DefaultStrings::get('occ_targeting_description'),
+            'advertising' => [
+                'name' => __('Advertising', 'otomaties-cookie-consent'),
+                'defaultTitle' => DefaultStrings::get('occ_advertising_title'),
+                'defaultDescription' => DefaultStrings::get('occ_advertising_description'),
+                'commonScripts' => [],
+            ],
+            'personalization' => [
+                'name' => __('Personalization', 'otomaties-cookie-consent'),
+                'defaultTitle' => DefaultStrings::get('occ_personalization_title'),
+                'defaultDescription' => DefaultStrings::get('occ_personalization_description'),
+                'commonScripts' => [],
+            ],
+            'security' => [
+                'name' => __('Security', 'otomaties-cookie-consent'),
+                'defaultTitle' => DefaultStrings::get('occ_security_title'),
+                'defaultDescription' => DefaultStrings::get('occ_security_description'),
                 'commonScripts' => [],
             ]
         ];

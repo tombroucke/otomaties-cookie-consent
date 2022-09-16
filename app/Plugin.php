@@ -99,6 +99,7 @@ class Plugin
         $this->loader->add_filter('gtm4wp_get_the_gtm_tag', $frontend, 'addGtm4WpScriptToAnalyticScripts'); // This probably doesn't work anymore, leaving for safety
         $this->loader->add_action('template_redirect', $frontend, 'customGtm4WpScript');
         $this->loader->add_filter('wp_nav_menu_items', $frontend, 'addCookieSettingsMenuItem', 10, 2);
+        $this->loader->add_filter('wp_head', $frontend, 'addGoogleConsentMode', 10, 2);
     }
 
     private function addOptionsPage()
