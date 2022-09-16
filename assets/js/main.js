@@ -10,7 +10,7 @@ const languages = {};
 const categories = {
 	'necessary' : {
 		enabled: true,
-		readonly: false,
+		readonly: true,
 	},
 	'analytics' : {
 		enabled: false,
