@@ -8,10 +8,13 @@ class Settings
         return new Category($key);
     }
 
-    public function consentModal()
+    public function consentModal() : array
     {
         $description = DefaultStrings::value('occ_consent_modal_description');
-        $description .= ' ' . sprintf('<button type="button" data-cc="c-settings" class="cc-link">%s</button>', DefaultStrings::value('occ_consent_modal_settings_button_label'));
+        $description .= ' ' . sprintf(
+            '<button type="button" data-cc="c-settings" class="cc-link">%s</button>',
+            DefaultStrings::value('occ_consent_modal_settings_button_label')
+        );
         return [
             'title' => DefaultStrings::value('occ_consent_modal_title'),
             'description' => $description,
@@ -20,7 +23,7 @@ class Settings
         ];
     }
 
-    public function settingsModal()
+    public function settingsModal() : array
     {
         return [
             'title' =>  DefaultStrings::value('occ_settings_modal_title'),
@@ -37,19 +40,22 @@ class Settings
         ];
     }
 
-    public function usage()
+    public function usage() : array
     {
         $usage = [
             'title' => DefaultStrings::value('occ_settings_modal_cookie_usage_title'),
             'description' => DefaultStrings::value('occ_settings_modal_cookie_usage_description'),
         ];
         if (get_privacy_policy_url()) {
-            $usage['description'] = $usage['description'] . ' ' . sprintf(__('For more details relative to cookies and other sensitive data, please read the full <a href="%s" class="cc-link">privacy policy</a>.', 'otomaties-cookie-consent'), get_privacy_policy_url());
+            $usage['description'] = $usage['description'] . ' ' . sprintf(
+                __('For more details relative to cookies and other sensitive data, please read the full <a href="%s" class="cc-link">privacy policy</a>.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                get_privacy_policy_url()
+            );
         }
         return $usage;
     }
 
-    public function moreInformation()
+    public function moreInformation() : ?array
     {
         $description = DefaultStrings::value('occ_settings_modal_more_information_description');
 
@@ -60,16 +66,24 @@ class Settings
         ];
 
         if (!$contactPage) {
-            return false;
+            return null;
         }
 
-        $replaceLink = get_field('occ_settings_modal_contact_page', 'option') && get_post_status(get_field('occ_settings_modal_contact_page', 'option')) ? get_permalink(get_field('occ_settings_modal_contact_page', 'option')) : '#';
-        $moreInformation['description'] = str_replace('[contact_link]', sprintf('<a class="cc-link" href="%s">%s</a>', $replaceLink, __('contact us', 'otomaties-cookie-consent')), $description);
+        $replaceLink = get_field('occ_settings_modal_contact_page', 'option') && get_post_status(get_field('occ_settings_modal_contact_page', 'option')) ? get_permalink(get_field('occ_settings_modal_contact_page', 'option')) : '#'; // phpcs:ignore Generic.Files.LineLength
+        $moreInformation['description'] = str_replace(
+            '[contact_link]',
+            sprintf(
+                '<a class="cc-link" href="%s">%s</a>',
+                $replaceLink,
+                __('contact us', 'otomaties-cookie-consent')
+            ),
+            $description
+        );
         
         return $moreInformation;
     }
 
-    public function blocks()
+    public function blocks() : array
     {
         $blocks = [
             'usage' => $this->usage(),
@@ -87,7 +101,7 @@ class Settings
         return $blocks;
     }
 
-    public function guiOptions()
+    public function guiOptions() : array
     {
         return[
             'consentModal' => [
@@ -104,7 +118,7 @@ class Settings
         ];
     }
     
-    public function scriptVariables()
+    public function scriptVariables() : array
     {
         $variables = [
             'locale' => get_locale(),
@@ -120,7 +134,8 @@ class Settings
         return apply_filters('otomaties_cookie_consent_script_variables', $variables);
     }
 
-    private function generalOptionField($optionKey) {
+    private function generalOptionField($optionKey)
+    {
         add_filter('acf/settings/current_language', '__return_false');
         $value = get_field($optionKey, 'option');
         remove_filter('acf/settings/current_language', '__return_false');

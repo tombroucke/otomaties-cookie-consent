@@ -16,5 +16,20 @@
         "stoutlogic/acf-builder": "^1.12"
     },
     "keywords": ["wordpress", "plugin", "cookie", "consent"],
-    "type": "wordpress-plugin"
+    "type": "wordpress-plugin",
+    "require-dev": {
+        "szepeviktor/phpstan-wordpress": "^1.1",
+        "php-stubs/acf-pro-stubs": "^5.12"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    },
+    "scripts": {
+        "test": [
+            "vendor/bin/phpstan analyze app --memory-limit 512M --level 5",
+            "phpcs --standard=PSR2 app"
+        ]
+    }
 }

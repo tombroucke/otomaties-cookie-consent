@@ -1,0 +1,14 @@
+#$ vendor/bin/phpstan analyze
+
+includes:
+    - vendor/szepeviktor/phpstan-wordpress/extension.neon
+parameters:
+    level: max
+    inferPrivatePropertyTypeFromConstructor: true
+    bootstrapFiles:
+        - vendor/php-stubs/acf-pro-stubs/acf-pro-stubs.php
+        - stubs/GTM4WP-stubs.php
+    paths:
+        - inc/
+
+# See full example in phpstan-full.neon

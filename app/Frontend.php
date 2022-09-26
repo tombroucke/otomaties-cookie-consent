@@ -22,23 +22,14 @@ class Frontend
     private $pluginName;
 
     /**
-     * The version of this plugin.
-     *
-     * @var      string    $version    The current version of this plugin.
-     */
-    private $version;
-
-    /**
      * Initialize the class and set its properties.
      *
      * @param      string    $pluginName       The name of the plugin.
-     * @param      string    $version    The version of this plugin.
      */
-    public function __construct($pluginName, $version)
+    public function __construct($pluginName)
     {
 
         $this->pluginName = $pluginName;
-        $this->version = $version;
     }
 
     /**
@@ -81,7 +72,7 @@ class Frontend
          * class.
          */
         
-        wp_enqueue_script($this->pluginName, Assets::find('js/main.js'), array( 'jquery' ), null, true);
+        wp_enqueue_script($this->pluginName, Assets::find('js/main.js'), [], null, true);
         $settings = new Settings();
         wp_localize_script($this->pluginName, 'otomatiesCookieConsent', $settings->scriptVariables());
     }
@@ -94,19 +85,26 @@ class Frontend
          
         return str_replace(' src=', ' defer src=', $tag);
     }
-
+    
     public function addCookieCategoryToScripts($tag, $handle)
     {
         $categories = ['necessary', 'analytics', 'advertising', 'personalization', 'security'];
         foreach ($categories as $categoryKey) {
-            $blockScripts = get_field('occ_' . $categoryKey . '_block_scripts', 'option');
-            if (!$blockScripts || !is_array($blockScripts) || empty($blockScripts)) {
+            $blockScripts = array_filter((array)get_field('occ_' . $categoryKey . '_block_scripts', 'option'));
+            if (count($blockScripts) === 0) {
                 continue;
             }
 
             foreach ($blockScripts as $blockScript) {
-                if (isset($blockScript['script_id']) && $blockScript['script_id'] != '' && strpos($tag, 'id=\'' . $blockScript['script_id'] . '-js\'') !== false) {
-                    return str_replace(' src=', '  type="text/plain" data-cookiecategory="' . $categoryKey . '" src=', $tag);
+                if (isset($blockScript['script_id'])
+                    && $blockScript['script_id'] != ''
+                    && strpos($tag, 'id=\'' . $blockScript['script_id'] . '-js\'') !== false
+                ) {
+                    return str_replace(
+                        ' src=',
+                        '  type="text/plain" data-cookiecategory="' . $categoryKey . '" src=',
+                        $tag
+                    );
                 }
             }
         }
@@ -130,10 +128,11 @@ class Frontend
         }
 
         $gtm4wp_header_begin_prior = 10;
-        if (isset($GLOBALS['gtm4wp_options']) && $GLOBALS['gtm4wp_options'][ GTM4WP_OPTION_LOADEARLY ]) {
+        $loadEarly = constant('GTM4WP_OPTION_LOADEARLY');
+        if (isset($GLOBALS['gtm4wp_options']) && $GLOBALS['gtm4wp_options'][$loadEarly]) {
             $gtm4wp_header_begin_prior = 2;
         }
-        remove_action('wp_head', 'gtm4wp_wp_header_begin', $gtm4wp_header_begin_prior, 0);
+        remove_action('wp_head', 'gtm4wp_wp_header_begin', $gtm4wp_header_begin_prior);
         add_action('wp_head', function () {
             ob_start();
             gtm4wp_wp_header_begin(false);
@@ -146,12 +145,13 @@ class Frontend
     {
         $navMenu = get_field('occ_consent_modal_trigger_in_menu', 'option');
         if ($navMenu == 'term_id_' . $args->menu->term_id) {
-            $items .= '<li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="' . __('Review cookie settings', 'otomaties-cookie-consent') . '" data-cc="c-settings">' . __('Cookie settings', 'otomaties-cookie-consent') . '</a></li>';
+            $items .= '<li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="' . __('Review cookie settings', 'otomaties-cookie-consent') . '" data-cc="c-settings">' . __('Cookie settings', 'otomaties-cookie-consent') . '</a></li>'; // phpcs:ignore Generic.Files.LineLength
         }
         return $items;
     }
 
-    public function addGoogleConsentMode() {
+    public function addGoogleConsentMode()
+    {
         if (!get_field('occ_gtm_consent_mode', 'option')) {
             return;
         }

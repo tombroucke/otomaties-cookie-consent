@@ -12,9 +12,8 @@ class OptionsPage
     /**
      * Create pages
      */
-    public function addOptionsPage()
+    public function addOptionsPage() : void
     {
-        
         acf_add_options_page(
             array(
                 'page_title'    => __('Cookie consent', 'otomaties-cookie-consent'),
@@ -39,7 +38,10 @@ class OptionsPage
             $navMenus['term_id_' . (string)$navMenu->term_id] = $navMenu->name;
         }
         // General settings
-        $cookieConsentSettings = new FieldsBuilder('cookie-consent-settings', ['title' => __('Cookie consent settings', 'otomaties-cookie-consent'), 'menu_order' => -1]);
+        $cookieConsentSettings = new FieldsBuilder('cookie-consent-settings', [
+            'title' => __('Cookie consent settings', 'otomaties-cookie-consent'),
+            'menu_order' => -1
+        ]);
         $cookieConsentSettings
             ->addTab('occ_consent_modal', [
                 'label' => __('Consent modal', 'otomaties-cookie-consent')
@@ -202,13 +204,13 @@ class OptionsPage
             ])
                 ->addTrueFalse('occ_gtm_consent_mode', [
                     'label' => __('Google Tag Manager consent mode', 'otomaties-cookie-consent'),
-                    'instructions' => __('If you use Google Tag Manager, you can enable consent mode. This will prevent GTM from loading until the user has given consent.', 'otomaties-cookie-consent'),
+                    'instructions' => __('If you use Google Tag Manager, you can enable consent mode. This will prevent GTM from loading until the user has given consent.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                     'message' => __('Enable GTM consent mode', 'otomaties-cookie-consent'),
                     'wpml_cf_preferences' => 1,
                 ])
                 ->addTrueFalse('occ_show_all_categories', [
                     'label' => __('Show all cookie categories', 'otomaties-cookie-consent'),
-                    'instructions' => __('If enabled, all categories will be shown in the settings modal. If disabled, only categories with cookies will be shown.', 'otomaties-cookie-consent'),
+                    'instructions' => __('If enabled, all categories will be shown in the settings modal. If disabled, only categories with cookies will be shown.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                     'message' => __('Show all categories', 'otomaties-cookie-consent'),
                     'wpml_cf_preferences' => 1,
                 ])
@@ -216,7 +218,9 @@ class OptionsPage
         acf_add_local_field_group($cookieConsentSettings->build());
 
         // Category settings
-        $cookieConsentCategorieSettings = new FieldsBuilder('cookie-consent-category-settings', ['title' => __('Cookie categories', 'otomaties-cookie-consent')]);
+        $cookieConsentCategorieSettings = new FieldsBuilder('cookie-consent-category-settings', [
+            'title' => __('Cookie categories', 'otomaties-cookie-consent')
+        ]);
         $categories = [
             'necessary' => [
                 'name' => __('Necessary', 'otomaties-cookie-consent'),
@@ -234,21 +238,21 @@ class OptionsPage
                         'name' => 'wc_cart_created',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => __('session', 'otomaties-cookie-consent'),
-                        'description' => __('Necessary for the shopping cart functionality on the website.', 'otomaties-cookie-consent'),
+                        'description' => __('Necessary for the shopping cart functionality on the website.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => false,
                     ],
                     [
                         'name' => 'woocommerce_cart_hash',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => __('session', 'otomaties-cookie-consent'),
-                        'description' => __('Necessary for the shopping cart functionality on the website to remember the chosen products - This also allows the website to promote related products to the visitor, based on the content of the shopping cart.', 'otomaties-cookie-consent'),
+                        'description' => __('Necessary for the shopping cart functionality on the website to remember the chosen products - This also allows the website to promote related products to the visitor, based on the content of the shopping cart.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => false,
                     ],
                     [
                         'name' => 'woocommerce_items_in_cart',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => __('session', 'otomaties-cookie-consent'),
-                        'description' => __('Contains information about the cart as a whole and help WooCommerce know when the cart data changes.', 'otomaties-cookie-consent'),
+                        'description' => __('Contains information about the cart as a whole and help WooCommerce know when the cart data changes.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => true,
                     ],
                     [
@@ -262,28 +266,28 @@ class OptionsPage
                         'name' => 'wp_woocommerce_session_*',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => sprintf(__('%d days', 'otomaties-cookie-consent'), 2),
-                        'description' => __('Contains a unique code for each customer so that it knows where to find the cart data in the database for each customer.', 'otomaties-cookie-consent'),
+                        'description' => __('Contains a unique code for each customer so that it knows where to find the cart data in the database for each customer.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => true,
                     ],
                     [
                         'name' => 'wordpress_*',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => sprintf(__('%d weeks', 'otomaties-cookie-consent'), 2),
-                        'description' => __('Stores your authentication details. Its use is limited to the admin area.', 'otomaties-cookie-consent'),
+                        'description' => __('Stores your authentication details. Its use is limited to the admin area.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => true,
                     ],
                     [
                         'name' => 'wordpress_logged_in_*',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => sprintf(__('%d weeks', 'otomaties-cookie-consent'), 2),
-                        'description' => __('This cookie indicates when you’re logged in, and who you are, for most interface use.', 'otomaties-cookie-consent'),
+                        'description' => __('This cookie indicates when you’re logged in, and who you are, for most interface use.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => true,
                     ],
                     [
                         'name' => 'wordpress_settings-*',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => sprintf(__('%d weeks', 'otomaties-cookie-consent'), 2),
-                        'description' => __('WordPress also sets a few wp-settings-{time}-[UID] cookies. The number on the end is your individual user ID from the user’s database table. This is used to customize your view of admin interface, and possibly also the main site interface.', 'otomaties-cookie-consent'),
+                        'description' => __('WordPress also sets a few wp-settings-{time}-[UID] cookies. The number on the end is your individual user ID from the user’s database table. This is used to customize your view of admin interface, and possibly also the main site interface.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => true,
                     ],
                     [
@@ -411,12 +415,14 @@ class OptionsPage
                         'wpml_cf_preferences' => 2,
                     ])
                 ->endRepeater()
-                ->addMessage('occ_' . $categoryKey . '_common_scripts', $this->cookiearrayToTable($category['commonScripts'], $categoryKey), [
-                    'label' => sprintf(__('Common %s scripts', 'otomaties-cookie-consent'), $categoryKey)
-                ])
+                ->addMessage(
+                    'occ_' . $categoryKey . '_common_scripts',
+                    $this->cookiearrayToTable($category['commonScripts'], $categoryKey),
+                    ['label' => sprintf(__('Common %s scripts', 'otomaties-cookie-consent'), $categoryKey)]
+                )
                 ->addRepeater('occ_' . $categoryKey . '_block_scripts', [
                     'label' => __('Block scripts'),
-                    'instructions' => __('This plugin can automatically add the correct cookie categorie for scripts enqueued through <code>wp_enqueue_script()</code>. You can find the ID in the page source or the first parameter of <code>wp_enqueue_script()</code>', 'otomaties-cookie-consent'),
+                    'instructions' => __('This plugin can automatically add the correct cookie categorie for scripts enqueued through <code>wp_enqueue_script()</code>. You can find the ID in the page source or the first parameter of <code>wp_enqueue_script()</code>', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                     'button_label' => __('Add cookie', 'otomaties-cookie-consent'),
                     'wpml_cf_preferences' => 2,
                 ])
@@ -425,25 +431,31 @@ class OptionsPage
                         'wpml_cf_preferences' => 2,
                     ])
                 ->endRepeater()
-                ->addMessage('occ_adding_' . $categoryKey . '_scripts_manually', sprintf(__('Add <code>type="text/plain" data-cookiecategory="%s"</code> to your script tag.', 'otomaties-cookie-consent'), $categoryKey), [
-                    'label' => sprintf(__('Adding %s scripts manually', 'otomaties-cookie-consent'), $categoryKey)
-                ]);
+                ->addMessage(
+                    'occ_adding_' . $categoryKey . '_scripts_manually',
+                    sprintf(__('Add <code>type="text/plain" data-cookiecategory="%s"</code> to your script tag.', 'otomaties-cookie-consent'), $categoryKey), // phpcs:ignore Generic.Files.LineLength
+                    ['label' => sprintf(__('Adding %s scripts manually', 'otomaties-cookie-consent'), $categoryKey)]
+                );
         }
         $cookieConsentCategorieSettings
             ->setLocation('options_page', '==', 'cookie-consent-settings');
         acf_add_local_field_group($cookieConsentCategorieSettings->build());
 
         // Extra information
-        $cookieConsentExtraInformation = new FieldsBuilder('cookie-consent-extra-information', ['title' => __('Extra information', 'otomaties-cookie-consent'), 'menu_order' => -1, 'position' => 'side']);
+        $cookieConsentExtraInformation = new FieldsBuilder('cookie-consent-extra-information', [
+            'title' => __('Extra information', 'otomaties-cookie-consent'),
+            'menu_order' => -1,
+            'position' => 'side'
+        ]);
         $extraInformation = '<ul>';
         $extraInformation .= '<li>';
-        $extraInformation .=  __('Add <code>c_darkmode</code> to <code>&lt;body&gt;</code> in order to enable darkmode.', 'otomaties-cookie-consent');
+        $extraInformation .=  __('Add <code>c_darkmode</code> to <code>&lt;body&gt;</code> in order to enable darkmode.', 'otomaties-cookie-consent'); // phpcs:ignore Generic.Files.LineLength
         $extraInformation .= '</li>';
         $extraInformation .= '<li>';
-        $extraInformation .= sprintf(__('%s is automatically added to %s', 'otomaties-cookie-consent'), '<code>type="text/plain" data-cookiecategory="analytics"</code>', '<strong><a target="_blank" href="https://wordpress.org/plugins/duracelltomi-google-tag-manager/">Google Tag Manager for WordPress</a> ' . __('by', 'otomaties-cookie-consent') . ' Thomas Geiger</strong>');
+        $extraInformation .= sprintf(__('%s is automatically added to %s', 'otomaties-cookie-consent'), '<code>type="text/plain" data-cookiecategory="analytics"</code>', '<strong><a target="_blank" href="https://wordpress.org/plugins/duracelltomi-google-tag-manager/">Google Tag Manager for WordPress</a> ' . __('by', 'otomaties-cookie-consent') . ' Thomas Geiger</strong>'); // phpcs:ignore Generic.Files.LineLength
         $extraInformation .= '</li>';
         $extraInformation .= '<li>';
-        $extraInformation .= sprintf('<a href="%s" target="_blank">%s</a>', 'https://orestbida.com/demo-projects/cookieconsent/', __('Documentation', 'otomaties-cookie-consent'));
+        $extraInformation .= sprintf('<a href="%s" target="_blank">%s</a>', 'https://orestbida.com/demo-projects/cookieconsent/', __('Documentation', 'otomaties-cookie-consent')); // phpcs:ignore Generic.Files.LineLength
         $extraInformation .= '</li>';
         $extraInformation .= '</ul>';
         $cookieConsentExtraInformation
@@ -454,7 +466,7 @@ class OptionsPage
         acf_add_local_field_group($cookieConsentExtraInformation->build());
     }
 
-    public function cookiearrayToTable(array $array, string $category)
+    public function cookiearrayToTable(array $array, string $category) : string
     {
         ob_start();
         ?>
@@ -485,11 +497,11 @@ class OptionsPage
                                 <td class="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>--description">
                                     <?php echo $cookie['description']; ?>
                                 </td>
-                                <td class="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>--regex" data-regex="<?php echo $cookie['regex']; ?>">
-                                    <?php echo $cookie['regex'] ? '<span class="dashicons dashicons-yes-alt"></span>' : '<span class="dashicons dashicons-no-alt"></span>'; ?>
+                                <td class="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>--regex" data-regex="<?php echo $cookie['regex']; ?>"><?php  // phpcs:ignore Generic.Files.LineLength ?>
+                                    <?php echo $cookie['regex'] ? '<span class="dashicons dashicons-yes-alt"></span>' : '<span class="dashicons dashicons-no-alt"></span>'; // phpcs:ignore Generic.Files.LineLength ?>
                                 </td>
                                 <td>
-                                    <button class="button" data-category="<?php echo $category; ?>" data-common-cookie="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>"><?php _e('Insert', 'otomaties-cookie-consent'); ?></button>
+                                    <button class="button" data-category="<?php echo $category; ?>" data-common-cookie="common-cookie-<?php echo $category; ?>-<?php echo $key; ?>"><?php _e('Insert', 'otomaties-cookie-consent'); ?></button><?php  // phpcs:ignore Generic.Files.LineLength ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

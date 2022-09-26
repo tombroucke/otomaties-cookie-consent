@@ -33,7 +33,7 @@ class Plugin
     /**
      * The name of the plugin
      *
-     * @var [type]
+     * @var string
      */
     protected $pluginName;
 
@@ -75,13 +75,12 @@ class Plugin
      * of the plugin.
      *
      */
-    private function defineAdminHooks()
+    private function defineAdminHooks() : void
     {
 
         $admin = new Admin($this->getPluginName(), $this->getVersion());
-        $this->loader->add_action('admin_enqueue_scripts', $admin, 'enqueueStyles');
-        $this->loader->add_action('admin_enqueue_scripts', $admin, 'enqueueScripts');
-        $this->loader->add_action('acf/init', $admin, 'openCookieModalMenuItem');
+        $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueStyles');
+        $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueScripts');
     }
 
     /**
@@ -89,31 +88,31 @@ class Plugin
      * of the plugin.
      *
      */
-    private function defineFrontendHooks()
+    private function defineFrontendHooks() : void
     {
-        $frontend = new Frontend($this->getPluginName(), $this->getVersion());
-        $this->loader->add_action('wp_enqueue_scripts', $frontend, 'enqueueStyles');
-        $this->loader->add_action('wp_enqueue_scripts', $frontend, 'enqueueScripts');
-        $this->loader->add_action('script_loader_tag', $frontend, 'deferScript', 10, 2);
-        $this->loader->add_action('script_loader_tag', $frontend, 'addCookieCategoryToScripts', 10, 2);
-        $this->loader->add_filter('gtm4wp_get_the_gtm_tag', $frontend, 'addGtm4WpScriptToAnalyticScripts'); // This probably doesn't work anymore, leaving for safety
-        $this->loader->add_action('template_redirect', $frontend, 'customGtm4WpScript');
-        $this->loader->add_filter('wp_nav_menu_items', $frontend, 'addCookieSettingsMenuItem', 10, 2);
-        $this->loader->add_filter('wp_head', $frontend, 'addGoogleConsentMode', 10, 2);
+        $frontend = new Frontend($this->getPluginName());
+        $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueStyles');
+        $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueScripts');
+        $this->loader->addAction('script_loader_tag', $frontend, 'deferScript', 10, 2);
+        $this->loader->addAction('script_loader_tag', $frontend, 'addCookieCategoryToScripts', 10, 2);
+        $this->loader->addFilter('gtm4wp_get_the_gtm_tag', $frontend, 'addGtm4WpScriptToAnalyticScripts'); // phpcs:ignore Generic.Files.LineLength
+        $this->loader->addAction('template_redirect', $frontend, 'customGtm4WpScript');
+        $this->loader->addFilter('wp_nav_menu_items', $frontend, 'addCookieSettingsMenuItem', 10, 2);
+        $this->loader->addFilter('wp_head', $frontend, 'addGoogleConsentMode', 10, 2);
     }
 
-    private function addOptionsPage()
+    private function addOptionsPage() : void
     {
         $options = new OptionsPage();
-        $this->loader->add_action('acf/init', $options, 'addOptionsPage');
-        $this->loader->add_action('acf/init', $options, 'addOptionsFields');
+        $this->loader->addAction('acf/init', $options, 'addOptionsPage');
+        $this->loader->addAction('acf/init', $options, 'addOptionsFields');
     }
 
     /**
      * Run the loader to execute all of the hooks with WordPress.
      *
      */
-    public function run()
+    public function run() : void
     {
         $this->loader->run();
     }
@@ -129,7 +128,7 @@ class Plugin
         return $this->loader;
     }
 
-    public function getPluginName()
+    public function getPluginName() : string
     {
         return $this->pluginName;
     }
@@ -140,7 +139,7 @@ class Plugin
      * @since     1.0.0
      * @return    string    The version number of the plugin.
      */
-    public function getVersion()
+    public function getVersion() : string
     {
         return $this->version;
     }

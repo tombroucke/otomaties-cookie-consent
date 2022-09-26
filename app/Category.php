@@ -5,15 +5,18 @@ class Category
 {
     private $categoryName;
 
-    public function __construct($categoryName) {
+    public function __construct($categoryName)
+    {
         $this->categoryName = $categoryName;
     }
 
-    protected function categoryName() {
+    protected function categoryName() : string
+    {
         return $this->categoryName;
     }
 
-    public function cookieTable() {
+    public function cookieTable() : array
+    {
         $cookieTableField = get_field('occ_' . $this->categoryName() . '_cookie_table', 'option');
         if (!$cookieTableField) {
             return [];
@@ -35,7 +38,8 @@ class Category
         return $cookies;
     }
 
-    public function information() {
+    public function information() : array
+    {
         $information = [
             'title' => DefaultStrings::value('occ_' . $this->categoryName() . '_title'),
             'description' => DefaultStrings::value('occ_' . $this->categoryName() . '_description'),
@@ -43,5 +47,4 @@ class Category
         ];
         return $information;
     }
-
 }
