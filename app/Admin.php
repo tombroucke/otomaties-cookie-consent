@@ -60,7 +60,7 @@ class Admin
          * class.
          */
 
-        wp_enqueue_style($this->pluginName, Assets::find('css/admin.css'), array(), $this->version, 'all');
+        wp_enqueue_style($this->pluginName, Assets::find('css/admin.css'), [], $this->version, 'all');
     }
 
     /**
@@ -82,6 +82,6 @@ class Admin
          * class.
          */
 
-        wp_enqueue_script($this->pluginName, Assets::find('js/admin.js'), array( 'jquery' ), $this->version, false);
+        wp_enqueue_script($this->pluginName, Assets::find('js/admin.js'), [], $this->version, false);
     }
 }
