@@ -1,5 +1,6 @@
 {
     "name": "tombroucke/otomaties-cookie-consent",
+    "description": "WordPress plugin for cookie consent",
     "autoload": {
         "psr-4": {
             "Otomaties\\CookieConsent\\": "app/"
