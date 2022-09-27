@@ -126,7 +126,7 @@ class Frontend
         if (!function_exists('gtm4wp_wp_header_begin')) {
             return;
         }
-
+        
         $gtm4wp_header_begin_prior = 10;
         $loadEarly = constant('GTM4WP_OPTION_LOADEARLY');
         if (isset($GLOBALS['gtm4wp_options']) && $GLOBALS['gtm4wp_options'][$loadEarly]) {
@@ -135,11 +135,12 @@ class Frontend
         remove_action('wp_head', 'gtm4wp_wp_header_begin', $gtm4wp_header_begin_prior);
         add_action('wp_head', function () {
             ob_start();
-            gtm4wp_wp_header_begin(false);
+            gtm4wp_wp_header_begin();
             $header = ob_get_clean();
             echo $this->addGtm4WpScriptToAnalyticScripts($header);
         }, $gtm4wp_header_begin_prior, 0);
     }
+
 
     public function addCookieSettingsMenuItem($items, $args)
     {
