@@ -4,7 +4,38 @@ $scripts = [];
 $styles = [];
 $filters = [];
 $actions = [];
+$posts = [
+    69 => [
+        'post_title' => 'Contact',
+        'post_name' => 'contact',
+        'post_type' => 'page',
+        'post_status' => 'publish',
+        'post_content' => 'This is the Contact page. You can edit this page in the WordPress admin.',
+        'post_author' => 1,
+        'post_date' => '2019-01-01 00:00:00',
+        'post_date_gmt' => '2019-01-01 00:00:00',
+        'post_modified' => '2019-01-01 00:00:00',
+        'post_modified_gmt' => '2019-01-01 00:00:00',
+        'post_parent' => 0,
+        'post_excerpt' => '',
+        'post_content_filtered' => '',
+        'post_mime_type' => '',
+        'guid' => 'http://example.com/contact',
+        'menu_order' => 0,
+        'pinged' => '',
+        'to_ping' => '',
+        'ping_status' => 'closed',
+        'comment_status' => 'closed',
+        'post_password' => '',
+        'post_category' => [],
+        'tags_input' => [],
+        'tax_input' => [],
+        'page_template' => '',
+        'meta_input' => [],
+    ],
+];
 $consentMode = false;
+$privacyPolicyUrl = 'http://example.com/privacy-policy';
 define('GTM4WP_OPTION_LOADEARLY', false);
 
 function wp_enqueue_script(string $handle, string $src, array $deps = [], string $ver = null, bool $in_footer = false) : void 
@@ -85,6 +116,43 @@ function get_field(string $field, string $option)
     if ($field == 'occ_consent_modal_trigger_in_menu') {
         return 'term_id_' . 69;
     }
+    if ($field == 'occ_consent_modal_title') {
+        return 'Consent modal title';
+    }
+    if ($field == 'occ_consent_modal_description') {
+        return 'Consent modal description';
+    }
+    if ($field == 'occ_consent_modal_accept_button_label') {
+        return 'Accept';
+    }
+    if ($field == 'occ_consent_modal_reject_button_label') {
+        return 'Reject';
+    }
+    if ($field == 'occ_settings_modal_title') {
+        return 'Settings modal title';
+    }
+    if ($field == 'occ_settings_modal_save_settings_button_label') {
+        return 'Save settings';
+    }
+    if ($field == 'occ_settings_modal_accept_all_button_label') {
+        return 'Accept all';
+    }
+    if ($field == 'occ_settings_modal_reject_all_button_label') {
+        return 'Reject all';
+    }
+    if ($field == 'occ_settings_modal_close_button_label') {
+        return 'Close';
+    }
+    if ($field == 'occ_settings_modal_cookie_usage_title') {
+        return 'Usage title';
+    }
+    if ($field == 'occ_settings_modal_cookie_usage_description') {
+        return 'Usage description';
+    }
+    if ($field == 'occ_settings_modal_contact_page') {
+        return 69;
+    }
+
     if ($field == 'occ_gtm_consent_mode' && $option == 'option') {
         global $consentMode;
         return $consentMode;
@@ -101,6 +169,15 @@ function __(string $text, string $domain) : string
 function get_permalink() : string
 {
     return 'http://example.com';
+}
+
+function get_post_status(int $id) : ?string
+{
+    global $posts;
+    if (!array_key_exists($id, $posts)) {
+        return false;
+    }
+    return $posts[$id]['post_status'];
 }
 
 function wp_localize_script(string $handle, string $name, array $data) : void
@@ -185,7 +262,8 @@ function remove_action(string $tag, string $function_to_remove, int $priority = 
 
 function get_privacy_policy_url() : string
 {
-    return 'http://example.com/privacy-policy';
+    global $privacyPolicyUrl;
+    return $privacyPolicyUrl;
 }
 
 function apply_filters(string $tag, $value)

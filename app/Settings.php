@@ -46,7 +46,7 @@ class Settings
             'title' => DefaultStrings::value('occ_settings_modal_cookie_usage_title'),
             'description' => DefaultStrings::value('occ_settings_modal_cookie_usage_description'),
         ];
-        if (get_privacy_policy_url()) {
+        if (get_privacy_policy_url() && get_privacy_policy_url() != '') {
             $usage['description'] = $usage['description'] . ' ' . sprintf(
                 __('For more details relative to cookies and other sensitive data, please read the full <a href="%s" class="cc-link">privacy policy</a>.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                 get_privacy_policy_url()
@@ -57,19 +57,19 @@ class Settings
 
     public function moreInformation() : ?array
     {
-        $description = DefaultStrings::value('occ_settings_modal_more_information_description');
 
         $contactPage = get_field('occ_settings_modal_contact_page', 'option');
-        $moreInformation = [
-            'title' => DefaultStrings::value('occ_settings_modal_more_information_title'),
-            'description' => $description,
-        ];
 
         if (!$contactPage) {
             return null;
         }
 
         $replaceLink = get_field('occ_settings_modal_contact_page', 'option') && get_post_status(get_field('occ_settings_modal_contact_page', 'option')) ? get_permalink(get_field('occ_settings_modal_contact_page', 'option')) : '#'; // phpcs:ignore Generic.Files.LineLength
+        $description = DefaultStrings::value('occ_settings_modal_more_information_description');
+        $moreInformation = [
+            'title' => DefaultStrings::value('occ_settings_modal_more_information_title'),
+            'description' => $description,
+        ];
         $moreInformation['description'] = str_replace(
             '[contact_link]',
             sprintf(
