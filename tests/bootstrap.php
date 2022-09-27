@@ -113,7 +113,7 @@ function get_locale() {
     return 'en_US';
 }
 
-function add_filter(string $tag, callable|string $function_to_add, int $priority = 10, int $accepted_args = 1) : bool
+function add_filter(string $tag, $function_to_add, int $priority = 10, int $accepted_args = 1) : bool
 {
     global $filters;
     $filters[$tag][] = [
@@ -139,7 +139,7 @@ function remove_filter(string $tag, string $function_to_remove, int $priority = 
     return false;
 }
 
-function add_action(string $tag, callable|string $function_to_add, int $priority = 10, int $accepted_args = 1) : bool
+function add_action(string $tag, $function_to_add, int $priority = 10, int $accepted_args = 1) : bool
 {
     global $actions;
     $actions[$tag][] = [
