@@ -3,6 +3,17 @@ namespace Otomaties\CookieConsent;
 
 class Settings
 {
+    public static function categories()
+    {
+        return [
+            'necessary' => __('Strictly necessary cookies', 'otomaties-cookie-consent'),
+            'analytics' => __('Analytical cookies', 'otomaties-cookie-consent'),
+            'advertising' => __('Advertisement and targeting cookies', 'otomaties-cookie-consent'),
+            'personalization' => __('Personalization cookies', 'otomaties-cookie-consent'),
+            'security' => __('Security cookies', 'otomaties-cookie-consent'),
+        ];
+    }
+
     public function category($key)
     {
         return new Category($key);
@@ -46,7 +57,7 @@ class Settings
             'title' => DefaultStrings::value('occ_settings_modal_cookie_usage_title'),
             'description' => DefaultStrings::value('occ_settings_modal_cookie_usage_description'),
         ];
-        if (get_privacy_policy_url() && get_privacy_policy_url() != '') {
+        if (get_privacy_policy_url() && get_privacy_policy_url() !== '') {
             $usage['description'] = $usage['description'] . ' ' . sprintf(
                 __('For more details relative to cookies and other sensitive data, please read the full <a href="%s" class="cc-link">privacy policy</a>.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                 get_privacy_policy_url()
@@ -87,12 +98,11 @@ class Settings
     {
         $blocks = [
             'usage' => $this->usage(),
-            'necessary' => $this->category('necessary')->information(),
-            'analytics' => $this->category('analytics')->information(),
-            'advertising' => $this->category('advertising')->information(),
-            'personalization' => $this->category('personalization')->information(),
-            'security' => $this->category('security')->information(),
         ];
+
+        foreach (Settings::categories() as $categoryKey => $categoryName) {
+            $blocks[$categoryKey] = $this->category($categoryKey)->information();
+        }
 
         if ($this->moreInformation()) {
             $blocks['moreInformation'] = $this->moreInformation();

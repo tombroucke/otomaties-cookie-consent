@@ -55,6 +55,7 @@ class Plugin
         $this->defineAdminHooks();
         $this->defineFrontendHooks();
         $this->addOptionsPage();
+        $this->addShortcodes();
     }
 
     /**
@@ -106,6 +107,12 @@ class Plugin
         $options = new OptionsPage();
         $this->loader->addAction('acf/init', $options, 'addOptionsPage');
         $this->loader->addAction('acf/init', $options, 'addOptionsFields');
+    }
+
+    private function addShortcodes() : void
+    {
+        $shortcodes = new Shortcodes();
+        add_shortcode('cookie-table', [$shortcodes, 'cookieTable']);
     }
 
     /**

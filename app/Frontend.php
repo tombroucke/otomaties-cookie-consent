@@ -88,8 +88,7 @@ class Frontend
     
     public function addCookieCategoryToScripts($tag, $handle)
     {
-        $categories = ['necessary', 'analytics', 'advertising', 'personalization', 'security'];
-        foreach ($categories as $categoryKey) {
+        foreach (Settings::categories() as $categoryKey => $categoryTitle) {
             $blockScripts = array_filter((array)get_field('occ_' . $categoryKey . '_block_scripts', 'option'));
             if (count($blockScripts) === 0) {
                 continue;
