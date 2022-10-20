@@ -112,7 +112,7 @@ class Frontend
 
     public function addGtm4WpScriptToAnalyticScripts($tag)
     {
-        if (get_field('occ_gtm_consent_mode', 'option')) {
+        if (Settings::generalOptionField('occ_gtm_consent_mode')) {
             return $tag;
         }
         $tag = str_replace('<script', '<script type="text/plain" data-cookiecategory="analytics"', $tag);
@@ -152,7 +152,7 @@ class Frontend
 
     public function addGoogleConsentMode()
     {
-        if (!get_field('occ_gtm_consent_mode', 'option')) {
+        if (!Settings::generalOptionField('occ_gtm_consent_mode')) {
             return;
         }
         ?>
