@@ -1,0 +1,8 @@
+<wpml-config> 
+	<admin-texts>
+		<key name="options_occ_necessary_cookie_table" />
+		<key name="options_occ_necessary_cookie_table_*_name" />
+		<key name="options_occ_necessary_cookie_table_*_domain" />
+		<key name="options_occ_necessary_cookie_table_*_description" />
+	</admin-texts>
+</wpml-config>

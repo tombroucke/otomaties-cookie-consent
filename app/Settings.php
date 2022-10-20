@@ -115,15 +115,15 @@ class Settings
     {
         return[
             'consentModal' => [
-                'layout' => $this->generalOptionField('occ_consent_modal_layout') ?: 'cloud',
-                'position' => $this->generalOptionField('occ_consent_modal_position') ?: 'bottom center',
-                'transition' => $this->generalOptionField('occ_consent_modal_transition') ?: 'slide',
-                'swapButtons' => $this->generalOptionField('occ_consent_modal_swap_buttons') ?: false
+                'layout' => self::generalOptionField('occ_consent_modal_layout') ?: 'cloud',
+                'position' => self::generalOptionField('occ_consent_modal_position') ?: 'bottom center',
+                'transition' => self::generalOptionField('occ_consent_modal_transition') ?: 'slide',
+                'swapButtons' => self::generalOptionField('occ_consent_modal_swap_buttons') ?: false
             ],
             'settingsModal' => [
-                'layout' => $this->generalOptionField('occ_settings_modal_layout') ?: 'box',
-                'position' => $this->generalOptionField('occ_settings_modal_position') ?: 'left',
-                'transition' => $this->generalOptionField('occ_settings_modal_transition') ?: 'slide'
+                'layout' => self::generalOptionField('occ_settings_modal_layout') ?: 'box',
+                'position' => self::generalOptionField('occ_settings_modal_position') ?: 'left',
+                'transition' => self::generalOptionField('occ_settings_modal_transition') ?: 'slide'
             ]
         ];
     }
@@ -144,11 +144,50 @@ class Settings
         return apply_filters('otomaties_cookie_consent_script_variables', $variables);
     }
 
-    private function generalOptionField($optionKey)
+    public static function generalOptionField($optionKey)
     {
         add_filter('acf/settings/current_language', '__return_false');
+
+        $fixIsNecessary = apply_filters('wpml_current_language', null) !== apply_filters('wpml_default_language', null);
+        $categories = Settings::categories();
+        $isCookieTableOption = false;
+        $isBlockScriptOption = false;
+        foreach ($categories as $categoryKey => $categoryName) {
+            if ($optionKey == 'occ_' . $categoryKey . '_cookie_table') {
+                $isCookieTableOption = true;
+                break;
+            }
+            if ($optionKey == 'occ_' . $categoryKey . '_block_scripts') {
+                $isBlockScriptOption = true;
+                break;
+            }
+        }
+
         $value = get_field($optionKey, 'option');
+
+        if ($fixIsNecessary) {
+            if ($isCookieTableOption) { // Fix for ACF bug that returns count instead of value
+                $value = self::fixRepeaterValue($optionKey, ['name', 'domain', 'expiration', 'description']);
+            } elseif ($isBlockScriptOption) { // Fix for ACF bug that returns count instead of value
+                $value = self::fixRepeaterValue($optionKey, ['id']);
+            }
+        }
+
         remove_filter('acf/settings/current_language', '__return_false');
+        return $value;
+    }
+
+    public static function fixRepeaterValue($key, $subKeys)
+    {
+        $value = [];
+        $count = get_field($key, 'option');
+        for ($i=0; $i < $count; $i++) {
+            $newValue = [];
+            foreach ($subKeys as $subKey) {
+                $newValue[$subKey] = get_field($key . '_' . $i . '_' . $subKey, 'option');
+            }
+            $value[] = $newValue;
+        }
         return $value;
     }
 }

@@ -388,47 +388,51 @@ class OptionsPage
                     'label' => __('Description', 'otomaties-cookie-consent'),
                     'default_value' => $category['defaultDescription'],
                     'wpml_cf_preferences' => 2,
-                ])
-                ->addRepeater('occ_' . $categoryKey . '_cookie_table', [
-                    'label' => __('Cookie table', 'otomaties-cookie-consent'),
-                    'button_label' => __('Add cookie', 'otomaties-cookie-consent'),
-                    'wpml_cf_preferences' => 2,
-                ])
-                    ->addText('name', [
-                        'label' => __('Name', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 2,
+                ]);
+            $currentLanguage = apply_filters('wpml_current_language', 'en');
+            $defaultLanguage = apply_filters('wpml_default_language', 'en');
+            if ($currentLanguage === $defaultLanguage) {
+                $cookieConsentCategorieSettings->addRepeater('occ_' . $categoryKey . '_cookie_table', [
+                        'label' => __('Cookie table', 'otomaties-cookie-consent'),
+                        'button_label' => __('Add cookie', 'otomaties-cookie-consent'),
+                        'wpml_cf_preferences' => 1,
                     ])
-                    ->addText('domain', [
-                        'label' => __('Domain', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 2,
-                    ])
-                    ->addText('expiration', [
-                        'label' => __('Expiration', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 2,
-                    ])
-                    ->addText('description', [
-                        'label' => __('Description', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 2,
-                    ])
-                    ->addTrueFalse('regex', [
-                        'label' => __('Regex', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 2,
-                    ])
-                ->endRepeater()
-                ->addMessage(
-                    'occ_' . $categoryKey . '_common_scripts',
-                    $this->cookiearrayToTable($category['commonScripts'], $categoryKey),
-                    ['label' => sprintf(__('Common %s scripts', 'otomaties-cookie-consent'), $categoryKey)]
-                )
-                ->addRepeater('occ_' . $categoryKey . '_block_scripts', [
+                        ->addText('name', [
+                            'label' => __('Name', 'otomaties-cookie-consent'),
+                            'wpml_cf_preferences' => 1,
+                        ])
+                        ->addText('domain', [
+                            'label' => __('Domain', 'otomaties-cookie-consent'),
+                            'wpml_cf_preferences' => 1,
+                        ])
+                        ->addText('expiration', [
+                            'label' => __('Expiration', 'otomaties-cookie-consent'),
+                            'wpml_cf_preferences' => 1,
+                        ])
+                        ->addText('description', [
+                            'label' => __('Description', 'otomaties-cookie-consent'),
+                            'wpml_cf_preferences' => 1,
+                        ])
+                        ->addTrueFalse('regex', [
+                            'label' => __('Regex', 'otomaties-cookie-consent'),
+                            'wpml_cf_preferences' => 1,
+                        ])
+                    ->endRepeater()
+                    ->addMessage(
+                        'occ_' . $categoryKey . '_common_scripts',
+                        $this->cookiearrayToTable($category['commonScripts'], $categoryKey),
+                        ['label' => sprintf(__('Common %s scripts', 'otomaties-cookie-consent'), $categoryKey)]
+                    );
+                
+                $cookieConsentCategorieSettings->addRepeater('occ_' . $categoryKey . '_block_scripts', [
                     'label' => __('Block scripts'),
                     'instructions' => __('This plugin can automatically add the correct cookie categorie for scripts enqueued through <code>wp_enqueue_script()</code>. You can find the ID in the page source or the first parameter of <code>wp_enqueue_script()</code>', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                     'button_label' => __('Add cookie', 'otomaties-cookie-consent'),
-                    'wpml_cf_preferences' => 2,
+                    'wpml_cf_preferences' => 1,
                 ])
                     ->addText('script_id', [
                         'label' => __('Script ID', 'otomaties-cookie-consent'),
-                        'wpml_cf_preferences' => 2,
+                        'wpml_cf_preferences' => 1,
                     ])
                 ->endRepeater()
                 ->addMessage(
@@ -436,6 +440,13 @@ class OptionsPage
                     sprintf(__('Add <code>type="text/plain" data-cookiecategory="%s"</code> to your script tag.', 'otomaties-cookie-consent'), $categoryKey), // phpcs:ignore Generic.Files.LineLength
                     ['label' => sprintf(__('Adding %s scripts manually', 'otomaties-cookie-consent'), $categoryKey)]
                 );
+            } else {
+                $cookieConsentCategorieSettings->addMessage(
+                    'occ_' . $categoryKey . '_table_in_default_language_message',
+                    sprintf(__('The cookie table is only available in the default language (%s).', 'otomaties-cookie-consent'), $defaultLanguage), // phpcs:ignore Generic.Files.LineLength
+                    ['label' => __('Cookie table', 'otomaties-cookie-consent')]
+                );
+            }
         }
         $cookieConsentCategorieSettings
             ->setLocation('options_page', '==', 'cookie-consent-settings');

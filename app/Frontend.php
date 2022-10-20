@@ -50,7 +50,7 @@ class Frontend
          * between the defined hooks and the functions defined in this
          * class.
          */
-        wp_enqueue_style($this->pluginName, Assets::find('css/main.css'), array(), null);
+        wp_enqueue_style($this->pluginName, Assets::find('css/main.css'), [], null);
     }
 
     /**
@@ -89,7 +89,7 @@ class Frontend
     public function addCookieCategoryToScripts($tag, $handle)
     {
         foreach (Settings::categories() as $categoryKey => $categoryTitle) {
-            $blockScripts = array_filter((array)get_field('occ_' . $categoryKey . '_block_scripts', 'option'));
+            $blockScripts = array_filter((array)Settings::generalOptionField('occ_' . $categoryKey . '_block_scripts'));
             if (count($blockScripts) === 0) {
                 continue;
             }
