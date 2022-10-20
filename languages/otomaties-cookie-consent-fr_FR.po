@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Otomaties cookie consent\n"
-"POT-Creation-Date: 2022-04-25 14:12+0200\n"
-"PO-Revision-Date: 2022-09-07 16:50+0200\n"
+"POT-Creation-Date: 2022-10-20 14:06+0200\n"
+"PO-Revision-Date: 2022-10-20 14:13+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -22,40 +22,11 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: *.min.js\n"
 "X-Poedit-SearchPathExcluded-1: node_modules\n"
 
-#: app/Frontend.php:126
-msgid "Review cookie settings"
-msgstr "Vérifier les paramètres des cookies"
-
-#: app/Frontend.php:126
-msgid "Cookie settings"
-msgstr "Paramètres de cookie"
-
-#: app/OptionsPage.php:20 app/OptionsPage.php:21
-msgid "Cookie consent"
-msgstr "Consentement à l'utilisation de cookies"
-
-#: app/OptionsPage.php:41
-msgid "Cookie consent settings"
-msgstr "Paramétrage acceptation Cookies"
-
-#: app/OptionsPage.php:44
-msgid "Consent modal"
-msgstr "Consentement modal"
-
-#: app/OptionsPage.php:47 app/OptionsPage.php:111 app/OptionsPage.php:321
-msgid "Title"
-msgstr "Titre"
-
-#: app/OptionsPage.php:48 app/Settings.php:16
+#: app/DefaultStrings.php:10 tests/DefaultStringsTest.php:9
 msgid "We use cookies 🍪"
 msgstr "Nous utilisons des cookies 🍪"
 
-#: app/OptionsPage.php:51 app/OptionsPage.php:325 app/OptionsPage.php:342
-#: app/OptionsPage.php:431 app/Settings.php:35
-msgid "Description"
-msgstr "Description"
-
-#: app/OptionsPage.php:52 app/Settings.php:13
+#: app/DefaultStrings.php:11
 msgid ""
 "Hi, this website uses essential cookies to ensure its proper operation and "
 "tracking cookies to understand how you interact with it. The latter will be "
@@ -66,126 +37,27 @@ msgstr ""
 "interagissez avec lui. Ces derniers ne seront mis en place qu'après "
 "consentement."
 
-#: app/OptionsPage.php:55
-msgid "Settings button label"
-msgstr "Label du bouton Paramètres"
-
-#: app/OptionsPage.php:56 app/Settings.php:14
+#: app/DefaultStrings.php:12
 msgid "Let me choose"
 msgstr "Laissez-moi choisir"
 
-#: app/OptionsPage.php:59
-msgid "Accept button label"
-msgstr "Label du bouton d'acceptation"
-
-#: app/OptionsPage.php:60 app/OptionsPage.php:142 app/Settings.php:18
-#: app/Settings.php:28
+#: app/DefaultStrings.php:13 app/DefaultStrings.php:21
 msgid "Accept all"
 msgstr "Accepter"
 
-#: app/OptionsPage.php:63
-msgid "Reject button label"
-msgstr "Label du bouton de rejet"
-
-#: app/OptionsPage.php:64 app/OptionsPage.php:146 app/Settings.php:19
-#: app/Settings.php:29
+#: app/DefaultStrings.php:14 app/DefaultStrings.php:22
 msgid "Reject all"
 msgstr "Rejeter tout"
 
-#: app/OptionsPage.php:67
-msgid "Add cookie settings to menu"
-msgstr "Ajouter les paramètres des cookies au menu"
-
-#: app/OptionsPage.php:72 app/OptionsPage.php:81 app/OptionsPage.php:96
-#: app/OptionsPage.php:153 app/OptionsPage.php:161
-msgid "Layout"
-msgstr "Mise en page"
-
-#: app/OptionsPage.php:74
-msgid "Cloud"
-msgstr "Cloud"
-
-#: app/OptionsPage.php:75 app/OptionsPage.php:155
-msgid "Box"
-msgstr "Boîte"
-
-#: app/OptionsPage.php:76 app/OptionsPage.php:156
-msgid "Bar"
-msgstr "Barre"
-
-#: app/OptionsPage.php:83
-msgid "Top left"
-msgstr "En haut à gauche"
-
-#: app/OptionsPage.php:84
-msgid "Middle left"
-msgstr "Au milieu à gauche"
-
-#: app/OptionsPage.php:85
-msgid "Bottom left"
-msgstr "En bas à gauche"
-
-#: app/OptionsPage.php:86
-msgid "Top center"
-msgstr "Haut centre"
-
-#: app/OptionsPage.php:87
-msgid "Middle center"
-msgstr "Milieu centre"
-
-#: app/OptionsPage.php:88
-msgid "Bottom center"
-msgstr "En bas au centre"
-
-#: app/OptionsPage.php:89
-msgid "Top right"
-msgstr "En haut à droite"
-
-#: app/OptionsPage.php:90
-msgid "Middle right"
-msgstr "Au milieu à droite"
-
-#: app/OptionsPage.php:91
-msgid "Bottom right"
-msgstr "En bas à droite"
-
-#: app/OptionsPage.php:98 app/OptionsPage.php:171
-msgid "Zoom"
-msgstr "Zoom"
-
-#: app/OptionsPage.php:99 app/OptionsPage.php:172
-msgid "Slide"
-msgstr "Slide"
-
-#: app/OptionsPage.php:104
-msgid "Swap buttons"
-msgstr "Échanger boutons"
-
-#: app/OptionsPage.php:105
-msgid "Swap reject/accept buttons"
-msgstr "Échanger les boutons de rejet/acceptation"
-
-#: app/OptionsPage.php:108
-msgid "Settings modal"
-msgstr "Modal des paramètres"
-
-#: app/OptionsPage.php:112 app/Settings.php:26
+#: app/DefaultStrings.php:15
 msgid "Cookie preferences"
 msgstr "Préférences de cookies"
 
-#: app/OptionsPage.php:115
-msgid "Cookie usage title"
-msgstr "Titre de l'utilisation des cookies"
-
-#: app/OptionsPage.php:116 app/Settings.php:43
+#: app/DefaultStrings.php:16
 msgid "Cookie usage"
 msgstr "Utilisation des cookies"
 
-#: app/OptionsPage.php:119
-msgid "Cookie usage description"
-msgstr "Description de l'utilisation des cookies"
-
-#: app/OptionsPage.php:120 app/Settings.php:44
+#: app/DefaultStrings.php:17
 msgid ""
 "We use cookies to ensure the basic functionalities of this website and to "
 "enhance your online experience. You can choose for each category to opt-in/"
@@ -196,23 +68,11 @@ msgstr ""
 "vous pouvez choisir d'accepter ou de refuser les cookies quand vous le "
 "souhaitez."
 
-#: app/OptionsPage.php:123
-msgid "More information title"
-msgstr "Titre plus d'informations"
-
-#: app/OptionsPage.php:124 app/Settings.php:58
+#: app/DefaultStrings.php:18
 msgid "More information"
 msgstr "Plus d’informations"
 
-#: app/OptionsPage.php:127
-msgid "Contact page"
-msgstr "Page de contact"
-
-#: app/OptionsPage.php:133
-msgid "More information description"
-msgstr "Description plus d'informations"
-
-#: app/OptionsPage.php:134 app/Settings.php:54
+#: app/DefaultStrings.php:19
 msgid ""
 "For any queries in relation to our policy on cookies and your choices, "
 "please [contact_link]."
@@ -220,55 +80,20 @@ msgstr ""
 "Pour toutes questions relative à notre politique en matière de cookies et à "
 "vos choix, veuillez [contact_link]."
 
-#: app/OptionsPage.php:137
-msgid "Save settings button label"
-msgstr "Label du bouton Enregistrer les paramètres"
-
-#: app/OptionsPage.php:138 app/Settings.php:27
+#: app/DefaultStrings.php:20
 msgid "Save settings"
 msgstr "Enregistrer les paramètres"
 
-#: app/OptionsPage.php:141
-msgid "Accept all button label"
-msgstr "Label du bouton accepter tout"
-
-#: app/OptionsPage.php:145
-msgid "Reject all button label"
-msgstr "Label du bouton rejeter tout"
-
-#: app/OptionsPage.php:149
-msgid "Close button label"
-msgstr "Label du bouton de fermeture"
-
-#: app/OptionsPage.php:150 app/Settings.php:30
+#: app/DefaultStrings.php:23
 msgid "Close"
 msgstr "Fermer"
 
-#: app/OptionsPage.php:163
-msgid "Left"
-msgstr "Gauche"
-
-#: app/OptionsPage.php:164
-msgid "Right"
-msgstr "Droite"
-
-#: app/OptionsPage.php:169
-msgid "Transition"
-msgstr "Transition"
-
-#: app/OptionsPage.php:180
-msgid "Cookie categories"
-msgstr "Catégories de cookies"
-
-#: app/OptionsPage.php:183
-msgid "Necessary"
-msgstr "Nécessaire"
-
-#: app/OptionsPage.php:184
+#: app/DefaultStrings.php:24 app/Settings.php:9 tests/DefaultStringsTest.php:10
+#: tests/DefaultStringsTest.php:18
 msgid "Strictly necessary cookies"
 msgstr "Les cookies strictement nécessaires"
 
-#: app/OptionsPage.php:185
+#: app/DefaultStrings.php:25
 msgid ""
 "These cookies are essential for the proper functioning of this website. "
 "Without these cookies, the website would not work properly"
@@ -276,25 +101,286 @@ msgstr ""
 "Ces cookies sont essentiels au bon fonctionnement de ce site web. Sans ces "
 "cookies, le site web ne fonctionnerait pas correctement"
 
-#: app/OptionsPage.php:190 app/OptionsPage.php:225
+#: app/DefaultStrings.php:26 app/Settings.php:10
+msgid "Analytical cookies"
+msgstr "Les cookies analytiques"
+
+#: app/DefaultStrings.php:27
+msgid ""
+"These cookies allow the website to remember the choices you have made in the "
+"past"
+msgstr ""
+"Ces cookies permettent au site web de se souvenir des choix que vous avez "
+"faits dans le passé"
+
+#: app/DefaultStrings.php:28 app/Settings.php:11
+msgid "Advertisement and targeting cookies"
+msgstr "Cookies de publicité et de ciblage"
+
+#: app/DefaultStrings.php:29
+msgid ""
+"These cookies collect information about how you use the website, which pages "
+"you visited and which links you clicked on. All of the data is anonymized "
+"and cannot be used to identify you"
+msgstr ""
+"Ces cookies collectent des informations sur la manière dont vous utilisez le "
+"site web, les pages que vous avez visitées et les liens sur lesquels vous "
+"avez cliqué. Toutes les données sont rendues anonymes et ne peuvent être "
+"utilisées pour vous identifier"
+
+#: app/DefaultStrings.php:30 app/Settings.php:12
+msgid "Personalization cookies"
+msgstr "Cookies de performance et d'analyse"
+
+#: app/DefaultStrings.php:31
+msgid "These cookies store personalisation e.g. video recommendations"
+msgstr ""
+"Ces cookies stockent la personnalisation, par exemple les recommandations de "
+"vidéos"
+
+#: app/DefaultStrings.php:32 app/Settings.php:13
+msgid "Security cookies"
+msgstr "Cookies de sécurité"
+
+#: app/DefaultStrings.php:33
+msgid ""
+"Storage related to security such as authentication functionality, fraud "
+"prevention, and other user protection"
+msgstr ""
+"Stockage lié à la sécurité, comme la fonctionnalité d'authentification, la "
+"prévention de la fraude et d'autres mesures de protection des utilisateurs"
+
+#: app/Frontend.php:148
+msgid "Review cookie settings"
+msgstr "Vérifier les paramètres des cookies"
+
+#: app/Frontend.php:148
+msgid "Cookie settings"
+msgstr "Paramètres de cookie"
+
+#: app/OptionsPage.php:19 app/OptionsPage.php:20
+msgid "Cookie consent"
+msgstr "Consentement à l'utilisation de cookies"
+
+#: app/OptionsPage.php:42
+msgid "Cookie consent settings"
+msgstr "Paramétrage acceptation Cookies"
+
+#: app/OptionsPage.php:47
+msgid "Consent modal"
+msgstr "Consentement modal"
+
+#: app/OptionsPage.php:50 app/OptionsPage.php:124 app/OptionsPage.php:383
+msgid "Title"
+msgstr "Titre"
+
+#: app/OptionsPage.php:55 app/OptionsPage.php:388 app/OptionsPage.php:413
+#: app/OptionsPage.php:490 app/Settings.php:49 views/cookie-table.php:25
+msgid "Description"
+msgstr "Description"
+
+#: app/OptionsPage.php:60
+msgid "Settings button label"
+msgstr "Label du bouton Paramètres"
+
+#: app/OptionsPage.php:65
+msgid "Accept button label"
+msgstr "Label du bouton d'acceptation"
+
+#: app/OptionsPage.php:70
+msgid "Reject button label"
+msgstr "Label du bouton de rejet"
+
+#: app/OptionsPage.php:75
+msgid "Add cookie settings to menu"
+msgstr "Ajouter les paramètres des cookies au menu"
+
+#: app/OptionsPage.php:81 app/OptionsPage.php:91 app/OptionsPage.php:107
+#: app/OptionsPage.php:176 app/OptionsPage.php:185
+msgid "Layout"
+msgstr "Mise en page"
+
+#: app/OptionsPage.php:83
+msgid "Cloud"
+msgstr "Cloud"
+
+#: app/OptionsPage.php:84 app/OptionsPage.php:178
+msgid "Box"
+msgstr "Boîte"
+
+#: app/OptionsPage.php:85 app/OptionsPage.php:179
+msgid "Bar"
+msgstr "Barre"
+
+#: app/OptionsPage.php:93
+msgid "Top left"
+msgstr "En haut à gauche"
+
+#: app/OptionsPage.php:94
+msgid "Middle left"
+msgstr "Au milieu à gauche"
+
+#: app/OptionsPage.php:95
+msgid "Bottom left"
+msgstr "En bas à gauche"
+
+#: app/OptionsPage.php:96
+msgid "Top center"
+msgstr "Haut centre"
+
+#: app/OptionsPage.php:97
+msgid "Middle center"
+msgstr "Milieu centre"
+
+#: app/OptionsPage.php:98
+msgid "Bottom center"
+msgstr "En bas au centre"
+
+#: app/OptionsPage.php:99
+msgid "Top right"
+msgstr "En haut à droite"
+
+#: app/OptionsPage.php:100
+msgid "Middle right"
+msgstr "Au milieu à droite"
+
+#: app/OptionsPage.php:101
+msgid "Bottom right"
+msgstr "En bas à droite"
+
+#: app/OptionsPage.php:109 app/OptionsPage.php:196
+msgid "Zoom"
+msgstr "Zoom"
+
+#: app/OptionsPage.php:110 app/OptionsPage.php:197
+msgid "Slide"
+msgstr "Slide"
+
+#: app/OptionsPage.php:116
+msgid "Swap buttons"
+msgstr "Échanger boutons"
+
+#: app/OptionsPage.php:117
+msgid "Swap reject/accept buttons"
+msgstr "Échanger les boutons de rejet/acceptation"
+
+#: app/OptionsPage.php:121
+msgid "Settings modal"
+msgstr "Modal des paramètres"
+
+#: app/OptionsPage.php:129
+msgid "Cookie usage title"
+msgstr "Titre de l'utilisation des cookies"
+
+#: app/OptionsPage.php:134
+msgid "Cookie usage description"
+msgstr "Description de l'utilisation des cookies"
+
+#: app/OptionsPage.php:139
+msgid "More information title"
+msgstr "Titre plus d'informations"
+
+#: app/OptionsPage.php:144
+msgid "Contact page"
+msgstr "Page de contact"
+
+#: app/OptionsPage.php:151
+msgid "More information description"
+msgstr "Description plus d'informations"
+
+#: app/OptionsPage.php:156
+msgid "Save settings button label"
+msgstr "Label du bouton Enregistrer les paramètres"
+
+#: app/OptionsPage.php:161
+msgid "Accept all button label"
+msgstr "Label du bouton accepter tout"
+
+#: app/OptionsPage.php:166
+msgid "Reject all button label"
+msgstr "Label du bouton rejeter tout"
+
+#: app/OptionsPage.php:171
+msgid "Close button label"
+msgstr "Label du bouton de fermeture"
+
+#: app/OptionsPage.php:187
+msgid "Left"
+msgstr "Gauche"
+
+#: app/OptionsPage.php:188
+msgid "Right"
+msgstr "Droite"
+
+#: app/OptionsPage.php:194
+msgid "Transition"
+msgstr "Transition"
+
+#: app/OptionsPage.php:203
+msgid "General"
+msgstr "Général"
+
+#: app/OptionsPage.php:206
+msgid "Google Tag Manager consent mode"
+msgstr "Mode de consentement de Google Tag Manager"
+
+#: app/OptionsPage.php:207
+msgid ""
+"If you use Google Tag Manager, you can enable consent mode. This will "
+"prevent GTM from loading until the user has given consent."
+msgstr ""
+"Si vous utilisez Google Tag Manager, vous pouvez activer le mode de "
+"consentement. Cela empêchera GTM de se charger tant que l'utilisateur n'a "
+"pas donné son consentement."
+
+#: app/OptionsPage.php:208
+msgid "Enable GTM consent mode"
+msgstr "Activer le mode de consentement GTM"
+
+#: app/OptionsPage.php:212
+msgid "Show all cookie categories"
+msgstr "Afficher toutes les catégories de cookies"
+
+#: app/OptionsPage.php:213
+msgid ""
+"If enabled, all categories will be shown in the settings modal. If disabled, "
+"only categories with cookies will be shown."
+msgstr ""
+"Si elle est activée, toutes les catégories seront affichées dans la modale "
+"des paramètres. Si elle est désactivée, seules les catégories contenant des "
+"cookies seront affichées."
+
+#: app/OptionsPage.php:214
+msgid "Show all categories"
+msgstr "Afficher toutes les catégories"
+
+#: app/OptionsPage.php:222
+msgid "Cookie categories"
+msgstr "Catégories de cookies"
+
+#: app/OptionsPage.php:226
+msgid "Necessary"
+msgstr "Nécessaire"
+
+#: app/OptionsPage.php:233 app/OptionsPage.php:268
 #, php-format
 msgid "%d days"
 msgstr "%d jours"
 
-#: app/OptionsPage.php:191
+#: app/OptionsPage.php:234
 msgid "Tracks your cookie consent"
 msgstr "Trace votre consentement aux cookies"
 
-#: app/OptionsPage.php:197 app/OptionsPage.php:204 app/OptionsPage.php:211
-#: app/OptionsPage.php:218
+#: app/OptionsPage.php:240 app/OptionsPage.php:247 app/OptionsPage.php:254
+#: app/OptionsPage.php:261 app/OptionsPage.php:296
 msgid "session"
 msgstr "session"
 
-#: app/OptionsPage.php:198
+#: app/OptionsPage.php:241
 msgid "Necessary for the shopping cart functionality on the website."
 msgstr "Nécessaire pour la fonctionnalité de panier d'achat sur le site web."
 
-#: app/OptionsPage.php:205
+#: app/OptionsPage.php:248
 msgid ""
 "Necessary for the shopping cart functionality on the website to remember the "
 "chosen products - This also allows the website to promote related products "
@@ -305,7 +391,7 @@ msgstr ""
 "promouvoir des produits connexes auprès du visiteur, en fonction du contenu "
 "du panier d'achat."
 
-#: app/OptionsPage.php:212
+#: app/OptionsPage.php:255
 msgid ""
 "Contains information about the cart as a whole and help WooCommerce know "
 "when the cart data changes."
@@ -313,7 +399,7 @@ msgstr ""
 "Contient des informations sur le panier dans son ensemble et aide "
 "WooCommerce à savoir quand les données du panier changent."
 
-#: app/OptionsPage.php:226
+#: app/OptionsPage.php:269
 msgid ""
 "Contains a unique code for each customer so that it knows where to find the "
 "cart data in the database for each customer."
@@ -321,19 +407,19 @@ msgstr ""
 "Contient un code unique pour chaque client afin de savoir où trouver les "
 "données du panier dans la base de données pour chaque client."
 
-#: app/OptionsPage.php:232 app/OptionsPage.php:239 app/OptionsPage.php:246
+#: app/OptionsPage.php:275 app/OptionsPage.php:282 app/OptionsPage.php:289
 #, php-format
 msgid "%d weeks"
 msgstr "%d semaines"
 
-#: app/OptionsPage.php:233
+#: app/OptionsPage.php:276
 msgid ""
 "Stores your authentication details. Its use is limited to the admin area."
 msgstr ""
 "Stocke vos détails d'authentification. Son utilisation est limitée à la zone "
 "d'administration."
 
-#: app/OptionsPage.php:240
+#: app/OptionsPage.php:283
 msgid ""
 "This cookie indicates when you’re logged in, and who you are, for most "
 "interface use."
@@ -341,7 +427,7 @@ msgstr ""
 "Ce cookie indique quand vous êtes connecté et qui vous êtes, pour "
 "l'utilisation de la plupart des interfaces."
 
-#: app/OptionsPage.php:247
+#: app/OptionsPage.php:290
 msgid ""
 "WordPress also sets a few wp-settings-{time}-[UID] cookies. The number on "
 "the end is your individual user ID from the user’s database table. This is "
@@ -354,107 +440,95 @@ msgstr ""
 "vue de l'interface d'administration, et éventuellement aussi l'interface du "
 "site principal."
 
-#: app/OptionsPage.php:253
+#: app/OptionsPage.php:297
+msgid "Stores the current language."
+msgstr "Mémorise la langue actuelle."
+
+#: app/OptionsPage.php:303
 msgid "Analytics"
 msgstr "Analytics"
 
-#: app/OptionsPage.php:254
-msgid "Performance and Analytics cookies"
-msgstr "Cookies de performance et d'analyse"
-
-#: app/OptionsPage.php:255
-msgid ""
-"These cookies allow the website to remember the choices you have made in the "
-"past"
-msgstr ""
-"Ces cookies permettent au site web de se souvenir des choix que vous avez "
-"faits dans le passé"
-
-#: app/OptionsPage.php:260 app/OptionsPage.php:274
+#: app/OptionsPage.php:310 app/OptionsPage.php:324
 msgid "years"
 msgstr "années"
 
-#: app/OptionsPage.php:261 app/OptionsPage.php:268 app/OptionsPage.php:289
+#: app/OptionsPage.php:311 app/OptionsPage.php:318 app/OptionsPage.php:339
 msgid "Used to distinguish users."
 msgstr "Utilisé pour distinguer les utilisateurs."
 
-#: app/OptionsPage.php:267
+#: app/OptionsPage.php:317
 msgid "hours"
 msgstr "heures"
 
-#: app/OptionsPage.php:275
+#: app/OptionsPage.php:325
 msgid "Used to persist session state."
 msgstr "Utilisé pour persister l'état de la session."
 
-#: app/OptionsPage.php:281 app/OptionsPage.php:295
+#: app/OptionsPage.php:331 app/OptionsPage.php:345
 msgid "days"
 msgstr "jours"
 
-#: app/OptionsPage.php:282 app/OptionsPage.php:296
+#: app/OptionsPage.php:332 app/OptionsPage.php:346
 msgid "Contains campaign related information"
 msgstr "Contient des informations relatives à la campagne"
 
-#: app/OptionsPage.php:288 app/OptionsPage.php:302
+#: app/OptionsPage.php:338 app/OptionsPage.php:352
 msgid "minute"
 msgstr "minute"
 
-#: app/OptionsPage.php:303
+#: app/OptionsPage.php:353
 msgid "Read and filter requests from bots."
 msgstr "Lire et filtrer les demandes des bots."
 
-#: app/OptionsPage.php:309
-msgid "Targeting"
-msgstr "Ciblage"
+#: app/OptionsPage.php:359
+msgid "Advertising"
+msgstr "Publicité"
 
-#: app/OptionsPage.php:310
-msgid "Advertisement and Targeting cookies"
-msgstr "Cookies de publicité et de ciblage"
+#: app/OptionsPage.php:365
+msgid "Personalization"
+msgstr "Personnalisation"
 
-#: app/OptionsPage.php:311
-msgid ""
-"These cookies collect information about how you use the website, which pages "
-"you visited and which links you clicked on. All of the data is anonymized "
-"and cannot be used to identify you"
-msgstr ""
-"Ces cookies collectent des informations sur la manière dont vous utilisez le "
-"site web, les pages que vous avez visitées et les liens sur lesquels vous "
-"avez cliqué. Toutes les données sont rendues anonymes et ne peuvent être "
-"utilisées pour vous identifier"
+#: app/OptionsPage.php:371
+msgid "Security"
+msgstr "Sécurité"
 
-#: app/OptionsPage.php:329
+#: app/OptionsPage.php:396 app/OptionsPage.php:447
 msgid "Cookie table"
 msgstr "Table à cookies"
 
-#: app/OptionsPage.php:330 app/OptionsPage.php:354
+#: app/OptionsPage.php:397 app/OptionsPage.php:430
 msgid "Add cookie"
 msgstr "Ajouter un cookie"
 
-#: app/OptionsPage.php:333 app/OptionsPage.php:428 app/Settings.php:32
+#: app/OptionsPage.php:401 app/OptionsPage.php:487 app/Settings.php:46
+#: views/cookie-table.php:22
 msgid "Name"
 msgstr "Nom"
 
-#: app/OptionsPage.php:336 app/OptionsPage.php:429 app/Settings.php:33
+#: app/OptionsPage.php:405 app/OptionsPage.php:488 app/Settings.php:47
+#: views/cookie-table.php:23
 msgid "Domain"
 msgstr "Domaine"
 
-#: app/OptionsPage.php:339 app/OptionsPage.php:430 app/Settings.php:34
+#: app/OptionsPage.php:409 app/OptionsPage.php:489 app/Settings.php:48
+#: views/cookie-table.php:24
 msgid "Expiration"
 msgstr "Expiration"
 
-#: app/OptionsPage.php:345 app/OptionsPage.php:432
+#: app/OptionsPage.php:417 app/OptionsPage.php:491
 msgid "Regex"
 msgstr "Regex"
 
-#: app/OptionsPage.php:349
+#: app/OptionsPage.php:424
 #, php-format
 msgid "Common %s scripts"
 msgstr "Scripts communs %s"
 
-#: app/OptionsPage.php:352
+#: app/OptionsPage.php:428
 msgid "Block scripts"
 msgstr "Bloquer des scripts"
 
-#: app/OptionsPage.php:353
+#: app/OptionsPage.php:429
 msgid ""
 "This plugin can automatically add the correct cookie categorie for scripts "
 "enqueued through <code>wp_enqueue_script()</code>. You can find the ID in "
@@ -465,11 +539,11 @@ msgstr ""
 "pouvez trouver l'ID dans la source de la page ou dans le premier paramètre "
 "de <code>wp_enqueue_script()</code>"
 
-#: app/OptionsPage.php:357
+#: app/OptionsPage.php:434
 msgid "Script ID"
 msgstr "ID du script"
 
-#: app/OptionsPage.php:360
+#: app/OptionsPage.php:440
 #, php-format
 msgid ""
 "Add <code>type=\"text/plain\" data-cookiecategory=\"%s\"</code> to your "
@@ -478,16 +552,22 @@ msgstr ""
 "Ajoutez <code>type=\"text/plain\" data-cookiecategory=\"%s\"</code> à votre "
 "balise script."
 
-#: app/OptionsPage.php:361
+#: app/OptionsPage.php:441
 #, php-format
 msgid "Adding %s scripts manually"
 msgstr "Ajout manuel de %s scripts"
 
-#: app/OptionsPage.php:369 app/OptionsPage.php:415
+#: app/OptionsPage.php:446
+#, php-format
+msgid "The cookie table is only available in the default language (%s)."
+msgstr ""
+"Le tableau des cookies n'est disponible que dans la langue par défaut (%s)."
+
+#: app/OptionsPage.php:457 app/OptionsPage.php:474
 msgid "Extra information"
 msgstr "Renseignements complémentaires"
 
-#: app/OptionsPage.php:372
+#: app/OptionsPage.php:463
 msgid ""
 "Add <code>c_darkmode</code> to <code>&lt;body&gt;</code> in order to enable "
 "darkmode."
@@ -495,15 +575,32 @@ msgstr ""
 "Ajouter <code>c_darkmode</code> à <code>&lt;body&gt;</code> afin d'activer "
 "le darkmode."
 
-#: app/OptionsPage.php:410
+#: app/OptionsPage.php:466
+#, php-format
+msgid "%s is automatically added to %s"
+msgstr "%s est automatiquement ajouté à %s"
+
+#: app/OptionsPage.php:466
+msgid "by"
+msgstr "par"
+
+#: app/OptionsPage.php:469
 msgid "Documentation"
 msgstr "Documentation"
 
-#: app/OptionsPage.php:458
+#: app/OptionsPage.php:492
+msgid "Actions"
+msgstr "Actions"
+
+#: app/OptionsPage.php:515
+msgid "Insert"
+msgstr "Insérer"
+
+#: app/OptionsPage.php:521
 msgid "No common cookies"
 msgstr "Pas de cookies communs"
 
-#: app/Settings.php:47
+#: app/Settings.php:62
 #, php-format
 msgid ""
 "For more details relative to cookies and other sensitive data, please read "
@@ -513,9 +610,93 @@ msgstr ""
 "veuillez lire la <a href=\"%s\" class=\"cc-link\">politique de "
 "confidentialité</a> complète."
 
-#: app/Settings.php:64
+#: app/Settings.php:89
 msgid "contact us"
 msgstr "nous contacter"
+
+#: otomaties-cookie-consent.php:44
+msgid ""
+"<strong>Otomaties cookie consent</strong> is inactive. Please install & "
+"activate <strong>Advanced Custom Fields Pro</strong>."
+msgstr ""
+"Le <strong>consentement du cookie Otomaties</strong> est inactif. Veuillez "
+"installer et activer <strong>Advanced Custom Fields Pro</strong>."
+
+#: views/cookie-table.php:2
+msgid "What are cookies"
+msgstr "Que sont les cookies ?"
+
+#: views/cookie-table.php:3
+msgid ""
+"Cookies are small text files that are stored on your computer or mobile "
+"device when you visit a website."
+msgstr ""
+"Les cookies sont de petits fichiers texte qui sont stockés sur votre "
+"ordinateur ou votre appareil mobile lorsque vous visitez un site web."
+
+#: views/cookie-table.php:4
+msgid ""
+"Every time you visit this website, you will be prompted to <a href=\"#\" "
+"data-cc=\"c-settings\" aria-haspopup=\"dialog\">accept or refuse cookies</a>"
+msgstr ""
+"Chaque fois que vous visitez ce site web, vous êtes invité à <a href=\"#\" "
+"data-cc=\"c-settings\" aria-haspopup=\"dialog\">accepter ou à refuser les "
+"cookies</a>"
+
+#: views/cookie-table.php:5
+msgid ""
+"The purpose is to enable the site to remember your preferences (such as user "
+"name, language, etc.) for a certain period of time. That way, you don’t have "
+"to re-enter them when browsing around the site during the same visit."
+msgstr ""
+"L'objectif est de permettre au site de se souvenir de vos préférences "
+"(telles que le nom d'utilisateur, la langue, etc.) pendant un certain temps. "
+"Ainsi, vous ne devez pas les saisir à nouveau lorsque vous naviguez sur le "
+"site au cours d'une même visite."
+
+#: views/cookie-table.php:6
+msgid ""
+"Cookies can also be used to establish anonymised statistics about the "
+"browsing experience on our sites."
+msgstr ""
+"Les cookies peuvent également être utilisés pour établir des statistiques "
+"anonymes sur l'expérience de navigation sur nos sites."
+
+#: views/cookie-table.php:8
+msgid "How can you manage cookies?"
+msgstr "Comment pouvez-vous gérer les cookies ?"
+
+#: views/cookie-table.php:9
+msgid ""
+"<a href=\"#\" data-cc=\"c-settings\" aria-haspopup=\"dialog\">You can manage "
+"cookies for this website</a>"
+msgstr ""
+"<a href=\"#\" data-cc=\"c-settings\" aria-haspopup=\"dialog\">Vous pouvez "
+"gérer les cookies pour ce site web</a>"
+
+#: views/cookie-table.php:10
+msgid ""
+"You can delete all cookies that are already on your device by clearing the "
+"browsing history of your browser. This will remove all cookies from all "
+"websites you have visited."
+msgstr ""
+"Vous pouvez supprimer tous les cookies qui se trouvent déjà sur votre "
+"appareil en effaçant l'historique de navigation de votre navigateur. Cela "
+"supprimera tous les cookies de tous les sites web que vous avez visités."
+
+#: views/cookie-table.php:12
+msgid "What cookies do we use?"
+msgstr "Quels sont les cookies que nous utilisons ?"
+
+#: views/cookie-table.php:46
+#, php-format
+msgid ""
+"For more information on the privacy practices of Google, please visit the "
+"Google Privacy Terms web page: %s."
+msgstr ""
+"Pour plus d'informations sur les pratiques de Google en matière de "
+"confidentialité, veuillez consulter la page Web des conditions de "
+"confidentialité de Google : %s."
 
 #. Plugin Name of the plugin/theme
 msgid "Otomaties cookie consent"
@@ -532,3 +713,6 @@ msgstr "Tom Broucke"
 #. Author URI of the plugin/theme
 msgid "http://tombroucke.be/"
 msgstr "http://tombroucke.be"
+
+#~ msgid "Targeting"
+#~ msgstr "Ciblage"
