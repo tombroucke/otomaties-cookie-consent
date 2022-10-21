@@ -5,7 +5,7 @@ namespace Otomaties\CookieConsent;
 /**
  * Plugin Name:       Otomaties cookie consent
  * Description:       Add a cookie consent
- * Version:           1.3.2
+ * Version:           1.3.1
  * Author:            Tom Broucke
  * Author URI:        http://tombroucke.be/
  * License:           GPL-2.0+
