@@ -365,14 +365,14 @@ class OptionsPage
                         'name' => '_utmt',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '10 ' . __('minutes', 'otomaties-cookie-consent'),
-                        'description' => __('Google Analytics:  Used to throttle request rate.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                        'description' => __('Google Analytics: Used to throttle request rate.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => false,
                     ],
                     [
                         'name' => '_utmz',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '6 ' . __('months', 'otomaties-cookie-consent'),
-                        'description' => __('Google Analytics:  Stores the traffic source or campaign that explains how the user reached your site.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                        'description' => __('Google Analytics: Stores the traffic source or campaign that explains how the user reached your site.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => false,
                     ],
                 ],
