@@ -71,6 +71,11 @@ class OptionsPage
                     'default_value' => DefaultStrings::get('occ_consent_modal_reject_button_label'),
                     'wpml_cf_preferences' => 2,
                 ])
+                ->addText('occ_consent_modal_manage_button_label', [
+                    'label' => __('Manage settings button label', 'otomaties-cookie-consent'),
+                    'default_value' => DefaultStrings::get('occ_consent_modal_manage_button_label'),
+                    'wpml_cf_preferences' => 2,
+                ])
                 ->addSelect('occ_consent_modal_trigger_in_menu', [
                     'label' => __('Add cookie settings to menu', 'otomaties-cookie-consent'),
                     'choices' => $navMenus,
@@ -101,15 +106,6 @@ class OptionsPage
                         'bottom right' => __('Bottom right', 'otomaties-cookie-consent'),
                     ],
                     'default_value' => 'bottom center',
-                    'wpml_cf_preferences' => 1,
-                ])
-                ->addSelect('occ_consent_modal_transition', [
-                    'label' => __('Layout', 'otomaties-cookie-consent'),
-                    'choices' => [
-                        'zoom' => __('Zoom', 'otomaties-cookie-consent'),
-                        'slide' => __('Slide', 'otomaties-cookie-consent'),
-                    ],
-                    'default_value' => 'slide',
                     'wpml_cf_preferences' => 1,
                 ])
                 ->addTrueFalse('occ_consent_modal_swap_buttons', [
@@ -188,15 +184,6 @@ class OptionsPage
                         'right' => __('Right', 'otomaties-cookie-consent'),
                     ],
                     'default_value' => 'right',
-                    'wpml_cf_preferences' => 1,
-                ])
-                ->addSelect('occ_settings_modal_transition', [
-                    'label' => __('Transition', 'otomaties-cookie-consent'),
-                    'choices' => [
-                        'zoom' => __('Zoom', 'otomaties-cookie-consent'),
-                        'slide' => __('Slide', 'otomaties-cookie-consent'),
-                    ],
-                    'default_value' => 'slide',
                     'wpml_cf_preferences' => 1,
                 ])
             ->addTab('general', [
@@ -308,50 +295,85 @@ class OptionsPage
                         'name' => '_ga',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '2 ' . __('years', 'otomaties-cookie-consent'),
-                        'description' => __('Used to distinguish users.', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Used to distinguish users.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => false,
                     ],
                     [
                         'name' => '_gid',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '24 ' . __('hours', 'otomaties-cookie-consent'),
-                        'description' => __('Used to distinguish users.', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Used to distinguish users.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => false,
                     ],
                     [
                         'name' => '_ga_*',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '2 ' . __('years', 'otomaties-cookie-consent'),
-                        'description' => __('Used to persist session state.', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Used to persist session state.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => true,
                     ],
                     [
                         'name' => '_gac_gb_*',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '90 ' . __('days', 'otomaties-cookie-consent'),
-                        'description' => __('Contains campaign related information', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Contains campaign related information', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => true,
                     ],
                     [
                         'name' => '_gat',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '1 ' . __('minute', 'otomaties-cookie-consent'),
-                        'description' => __('Used to distinguish users.', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Used to distinguish users.', 'otomaties-cookie-consent'),
                         'regex' => false,
                     ],
                     [
                         'name' => '_gac_*',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '90 ' . __('days', 'otomaties-cookie-consent'),
-                        'description' => __('Contains campaign related information', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Contains campaign related information', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => true,
                     ],
                     [
                         'name' => '_gat_*',
                         'domain' => $_SERVER['SERVER_NAME'] ?? '/',
                         'expiration' => '1 ' . __('minute', 'otomaties-cookie-consent'),
-                        'description' => __('Read and filter requests from bots.', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Read and filter requests from bots.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                         'regex' => true,
+                    ],
+                    [
+                        'name' => '_utma',
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
+                        'expiration' => '2 ' . __('years', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Used to distinguish users and sessions.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                        'regex' => false,
+                    ],
+                    [
+                        'name' => '_utmb',
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
+                        'expiration' => '30 ' . __('minutes', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Used to determine new sessions/visits.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                        'regex' => false,
+                    ],
+                    [
+                        'name' => '_utmc',
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
+                        'expiration' => __('session', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics: Operates in conjunction with the _utmb cookie to determine whether the user was in a new session/visit.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                        'regex' => false,
+                    ],
+                    [
+                        'name' => '_utmt',
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
+                        'expiration' => '10 ' . __('minutes', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics:  Used to throttle request rate.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                        'regex' => false,
+                    ],
+                    [
+                        'name' => '_utmz',
+                        'domain' => $_SERVER['SERVER_NAME'] ?? '/',
+                        'expiration' => '6 ' . __('months', 'otomaties-cookie-consent'),
+                        'description' => __('Google Analytics:  Stores the traffic source or campaign that explains how the user reached your site.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                        'regex' => false,
                     ],
                 ],
             ],

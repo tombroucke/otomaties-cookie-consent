@@ -33,7 +33,8 @@ final class SettingsTest extends TestCase
         $this->assertIsString($this->settings->consentModal()['reject']);
     }
 
-    public function testSettingsModalSettings() : void {
+    public function testSettingsModalSettings() : void
+    {
 
         $this->assertIsArray($this->settings->settingsModal());
         $this->assertArrayHasKey('title', $this->settings->settingsModal());
@@ -68,24 +69,24 @@ final class SettingsTest extends TestCase
         $this->assertStringNotContainsString('For more details relative to cookies and other sensitive data', $this->settings->usage()['description']);
     }
 
-    public function testMoreInformation() : void {
+    public function testMoreInformation() : void
+    {
         $this->assertIsArray($this->settings->moreInformation());
         $this->assertArrayHasKey('title', $this->settings->moreInformation());
         $this->assertArrayHasKey('description', $this->settings->moreInformation());
     }
 
-    public function testBlocksIsDefined() : void
+    public function testSectionsIsDefined() : void
     {
-        $this->assertIsArray($this->settings->blocks());
-        $this->assertArrayHasKey('usage', $this->settings->blocks());
-        $this->assertArrayHasKey('necessary', $this->settings->blocks());
-        $this->assertArrayHasKey('analytics', $this->settings->blocks());
-        $this->assertArrayHasKey('advertising', $this->settings->blocks());
-        $this->assertArrayHasKey('personalization', $this->settings->blocks());
-        $this->assertArrayHasKey('security', $this->settings->blocks());
+        $this->assertIsArray($this->settings->sections());
+        $this->assertArrayHasKey('usage', $this->settings->sections());
+        $this->assertArrayHasKey('necessary', $this->settings->sections());
+        $this->assertArrayHasKey('analytics', $this->settings->sections());
+        $this->assertArrayHasKey('advertising', $this->settings->sections());
+        $this->assertArrayHasKey('personalization', $this->settings->sections());
+        $this->assertArrayHasKey('security', $this->settings->sections());
 
-        $this->assertArrayHasKey('moreInformation', $this->settings->blocks());
-
+        $this->assertArrayHasKey('moreInformation', $this->settings->sections());
     }
 
     public function testGuiOptionsHasEntries() : void
@@ -94,17 +95,15 @@ final class SettingsTest extends TestCase
         $this->assertArrayHasKey('consentModal', $this->settings->guiOptions());
         $this->assertArrayHasKey('layout', $this->settings->guiOptions()['consentModal']);
         $this->assertArrayHasKey('position', $this->settings->guiOptions()['consentModal']);
-        $this->assertArrayHasKey('transition', $this->settings->guiOptions()['consentModal']);
         $this->assertArrayHasKey('swapButtons', $this->settings->guiOptions()['consentModal']);
         $this->assertArrayHasKey('settingsModal', $this->settings->guiOptions());
         $this->assertArrayHasKey('layout', $this->settings->guiOptions()['settingsModal']);
         $this->assertArrayHasKey('position', $this->settings->guiOptions()['settingsModal']);
-        $this->assertArrayHasKey('transition', $this->settings->guiOptions()['settingsModal']);
 
         $this->assertIsBool($this->settings->guiOptions()['consentModal']['swapButtons']);
     }
 
-    public function testScriptVariables() : void 
+    public function testScriptVariables() : void
     {
         $this->assertIsArray($this->settings->scriptVariables());
         $this->assertArrayHasKey('locale', $this->settings->scriptVariables());

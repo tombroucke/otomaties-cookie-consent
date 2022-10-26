@@ -18,7 +18,7 @@ class Shortcodes
         $googleCookies = [];
         foreach ($cookiesCategories as $categoryKey => $category) {
             foreach ($category['cookies'] as $cookie) {
-                if (strpos($cookie['col1'], '_ga') !== false) {
+                if (strpos($cookie['name'], '_ga') !== false) {
                     $googleCookies[] = $cookie;
                 }
             }

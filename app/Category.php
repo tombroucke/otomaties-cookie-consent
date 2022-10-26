@@ -25,28 +25,28 @@ class Category
         $cookies = [];
         foreach ($cookieTableField as $key => $cookie) {
             $newCookie = [
-                'col1' => apply_filters(
+                'name' => apply_filters(
                     'wpml_translate_single_string',
                     $cookie['name'],
                     'admin_texts_options_occ_necessary_cookie_table_' . $key . '_name',
                     'options_occ_necessary_cookie_table_' . $key . '_name',
                     $lang
                 ),
-                'col2' => apply_filters(
+                'domain' => apply_filters(
                     'wpml_translate_single_string',
                     $cookie['domain'],
                     'admin_texts_options_occ_necessary_cookie_table_' . $key . '_domain',
                     'options_occ_necessary_cookie_table_' . $key . '_domain',
                     $lang
                 ),
-                'col3' => apply_filters(
+                'expiration' => apply_filters(
                     'wpml_translate_single_string',
                     $cookie['expiration'],
                     'admin_texts_options_occ_necessary_cookie_table_' . $key . '_expiration',
                     'options_occ_necessary_cookie_table_' . $key . '_expiration',
                     $lang
                 ),
-                'col4' => apply_filters(
+                'description' => apply_filters(
                     'wpml_translate_single_string',
                     $cookie['description'],
                     'admin_texts_options_occ_necessary_cookie_table_' . $key . '_description',
@@ -55,7 +55,7 @@ class Category
                 ),
             ];
             if (isset($cookie['regex']) && $cookie['regex'] == true) {
-                $newCookie['is_regex'] = true;
+                $newCookie['isRegex'] = true;
             }
             $cookies[] = $newCookie;
         }

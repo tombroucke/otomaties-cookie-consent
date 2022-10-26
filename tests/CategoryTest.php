@@ -21,12 +21,12 @@ final class CategoryTest extends TestCase
 
     public function testCookieTableReturnCorrectCookie() 
     {
-        $this->assertEquals($this->category->cookieTable()[0]['col1'], 'wordpress_test_cookie');
-        $this->assertEquals($this->category->cookieTable()[0]['col2'], 'example.com');
-        $this->assertEquals($this->category->cookieTable()[0]['col3'], 'Session');
-        $this->assertEquals($this->category->cookieTable()[0]['col4'], 'WordPress test cookie');
-        $this->assertArrayNotHasKey('is_regex', $this->category->cookieTable()[0]);
-        $this->assertTrue($this->category->cookieTable()[1]['is_regex']);
+        $this->assertEquals($this->category->cookieTable()[0]['name'], 'wordpress_test_cookie');
+        $this->assertEquals($this->category->cookieTable()[0]['domain'], 'example.com');
+        $this->assertEquals($this->category->cookieTable()[0]['description'], 'WordPress test cookie');
+        $this->assertEquals($this->category->cookieTable()[0]['expiration'], 'Session');
+        $this->assertArrayNotHasKey('isRegex', $this->category->cookieTable()[0]);
+        $this->assertTrue($this->category->cookieTable()[1]['isRegex']);
 
     }
 

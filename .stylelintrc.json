@@ -1,5 +1,9 @@
 {
-  "plugins": ["stylelint-order", "stylelint-scss"],
+  "extends": [
+    "stylelint-config-idiomatic-order"
+  ],
+  "customSyntax": "postcss-scss",
+  "plugins": ["stylelint-scss"],
   "rules": {
     "at-rule-no-unknown": null,
     "at-rule-no-vendor-prefix": true,

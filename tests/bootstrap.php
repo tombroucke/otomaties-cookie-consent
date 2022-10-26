@@ -87,15 +87,15 @@ function get_field(string $field, string $option)
             [
                 'name' => 'wordpress_test_cookie',
                 'domain' => 'example.com',
-                'expiration' => 'Session',
                 'description' => 'WordPress test cookie',
+                'expiration' => 'Session',
                 'regex' => false,
             ],
             [
                 'name' => 'wordpress_logged_in',
                 'domain' => 'example.com',
-                'expiration' => 'Session',
                 'description' => 'WordPress logged in cookie',
+                'expiration' => 'Session',
                 'regex' => true,
             ]
         ];

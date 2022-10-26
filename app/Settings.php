@@ -23,7 +23,7 @@ class Settings
     {
         $description = DefaultStrings::value('occ_consent_modal_description');
         $description .= ' ' . sprintf(
-            '<button type="button" data-cc="c-settings" class="cc-link">%s</button>',
+            '<button type="button" data-cc="show-preferencesModal">%s</button>',
             DefaultStrings::value('occ_consent_modal_settings_button_label')
         );
         return [
@@ -31,6 +31,7 @@ class Settings
             'description' => $description,
             'accept' => DefaultStrings::value('occ_consent_modal_accept_button_label'),
             'reject' => DefaultStrings::value('occ_consent_modal_reject_button_label'),
+            'manage' => DefaultStrings::value('occ_consent_modal_manage_button_label'),
         ];
     }
 
@@ -45,8 +46,8 @@ class Settings
             'cookieTableHeaders' => [
                 'name' => __('Name', 'otomaties-cookie-consent'),
                 'domain' => __('Domain', 'otomaties-cookie-consent'),
-                'expiration' => __('Expiration', 'otomaties-cookie-consent'),
                 'description' => __('Description', 'otomaties-cookie-consent'),
+                'expiration' => __('Expiration', 'otomaties-cookie-consent'),
             ]
         ];
     }
@@ -94,21 +95,21 @@ class Settings
         return $moreInformation;
     }
 
-    public function blocks() : array
+    public function sections() : array
     {
-        $blocks = [
+        $sections = [
             'usage' => $this->usage(),
         ];
 
         foreach (Settings::categories() as $categoryKey => $categoryName) {
-            $blocks[$categoryKey] = $this->category($categoryKey)->information();
+            $sections[$categoryKey] = $this->category($categoryKey)->information();
         }
 
         if ($this->moreInformation()) {
-            $blocks['moreInformation'] = $this->moreInformation();
+            $sections['moreInformation'] = $this->moreInformation();
         }
 
-        return $blocks;
+        return $sections;
     }
 
     public function guiOptions() : array
@@ -117,13 +118,11 @@ class Settings
             'consentModal' => [
                 'layout' => self::generalOptionField('occ_consent_modal_layout') ?: 'cloud',
                 'position' => self::generalOptionField('occ_consent_modal_position') ?: 'bottom center',
-                'transition' => self::generalOptionField('occ_consent_modal_transition') ?: 'slide',
                 'swapButtons' => self::generalOptionField('occ_consent_modal_swap_buttons') ?: false
             ],
             'settingsModal' => [
                 'layout' => self::generalOptionField('occ_settings_modal_layout') ?: 'box',
                 'position' => self::generalOptionField('occ_settings_modal_position') ?: 'left',
-                'transition' => self::generalOptionField('occ_settings_modal_transition') ?: 'slide'
             ]
         ];
     }
@@ -136,7 +135,7 @@ class Settings
             'strings' => [
                 'consentModal' => $this->consentModal(),
                 'settingsModal' => $this->settingsModal(),
-                'blocks' => $this->blocks(),
+                'sections' => $this->sections(),
             ],
             'gtmConsentMode' => Settings::generalOptionField('occ_gtm_consent_mode'),
             'showAllCategories' => get_field('occ_show_all_categories', 'option'),

@@ -12,6 +12,7 @@ class DefaultStrings
             'occ_consent_modal_settings_button_label' => __('Let me choose', 'otomaties-cookie-consent'),
             'occ_consent_modal_accept_button_label' => __('Accept all', 'otomaties-cookie-consent'),
             'occ_consent_modal_reject_button_label' => __('Reject all', 'otomaties-cookie-consent'),
+            'occ_consent_modal_manage_button_label' => __('Manage preferences', 'otomaties-cookie-consent'),
             'occ_settings_modal_title' => __('Cookie preferences', 'otomaties-cookie-consent'),
             'occ_settings_modal_cookie_usage_title' => __('Cookie usage', 'otomaties-cookie-consent'),
             'occ_settings_modal_cookie_usage_description' => __('We use cookies to ensure the basic functionalities of this website and to enhance your online experience. You can choose for each category to opt-in/out whenever you want.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
