@@ -18,3 +18,9 @@ Allow editors to change settings
 ```
 add_filter('otomaties_cookie_consent_settings_capability', 'edit_posts'),
 ```
+
+## Shortcodes
+
+```
+[cookie-table show="what,table,google-privacy-terms"]
+```
