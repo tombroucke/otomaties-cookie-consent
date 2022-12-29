@@ -3,8 +3,14 @@ namespace Otomaties\CookieConsent;
 
 class Shortcodes
 {
-    public function cookieTable()
+    public function cookieTable($atts)
     {
+        $a = shortcode_atts( array(
+            'show' => 'what,table,google-privacy-terms',
+        ), $atts );
+
+        $showSections = explode(',', $a['show']);
+
         $cookiesCategories = [];
         foreach (Settings::categories() as $categoryKey => $categoryName) {
             $category = new Category($categoryKey);
