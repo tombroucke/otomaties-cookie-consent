@@ -5,9 +5,9 @@ class Shortcodes
 {
     public function cookieTable($atts)
     {
-        $a = shortcode_atts( array(
+        $a = shortcode_atts(array(
             'show' => 'what,table,google-privacy-terms',
-        ), $atts );
+        ), $atts);
 
         $showSections = explode(',', $a['show']);
 
