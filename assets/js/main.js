@@ -4,7 +4,7 @@ import '../images/cookie.png';
 import 'vanilla-cookieconsent';
 
 // obtain plugin
-var cc = initCookieConsent();
+document.cc = initCookieConsent();
 
 const languages = {};
 const categories = {
@@ -87,7 +87,7 @@ if (otomatiesCookieConsent.strings.blocks.moreInformation) {
 }
 
 // run plugin with your configuration
-cc.run({
+document.cc.run({
 	current_lang: otomatiesCookieConsent.locale,
     autoclear_cookies: true,                   // default: false
     page_scripts: true,                        // default: false
@@ -126,28 +126,32 @@ cc.run({
     },
 
     onAccept: function (cookie) {
-		if (cc.allowedCategory('analytics')) {
+
+		const event = new CustomEvent("cookie_consent_consent_update");
+		document.dispatchEvent(event);
+
+		if (document.cc.allowedCategory('analytics')) {
 			if(otomatiesCookieConsent.gtmConsentMode) {
 				gtag('consent', 'update', {
 					'analytics_storage': 'granted'
 				});
 			}
 		}
-		if (cc.allowedCategory('advertising')) {
+		if (document.cc.allowedCategory('advertising')) {
 			if(otomatiesCookieConsent.gtmConsentMode) {
 				gtag('consent', 'update', {
 					'ad_storage': 'granted'
 				});
 			}
 		}
-		if (cc.allowedCategory('personalization')) {
+		if (document.cc.allowedCategory('personalization')) {
 			if(otomatiesCookieConsent.gtmConsentMode) {
 				gtag('consent', 'update', {
 					'personalization_storage': 'granted',
 				});
 			}
 		}
-		if (cc.allowedCategory('security')) {
+		if (document.cc.allowedCategory('security')) {
 			if(otomatiesCookieConsent.gtmConsentMode) {
 				gtag('consent', 'update', {
 					'security_storage': 'granted'
@@ -157,7 +161,11 @@ cc.run({
     },
 
     onChange: function (cookie, changed_preferences) {
-		if (cc.allowedCategory('analytics')) {
+
+		const event = new CustomEvent("cookie_consent_consent_update");
+		document.dispatchEvent(event);
+
+		if (document.cc.allowedCategory('analytics')) {
 			if(otomatiesCookieConsent.gtmConsentMode) {
 				gtag('consent', 'update', {
 					'analytics_storage': 'granted'
@@ -170,7 +178,7 @@ cc.run({
 				});
 			}
 		 }
-		 if (cc.allowedCategory('advertising')) {
+		 if (document.cc.allowedCategory('advertising')) {
 			if(otomatiesCookieConsent.gtmConsentMode) {
 				gtag('consent', 'update', {
 					'ad_storage': 'granted'
@@ -183,7 +191,7 @@ cc.run({
 				});
 			}
 		 }
-		 if (cc.allowedCategory('personalization')) {
+		 if (document.cc.allowedCategory('personalization')) {
 			if(otomatiesCookieConsent.gtmConsentMode) {
 				gtag('consent', 'update', {
 					'personalization_storage': 'granted',
@@ -196,7 +204,7 @@ cc.run({
 				});
 			}
 		 }
-		 if (cc.allowedCategory('security')) {
+		 if (document.cc.allowedCategory('security')) {
 			if(otomatiesCookieConsent.gtmConsentMode) {
 				gtag('consent', 'update', {
 					'security_storage': 'granted'
