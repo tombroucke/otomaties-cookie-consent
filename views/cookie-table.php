@@ -2,7 +2,7 @@
 if (in_array('what', $showSections)) {
     echo '<h2>' . __('What are cookies', 'otomaties-cookie-consent') . '</h2>';
     echo '<p>' . __('Cookies are small text files that are stored on your computer or mobile device when you visit a website.', 'otomaties-cookie-consent') . '</p>';
-    echo '<p>' . __('Every time you visit this website, you will be prompted to <a href="#" data-cc="c-settings" aria-haspopup="dialog">accept or refuse cookies</a>', 'otomaties-cookie-consent') . '</p>';
+    echo '<p>' . __('Every time you visit this website, you will be prompted to <a href="#" data-cc="c-settings" aria-haspopup="dialog">accept or refuse cookies</a>.', 'otomaties-cookie-consent') . '</p>';
     echo '<p>' . __('The purpose is to enable the site to remember your preferences (such as user name, language, etc.) for a certain period of time. That way, you don’t have to re-enter them when browsing around the site during the same visit.', 'otomaties-cookie-consent') . '</p>';
     echo '<p>' . __('Cookies can also be used to establish anonymised statistics about the browsing experience on our sites.', 'otomaties-cookie-consent') . '</p>';
     

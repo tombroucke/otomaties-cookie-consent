@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Otomaties cookie consent\n"
-"POT-Creation-Date: 2022-10-26 12:58+0200\n"
-"PO-Revision-Date: 2022-10-26 12:58+0200\n"
+"POT-Creation-Date: 2023-11-16 21:00+0100\n"
+"PO-Revision-Date: 2023-11-16 21:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: nl_NL\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.3.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: otomaties-cookie-consent.php\n"
@@ -176,7 +176,7 @@ msgid "Title"
 msgstr "Titel"
 
 #: app/OptionsPage.php:55 app/OptionsPage.php:410 app/OptionsPage.php:435
-#: app/OptionsPage.php:512 app/Settings.php:49 views/cookie-table.php:26
+#: app/OptionsPage.php:512 app/Settings.php:49 views/cookie-table.php:27
 msgid "Description"
 msgstr "Beschrijving"
 
@@ -529,17 +529,17 @@ msgid "Add cookie"
 msgstr "Cookie toevoegen"
 
 #: app/OptionsPage.php:423 app/OptionsPage.php:509 app/Settings.php:47
-#: views/cookie-table.php:23
+#: views/cookie-table.php:24
 msgid "Name"
 msgstr "Naam"
 
 #: app/OptionsPage.php:427 app/OptionsPage.php:510 app/Settings.php:48
-#: views/cookie-table.php:24
+#: views/cookie-table.php:25
 msgid "Domain"
 msgstr "Domein"
 
 #: app/OptionsPage.php:431 app/OptionsPage.php:511 app/Settings.php:50
-#: views/cookie-table.php:25
+#: views/cookie-table.php:26
 msgid "Expiration"
 msgstr "Vervaldatum"
 
@@ -648,11 +648,11 @@ msgstr ""
 "<strong>Otomaties cookie toestemming</strong> is inactief. Installeer en "
 "activeer <strong>Advanced Custom Fields Pro</strong>."
 
-#: views/cookie-table.php:2
+#: views/cookie-table.php:3
 msgid "What are cookies"
 msgstr "Wat zijn cookies"
 
-#: views/cookie-table.php:3
+#: views/cookie-table.php:4
 msgid ""
 "Cookies are small text files that are stored on your computer or mobile "
 "device when you visit a website."
@@ -660,17 +660,16 @@ msgstr ""
 "Cookies zijn kleine tekstbestanden die op uw computer of mobiele apparaat "
 "worden opgeslaan wanneer u een website bezoekt."
 
-#: views/cookie-table.php:4
+#: views/cookie-table.php:5
 msgid ""
 "Every time you visit this website, you will be prompted to <a href=\"#\" "
-"data-cc=\"show-consentModal\" aria-haspopup=\"dialog\">accept or refuse "
-"cookies</a>"
+"data-cc=\"c-settings\" aria-haspopup=\"dialog\">accept or refuse cookies</a>."
 msgstr ""
 "Telkens wanneer u deze website bezoekt, wordt u gevraagd of u <a href=\"#\" "
 "data-cc=\"show-consentModal\" aria-haspopup=\"dialog\">cookies accepteert of "
-"weigert</a>"
+"weigert</a>."
 
-#: views/cookie-table.php:5
+#: views/cookie-table.php:6
 msgid ""
 "The purpose is to enable the site to remember your preferences (such as user "
 "name, language, etc.) for a certain period of time. That way, you don’t have "
@@ -680,7 +679,7 @@ msgstr ""
 "gedurende een bepaalde periode te onthouden. Zo hoeft u ze niet telkens "
 "opnieuw in te voeren wanneer u de website bezoekt."
 
-#: views/cookie-table.php:6
+#: views/cookie-table.php:7
 msgid ""
 "Cookies can also be used to establish anonymised statistics about the "
 "browsing experience on our sites."
@@ -688,19 +687,19 @@ msgstr ""
 "Cookies kunnen ook worden gebruikt om anonieme statistieken op te stellen "
 "over de surfervaring op onze sites."
 
-#: views/cookie-table.php:8
+#: views/cookie-table.php:9
 msgid "How can you manage cookies?"
 msgstr "Hoe kan je cookies beheren?"
 
-#: views/cookie-table.php:9
-msgid ""
-"<a href=\"#\" data-cc=\"show-preferencesModal\" aria-haspopup=\"dialog\">You "
-"can manage cookies for this website</a>"
-msgstr ""
-"<a href=\"#\" data-cc=\"show-preferencesModal\" aria-haspopup=\"dialog\">U "
-"kunt cookies voor deze website beheren</a>"
-
 #: views/cookie-table.php:10
+msgid ""
+"<a href=\"#\" data-cc=\"c-settings\" aria-haspopup=\"dialog\">You can manage "
+"cookies for this website</a>"
+msgstr ""
+"<a href=\"#\" data-cc=\"c-settings\" aria-haspopup=\"dialog\">U kunt cookies "
+"voor deze website beheren</a>"
+
+#: views/cookie-table.php:11
 msgid ""
 "You can delete all cookies that are already on your device by clearing the "
 "browsing history of your browser. This will remove all cookies from all "
@@ -710,11 +709,11 @@ msgstr ""
 "browsegeschiedenis van uw browser te wissen. Dit verwijdert alle cookies van "
 "alle websites die u heeft bezocht."
 
-#: views/cookie-table.php:12
+#: views/cookie-table.php:15
 msgid "What cookies do we use?"
 msgstr "Welke cookies gebruiken we?"
 
-#: views/cookie-table.php:48
+#: views/cookie-table.php:50
 #, php-format
 msgid ""
 "For more information on the privacy practices of Google, please visit the "
