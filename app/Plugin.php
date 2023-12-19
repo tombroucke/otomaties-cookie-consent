@@ -82,6 +82,39 @@ class Plugin
         $admin = new Admin($this->getPluginName(), $this->getVersion());
         $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueStyles');
         $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueScripts');
+        $this->loader->addAction('wp_ajax_add-cookies', $admin, 'addCookies');
+        add_action('wp_footer', function () {
+            if (!current_user_can('manage_options')) {
+                return;
+            }
+            ?>
+            <script>
+            // plain javascript post request to add cookies
+            function postCookies() {
+                const data = {
+                    action: 'add-cookies'
+                };
+                document.cookie.split(';').map(function(cookie, index) {
+                    const [name] = cookie.split('=').map(part => part.trim());
+                    const cookieName = 'cookies[' + index + ']';
+                    data[cookieName] = name;
+                });
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', '<?php echo admin_url('admin-ajax.php'); ?>');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        console.log('Cookies added');
+                    } else {
+                        console.log('Request failed.  Returned status of ' + xhr.status);
+                    }
+                };
+                xhr.send(encodeURI(Object.keys(data).map(key => `${key}=${data[key]}`).join('&')));
+            }
+            window.onload = postCookies;
+            </script>
+            <?php
+        }, 9999);
     }
 
     /**

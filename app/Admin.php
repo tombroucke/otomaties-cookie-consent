@@ -2,6 +2,8 @@
 
 namespace Otomaties\CookieConsent;
 
+use Otomaties\CookieConsent\CookieDatabase\CookieList;
+
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -83,5 +85,37 @@ class Admin
          */
 
         wp_enqueue_script($this->pluginName, Assets::find('js/admin.js'), [], $this->version, false);
+    }
+
+    public function addCookies()
+    {
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('You are not logged in');
+            exit;
+        }
+        // get csv file from directory
+        $cookieDatabase = new CookieList(dirname(__FILE__, 2) . '/open-cookie-database.csv');
+        foreach ($_POST['cookies'] as $cookieName) {
+            $cookie = $cookieDatabase->find($cookieName);
+            
+            if ($cookie) {
+                $category = new Category($cookie->category());
+                $cookieFound = false;
+                foreach ($category->cookies() as $existingCookie) {
+                    if ($existingCookie['name'] === $cookie->name()) {
+                        $cookieFound = true;
+                        break;
+                    }
+                }
+                if (!$cookieFound) {
+                    $category->addCookie($cookie);
+                } else {
+                    ray("Cookie already exists: $cookieName");
+                }
+            } else {
+                ray("Cookie not found: $cookieName");
+            }
+        }
+        wp_send_json_success('Cookies added');
     }
 }

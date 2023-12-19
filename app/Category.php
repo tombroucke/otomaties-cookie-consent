@@ -1,6 +1,8 @@
 <?php
 namespace Otomaties\CookieConsent;
 
+use Otomaties\CookieConsent\Contracts\Cookie;
+
 class Category
 {
     private $categoryName;
@@ -15,12 +17,14 @@ class Category
         return $this->categoryName;
     }
 
+    public function cookies() : array
+    {
+        return Settings::generalOptionField('occ_' . $this->categoryName() . '_cookie_table') ?: [];
+    }
+
     public function cookieTable() : array
     {
-        $cookieTableField = Settings::generalOptionField('occ_' . $this->categoryName() . '_cookie_table');
-        if (!$cookieTableField) {
-            return [];
-        }
+        $cookieTableField = $this->cookies();
         $lang = apply_filters('wpml_current_language', null);
         $cookies = [];
         foreach ($cookieTableField as $key => $cookie) {
@@ -70,5 +74,16 @@ class Category
             'cookieTable' => $this->cookieTable(),
         ];
         return $information;
+    }
+
+    public function addCookie(Cookie $cookie)
+    {
+        add_row('occ_' . $this->categoryName() . '_cookie_table', [
+            'name' => $cookie->name(),
+            'domain' => $cookie->domain(),
+            'expiration' => $cookie->expiration(),
+            'description' => $cookie->description(),
+            'regex' => $cookie->regex(),
+        ], 'option');
     }
 }
