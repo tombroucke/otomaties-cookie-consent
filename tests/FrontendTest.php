@@ -102,6 +102,8 @@ final class FrontendTest extends TestCase
                 'functionality_storage': 'granted',
                 'personalization_storage': 'denied',
                 'security_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
             });
         </script>
         <?php

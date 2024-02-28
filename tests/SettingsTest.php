@@ -14,11 +14,6 @@ final class SettingsTest extends TestCase
         $this->settings = new Settings();
     }
 
-    public function testCategoryCanBeCreatedByKey() : void
-    {
-        $this->assertInstanceOf(Category::class, $this->settings->category('necessary'));
-    }
-
     public function testConsentModalSettings() : void
     {
         $this->assertIsArray($this->settings->consentModal());

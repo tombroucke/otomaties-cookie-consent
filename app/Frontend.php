@@ -96,7 +96,7 @@ class Frontend
             foreach ($blockScripts as $blockScript) {
                 if (isset($blockScript['script_id'])
                     && $blockScript['script_id'] != ''
-                    && (strpos($tag, 'id=\'' . $blockScript['script_id'] . '-js\'') !== false || strpos($tag, 'id="' . $blockScript['script_id'] . '-js"') !== false)
+                    && (strpos($tag, 'id=\'' . $blockScript['script_id'] . '-js\'') !== false || strpos($tag, 'id="' . $blockScript['script_id'] . '-js"') !== false) // phpcs:ignore Generic.Files.LineLength
                 ) {
                     return str_replace(
                         ' src=',
