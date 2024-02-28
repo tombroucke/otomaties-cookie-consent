@@ -3,16 +3,14 @@ namespace Otomaties\CookieConsent;
 
 class Category
 {
-    private $categoryName;
 
-    public function __construct($categoryName)
+    public function __construct(private array $category)
     {
-        $this->categoryName = $categoryName;
     }
 
     protected function categoryName() : string
     {
-        return $this->categoryName;
+        return $this->category['key'];
     }
 
     public function cookieTable() : array
@@ -68,6 +66,7 @@ class Category
             'title' => DefaultStrings::value('occ_' . $this->categoryName() . '_title'),
             'description' => DefaultStrings::value('occ_' . $this->categoryName() . '_description'),
             'cookieTable' => $this->cookieTable(),
+            'consentModeParams' => $this->category['consentModeParams'] ?? [],
         ];
         return $information;
     }

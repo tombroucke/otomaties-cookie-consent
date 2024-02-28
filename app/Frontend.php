@@ -71,7 +71,6 @@ class Frontend
          * between the defined hooks and the functions defined in this
          * class.
          */
-        
         wp_enqueue_script($this->pluginName, Assets::find('js/main.js'), [], null, true);
         $settings = new Settings();
         wp_localize_script($this->pluginName, 'otomatiesCookieConsent', $settings->scriptVariables());
@@ -88,7 +87,7 @@ class Frontend
     
     public function addCookieCategoryToScripts($tag, $handle)
     {
-        foreach (Settings::categories() as $categoryKey => $categoryTitle) {
+        foreach (Settings::categories() as $categoryKey => $category) {
             $blockScripts = array_filter((array)Settings::generalOptionField('occ_' . $categoryKey . '_block_scripts'));
             if (count($blockScripts) === 0) {
                 continue;
@@ -97,11 +96,11 @@ class Frontend
             foreach ($blockScripts as $blockScript) {
                 if (isset($blockScript['script_id'])
                     && $blockScript['script_id'] != ''
-                    && strpos($tag, 'id=\'' . $blockScript['script_id'] . '-js\'') !== false
+                    && (strpos($tag, 'id=\'' . $blockScript['script_id'] . '-js\'') !== false || strpos($tag, 'id="' . $blockScript['script_id'] . '-js"') !== false)
                 ) {
                     return str_replace(
                         ' src=',
-                        '  type="text/plain" data-cookiecategory="' . $categoryKey . '" src=',
+                        '  type="text/plain" data-category="' . $categoryKey . '" src=',
                         $tag
                     );
                 }
@@ -115,7 +114,7 @@ class Frontend
         if (Settings::generalOptionField('occ_gtm_consent_mode')) {
             return $tag;
         }
-        $tag = str_replace('<script', '<script type="text/plain" data-cookiecategory="analytics"', $tag);
+        $tag = str_replace('<script', '<script type="text/plain" data-category="analytics"', $tag);
         return $tag;
     }
 
@@ -145,7 +144,7 @@ class Frontend
     {
         $navMenu = get_field('occ_consent_modal_trigger_in_menu', 'option');
         if ($navMenu == 'term_id_' . $args->menu->term_id) {
-            $items .= '<li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="' . __('Review cookie settings', 'otomaties-cookie-consent') . '" data-cc="c-settings">' . __('Cookie settings', 'otomaties-cookie-consent') . '</a></li>'; // phpcs:ignore Generic.Files.LineLength
+            $items .= '<li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="' . __('Review cookie settings', 'otomaties-cookie-consent') . '" data-cc="show-preferencesModal">' . __('Cookie settings', 'otomaties-cookie-consent') . '</a></li>'; // phpcs:ignore Generic.Files.LineLength
         }
         return $items;
     }
@@ -166,6 +165,8 @@ class Frontend
                 'functionality_storage': 'granted',
                 'personalization_storage': 'denied',
                 'security_storage': 'denied',
+                'ad_user_data': 'denied',
+                'ad_personalization': 'denied',
             });
         </script>
         <?php

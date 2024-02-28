@@ -42,7 +42,7 @@ final class FrontendTest extends TestCase
 
     public function testCookieCategoryIsAddedToScripts() {
         $tag = '<script id=\'please-add-category-js\' src="blocked.js">alert("blocked");</script>';
-        $this->assertEquals($this->frontend->addCookieCategoryToScripts($tag, 'please-add-category'), '<script id=\'please-add-category-js\'  type="text/plain" data-cookiecategory="necessary" src="blocked.js">alert("blocked");</script>');
+        $this->assertEquals($this->frontend->addCookieCategoryToScripts($tag, 'please-add-category'), '<script id=\'please-add-category-js\'  type="text/plain" data-category="necessary" src="blocked.js">alert("blocked");</script>');
     }
 
     public function testCookieCategoryIsNotAddedToScripts() {
@@ -52,7 +52,7 @@ final class FrontendTest extends TestCase
 
     public function testAnalyticsCategoryIsAddedToGtm4WpScript() {
         $tag = '<script src="gtm4wp.js"></script>';
-        $this->assertEquals('<script type="text/plain" data-cookiecategory="analytics" src="gtm4wp.js"></script>', $this->frontend->addGtm4WpScriptToAnalyticScripts($tag));
+        $this->assertEquals('<script type="text/plain" data-category="analytics" src="gtm4wp.js"></script>', $this->frontend->addGtm4WpScriptToAnalyticScripts($tag));
 
 
         global $consentMode;
@@ -83,7 +83,7 @@ final class FrontendTest extends TestCase
         $menu->term_id = 69;
         $args->menu = $menu;
         $items = $this->frontend->addCookieSettingsMenuItem($items, $args);
-        $this->assertEquals($items, '<li><a href="http://example.com">Home</a></li><li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="Review cookie settings" data-cc="c-settings">Cookie settings</a></li>');
+        $this->assertEquals($items, '<li><a href="http://example.com">Home</a></li><li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="Review cookie settings" data-cc="show-preferencesModal">Cookie settings</a></li>');
     }
 
     public function testIfConsentModeIsPrinted() {

@@ -88,7 +88,7 @@ module.exports = (env, argv) => ({
 	}),
 	new BrowserSyncPlugin({
 		port: 3000,
-		proxy: 'https://smappee.local',
+		proxy: 'https://ekopakwater.test',
 	}),
 	new StyleLintPlugin({
 		context: 'assets',

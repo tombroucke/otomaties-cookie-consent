@@ -12,11 +12,10 @@ class Shortcodes
         $showSections = explode(',', $a['show']);
 
         $cookiesCategories = [];
-        foreach (Settings::categories() as $categoryKey => $categoryName) {
-            $category = new Category($categoryKey);
+        foreach (Settings::categories() as $categoryKey => $category) {
             $cookiesCategories[$categoryKey] = [
-                'name' => $categoryName,
-                'cookies' => $category->cookieTable(),
+                'name' => $category['label'],
+                'cookies' => (new Category($category))->cookieTable(),
             ];
         }
 
@@ -24,7 +23,7 @@ class Shortcodes
         $googleCookies = [];
         foreach ($cookiesCategories as $categoryKey => $category) {
             foreach ($category['cookies'] as $cookie) {
-                if (strpos($cookie['col1'], '_ga') !== false) {
+                if (strpos($cookie['name'], '_ga') !== false) {
                     $googleCookies[] = $cookie;
                 }
             }

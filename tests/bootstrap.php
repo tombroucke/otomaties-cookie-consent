@@ -283,11 +283,11 @@ function gtm4wp_wp_header_begin($echo = true)
     ?>
     <!-- Google Tag Manager for WordPress by gtm4wp.com -->
     <!-- GTM Container placement set to automatic -->
-    <script type="text/plain" data-cookiecategory="analytics" data-cfasync="false" data-pagespeed-no-defer type="text/javascript">
+    <script type="text/plain" data-category="analytics" data-cfasync="false" data-pagespeed-no-defer type="text/javascript">
         var dataLayer_content = {"pagePostType":"frontpage","pagePostType2":"single-page","pagePostAuthor":"tom"};
         dataLayer.push( dataLayer_content );
     </script>
-    <script type="text/plain" data-cookiecategory="analytics" data-cfasync="false">
+    <script type="text/plain" data-category="analytics" data-cfasync="false">
     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=

@@ -32,6 +32,10 @@ class DefaultStrings
             'occ_personalization_description' => __('These cookies store personalisation e.g. video recommendations', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
             'occ_security_title' => __('Security cookies', 'otomaties-cookie-consent'),
             'occ_security_description' => __('Storage related to security such as authentication functionality, fraud prevention, and other user protection', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+            'occ_ad_user_data_title' => __('Send user data to Google', 'otomaties-cookie-consent'),
+            'occ_ad_user_data_description' => __('Sets consent for sending user data related to advertising to Google.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+            'occ_ad_personalization_title' => __('Personalized advertising', 'otomaties-cookie-consent'),
+            'occ_ad_personalization_description' => __('Sets consent for personalized advertising.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
         ];
         return $strings[$key] ?? null;
     }

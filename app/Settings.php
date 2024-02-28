@@ -5,18 +5,33 @@ class Settings
 {
     public static function categories()
     {
-        return [
-            'necessary' => __('Strictly necessary cookies', 'otomaties-cookie-consent'),
-            'analytics' => __('Analytical cookies', 'otomaties-cookie-consent'),
-            'advertising' => __('Advertisement and targeting cookies', 'otomaties-cookie-consent'),
-            'personalization' => __('Personalization cookies', 'otomaties-cookie-consent'),
-            'security' => __('Security cookies', 'otomaties-cookie-consent'),
+        $categories = [
+            'necessary' => [
+                'key' => 'necessary',
+                'label' => __('Strictly necessary cookies', 'otomaties-cookie-consent'),
+            ],
+            'analytics' => [
+                'key' => 'analytics',
+                'label' => __('Analytical cookies', 'otomaties-cookie-consent'),
+            ],
+            'advertising' => [
+                'key' => 'advertising',
+                'label' => __('Advertisement and targeting cookies', 'otomaties-cookie-consent'),
+                'consentModeParams' => [
+                    'ad_user_data' => __('Ad user data', 'otomaties-cookie-consent'),
+                    'ad_personalization' => __('Ad personalization', 'otomaties-cookie-consent'),
+                ]
+            ],
+            'personalization' => [
+                'key' => 'personalization',
+                'label' => __('Personalization cookies', 'otomaties-cookie-consent'),
+            ],
+            'security' => [
+                'key' => 'security',
+                'label' => __('Security cookies', 'otomaties-cookie-consent'),
+            ],
         ];
-    }
-
-    public function category($key)
-    {
-        return new Category($key);
+        return $categories;
     }
 
     public function consentModal() : array
@@ -101,14 +116,13 @@ class Settings
             'usage' => $this->usage(),
         ];
 
-        foreach (Settings::categories() as $categoryKey => $categoryName) {
-            $sections[$categoryKey] = $this->category($categoryKey)->information();
+        foreach (Settings::categories() as $categoryKey => $category) {
+            $sections[$categoryKey] = (new Category($category))->information();
         }
-
+        
         if ($this->moreInformation()) {
             $sections['moreInformation'] = $this->moreInformation();
         }
-
         return $sections;
     }
 
@@ -138,7 +152,7 @@ class Settings
                 'sections' => $this->sections(),
             ],
             'gtmConsentMode' => Settings::generalOptionField('occ_gtm_consent_mode'),
-            'showAllCategories' => get_field('occ_show_all_categories', 'option'),
+            'revision' => Settings::generalOptionField('occ_revision'),
         ];
         return apply_filters('otomaties_cookie_consent_script_variables', $variables);
     }
@@ -151,7 +165,7 @@ class Settings
         $categories = Settings::categories();
         $isCookieTableOption = false;
         $isBlockScriptOption = false;
-        foreach ($categories as $categoryKey => $categoryName) {
+        foreach ($categories as $categoryKey => $category) {
             if ($optionKey == 'occ_' . $categoryKey . '_cookie_table') {
                 $isCookieTableOption = true;
                 break;

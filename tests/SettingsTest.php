@@ -110,10 +110,8 @@ final class SettingsTest extends TestCase
         $this->assertArrayHasKey('guiOptions', $this->settings->scriptVariables());
         $this->assertArrayHasKey('strings', $this->settings->scriptVariables());
         $this->assertArrayHasKey('gtmConsentMode', $this->settings->scriptVariables());
-        $this->assertArrayHasKey('showAllCategories', $this->settings->scriptVariables());
 
         $this->assertIsArray($this->settings->scriptVariables()['strings']);
         $this->assertIsBool($this->settings->scriptVariables()['gtmConsentMode']);
-        $this->assertIsBool($this->settings->scriptVariables()['showAllCategories']);
     }
 }

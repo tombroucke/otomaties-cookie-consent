@@ -195,10 +195,9 @@ class OptionsPage
                     'message' => __('Enable GTM consent mode', 'otomaties-cookie-consent'),
                     'wpml_cf_preferences' => 1,
                 ])
-                ->addTrueFalse('occ_show_all_categories', [
-                    'label' => __('Show all cookie categories', 'otomaties-cookie-consent'),
-                    'instructions' => __('If enabled, all categories will be shown in the settings modal. If disabled, only categories with cookies will be shown.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
-                    'message' => __('Show all categories', 'otomaties-cookie-consent'),
+                ->addNumber('occ_revision', [
+                    'label' => __('Revision', 'otomaties-cookie-consent'),
+                    'instructions' => __('Increment this number to reset the cookie consent modal for all users.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                     'wpml_cf_preferences' => 1,
                 ])
             ->setLocation('options_page', '==', 'cookie-consent-settings');
@@ -459,7 +458,7 @@ class OptionsPage
                 ->endRepeater()
                 ->addMessage(
                     'occ_adding_' . $categoryKey . '_scripts_manually',
-                    sprintf(__('Add <code>type="text/plain" data-cookiecategory="%s"</code> to your script tag.', 'otomaties-cookie-consent'), $categoryKey), // phpcs:ignore Generic.Files.LineLength
+                    sprintf(__('Add <code>type="text/plain" category="%s"</code> to your script tag.', 'otomaties-cookie-consent'), $categoryKey), // phpcs:ignore Generic.Files.LineLength
                     ['label' => sprintf(__('Adding %s scripts manually', 'otomaties-cookie-consent'), $categoryKey)]
                 );
             } else {
@@ -485,7 +484,7 @@ class OptionsPage
         $extraInformation .=  __('Add <code>c_darkmode</code> to <code>&lt;body&gt;</code> in order to enable darkmode.', 'otomaties-cookie-consent'); // phpcs:ignore Generic.Files.LineLength
         $extraInformation .= '</li>';
         $extraInformation .= '<li>';
-        $extraInformation .= sprintf(__('%s is automatically added to %s', 'otomaties-cookie-consent'), '<code>type="text/plain" data-cookiecategory="analytics"</code>', '<strong><a target="_blank" href="https://wordpress.org/plugins/duracelltomi-google-tag-manager/">Google Tag Manager for WordPress</a> ' . __('by', 'otomaties-cookie-consent') . ' Thomas Geiger</strong>'); // phpcs:ignore Generic.Files.LineLength
+        $extraInformation .= sprintf(__('%s is automatically added to %s', 'otomaties-cookie-consent'), '<code>type="text/plain" category="analytics"</code>', '<strong><a target="_blank" href="https://wordpress.org/plugins/duracelltomi-google-tag-manager/">Google Tag Manager for WordPress</a> ' . __('by', 'otomaties-cookie-consent') . ' Thomas Geiger</strong>'); // phpcs:ignore Generic.Files.LineLength
         $extraInformation .= '</li>';
         $extraInformation .= '<li>';
         $extraInformation .= sprintf('<a href="%s" target="_blank">%s</a>', 'https://orestbida.com/demo-projects/cookieconsent/', __('Documentation', 'otomaties-cookie-consent')); // phpcs:ignore Generic.Files.LineLength

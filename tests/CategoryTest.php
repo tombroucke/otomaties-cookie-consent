@@ -11,7 +11,10 @@ final class CategoryTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->category = new Category('necessary');
+        $this->category = new Category([
+            'key' => 'necessary',
+            'label' => __('Strictly necessary cookies', 'otomaties-cookie-consent'),
+        ]);
     }
 
     public function testCookieTableReturnsArray()

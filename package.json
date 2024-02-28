@@ -10,7 +10,7 @@
   "author": "Tom Broucke <tom@tombroucke.be>",
   "license": "MIT",
   "dependencies": {
-    "vanilla-cookieconsent": "3.0.0-rc.8"
+    "vanilla-cookieconsent": "^3.0.0"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^7.1.1",
