@@ -195,6 +195,17 @@ class OptionsPage
                     'message' => __('Enable GTM consent mode', 'otomaties-cookie-consent'),
                     'wpml_cf_preferences' => 1,
                 ])
+                ->addTrueFalse('occ_gtm_url_passthrough', [
+                    'label' => __('Google Tag Manager URL passthrough', 'otomaties-cookie-consent'),
+                    'instructions' => __('When a user lands on your website after clicking an ad, information about the ad may be appended to your landing page URLs as a query parameter. In order to improve conversion accuracy, this information is usually stored in first-party cookies on your domain.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                    'message' => __('Enable URL passthrough', 'otomaties-cookie-consent'),
+                ])
+                ->addTrueFalse('occ_show_all_categories', [
+                    'label' => __('Show all cookie categories', 'otomaties-cookie-consent'),
+                    'instructions' => __('If enabled, all categories will be shown in the settings modal. If disabled, only categories with cookies will be shown.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
+                    'message' => __('Show all categories', 'otomaties-cookie-consent'),
+                    'wpml_cf_preferences' => 1,
+                ])
                 ->addNumber('occ_revision', [
                     'label' => __('Revision', 'otomaties-cookie-consent'),
                     'instructions' => __('Increment this number to reset the cookie consent modal for all users.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength

@@ -168,6 +168,11 @@ class Frontend
                 'ad_user_data': 'denied',
                 'ad_personalization': 'denied',
             });
+
+            <?php if (Settings::generalOptionField('occ_gtm_url_passthrough')) : ?>
+            gtag('set', 'url_passthrough', true);
+            <?php endif; ?>
+        
         </script>
         <?php
     }

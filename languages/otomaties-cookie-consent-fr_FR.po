@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Otomaties cookie consent\n"
-"POT-Creation-Date: 2023-11-16 21:00+0100\n"
-"PO-Revision-Date: 2023-11-16 21:01+0100\n"
+"POT-Creation-Date: 2024-02-29 17:14+0100\n"
+"PO-Revision-Date: 2024-02-29 17:19+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -92,8 +92,8 @@ msgstr "Enregistrer les paramètres"
 msgid "Close"
 msgstr "Fermer"
 
-#: app/DefaultStrings.php:25 app/Settings.php:9 tests/DefaultStringsTest.php:10
-#: tests/DefaultStringsTest.php:18
+#: app/DefaultStrings.php:25 app/Settings.php:11 tests/CategoryTest.php:16
+#: tests/DefaultStringsTest.php:10 tests/DefaultStringsTest.php:18
 msgid "Strictly necessary cookies"
 msgstr "Les cookies strictement nécessaires"
 
@@ -105,7 +105,7 @@ msgstr ""
 "Ces cookies sont essentiels au bon fonctionnement de ce site web. Sans ces "
 "cookies, le site web ne fonctionnerait pas correctement"
 
-#: app/DefaultStrings.php:27 app/Settings.php:10
+#: app/DefaultStrings.php:27 app/Settings.php:15
 msgid "Analytical cookies"
 msgstr "Les cookies analytiques"
 
@@ -117,7 +117,7 @@ msgstr ""
 "Ces cookies permettent au site web de se souvenir des choix que vous avez "
 "faits dans le passé"
 
-#: app/DefaultStrings.php:29 app/Settings.php:11
+#: app/DefaultStrings.php:29 app/Settings.php:19
 msgid "Advertisement and targeting cookies"
 msgstr "Cookies de publicité et de ciblage"
 
@@ -132,7 +132,7 @@ msgstr ""
 "avez cliqué. Toutes les données sont rendues anonymes et ne peuvent être "
 "utilisées pour vous identifier"
 
-#: app/DefaultStrings.php:31 app/Settings.php:12
+#: app/DefaultStrings.php:31 app/Settings.php:27
 msgid "Personalization cookies"
 msgstr "Cookies de performance et d'analyse"
 
@@ -142,7 +142,7 @@ msgstr ""
 "Ces cookies stockent la personnalisation, par exemple les recommandations de "
 "vidéos"
 
-#: app/DefaultStrings.php:33 app/Settings.php:13
+#: app/DefaultStrings.php:33 app/Settings.php:31
 msgid "Security cookies"
 msgstr "Cookies de sécurité"
 
@@ -154,11 +154,29 @@ msgstr ""
 "Stockage lié à la sécurité, comme la fonctionnalité d'authentification, la "
 "prévention de la fraude et d'autres mesures de protection des utilisateurs"
 
-#: app/Frontend.php:148
+#: app/DefaultStrings.php:35
+msgid "Send user data to Google"
+msgstr "Envoi de données utilisateur à Google"
+
+#: app/DefaultStrings.php:36
+msgid "Sets consent for sending user data related to advertising to Google."
+msgstr ""
+"Définit le consentement à l'envoi à Google des données de l'utilisateur "
+"liées à la publicité."
+
+#: app/DefaultStrings.php:37
+msgid "Personalized advertising"
+msgstr "Publicité personnalisée"
+
+#: app/DefaultStrings.php:38
+msgid "Sets consent for personalized advertising."
+msgstr "Définit le consentement pour la publicité personnalisée."
+
+#: app/Frontend.php:147
 msgid "Review cookie settings"
 msgstr "Vérifier les paramètres des cookies"
 
-#: app/Frontend.php:148
+#: app/Frontend.php:147
 msgid "Cookie settings"
 msgstr "Paramètres de cookie"
 
@@ -174,12 +192,12 @@ msgstr "Paramétrage acceptation Cookies"
 msgid "Consent modal"
 msgstr "Consentement modal"
 
-#: app/OptionsPage.php:50 app/OptionsPage.php:120 app/OptionsPage.php:405
+#: app/OptionsPage.php:50 app/OptionsPage.php:120 app/OptionsPage.php:415
 msgid "Title"
 msgstr "Titre"
 
-#: app/OptionsPage.php:55 app/OptionsPage.php:410 app/OptionsPage.php:435
-#: app/OptionsPage.php:512 app/Settings.php:49 views/cookie-table.php:27
+#: app/OptionsPage.php:55 app/OptionsPage.php:420 app/OptionsPage.php:445
+#: app/OptionsPage.php:522 app/Settings.php:64 views/cookie-table.php:27
 msgid "Description"
 msgstr "Description"
 
@@ -334,10 +352,31 @@ msgid "Enable GTM consent mode"
 msgstr "Activer le mode de consentement GTM"
 
 #: app/OptionsPage.php:199
+msgid "Google Tag Manager URL passthrough"
+msgstr "Google Tag Manager URL passthrough"
+
+#: app/OptionsPage.php:200
+msgid ""
+"When a user lands on your website after clicking an ad, information about "
+"the ad may be appended to your landing page URLs as a query parameter. In "
+"order to improve conversion accuracy, this information is usually stored in "
+"first-party cookies on your domain."
+msgstr ""
+"Lorsqu'un utilisateur arrive sur votre site web après avoir cliqué sur une "
+"annonce, des informations sur l'annonce peuvent être ajoutées à l'URL de "
+"votre page d'atterrissage en tant que paramètre de requête. Afin d'améliorer "
+"la précision des conversions, ces informations sont généralement stockées "
+"dans des cookies de première partie sur votre domaine."
+
+#: app/OptionsPage.php:201
+msgid "Enable URL passthrough"
+msgstr "Activer l'URL passthrough"
+
+#: app/OptionsPage.php:204
 msgid "Show all cookie categories"
 msgstr "Afficher toutes les catégories de cookies"
 
-#: app/OptionsPage.php:200
+#: app/OptionsPage.php:205
 msgid ""
 "If enabled, all categories will be shown in the settings modal. If disabled, "
 "only categories with cookies will be shown."
@@ -346,37 +385,47 @@ msgstr ""
 "des paramètres. Si elle est désactivée, seules les catégories contenant des "
 "cookies seront affichées."
 
-#: app/OptionsPage.php:201
+#: app/OptionsPage.php:206
 msgid "Show all categories"
 msgstr "Afficher toutes les catégories"
 
-#: app/OptionsPage.php:209
+#: app/OptionsPage.php:210
+msgid "Revision"
+msgstr "Révision"
+
+#: app/OptionsPage.php:211
+msgid "Increment this number to reset the cookie consent modal for all users."
+msgstr ""
+"Incrémentez ce nombre pour réinitialiser la fenêtre modale de consentement "
+"aux cookies pour tous les utilisateurs."
+
+#: app/OptionsPage.php:219
 msgid "Cookie categories"
 msgstr "Catégories de cookies"
 
-#: app/OptionsPage.php:213
+#: app/OptionsPage.php:223
 msgid "Necessary"
 msgstr "Nécessaire"
 
-#: app/OptionsPage.php:220 app/OptionsPage.php:255
+#: app/OptionsPage.php:230 app/OptionsPage.php:265
 #, php-format
 msgid "%d days"
 msgstr "%d jours"
 
-#: app/OptionsPage.php:221
+#: app/OptionsPage.php:231
 msgid "Tracks your cookie consent"
 msgstr "Trace votre consentement aux cookies"
 
-#: app/OptionsPage.php:227 app/OptionsPage.php:234 app/OptionsPage.php:241
-#: app/OptionsPage.php:248 app/OptionsPage.php:283 app/OptionsPage.php:360
+#: app/OptionsPage.php:237 app/OptionsPage.php:244 app/OptionsPage.php:251
+#: app/OptionsPage.php:258 app/OptionsPage.php:293 app/OptionsPage.php:370
 msgid "session"
 msgstr "session"
 
-#: app/OptionsPage.php:228
+#: app/OptionsPage.php:238
 msgid "Necessary for the shopping cart functionality on the website."
 msgstr "Nécessaire pour la fonctionnalité de panier d'achat sur le site web."
 
-#: app/OptionsPage.php:235
+#: app/OptionsPage.php:245
 msgid ""
 "Necessary for the shopping cart functionality on the website to remember the "
 "chosen products - This also allows the website to promote related products "
@@ -387,7 +436,7 @@ msgstr ""
 "promouvoir des produits connexes auprès du visiteur, en fonction du contenu "
 "du panier d'achat."
 
-#: app/OptionsPage.php:242
+#: app/OptionsPage.php:252
 msgid ""
 "Contains information about the cart as a whole and help WooCommerce know "
 "when the cart data changes."
@@ -395,7 +444,7 @@ msgstr ""
 "Contient des informations sur le panier dans son ensemble et aide "
 "WooCommerce à savoir quand les données du panier changent."
 
-#: app/OptionsPage.php:256
+#: app/OptionsPage.php:266
 msgid ""
 "Contains a unique code for each customer so that it knows where to find the "
 "cart data in the database for each customer."
@@ -403,19 +452,19 @@ msgstr ""
 "Contient un code unique pour chaque client afin de savoir où trouver les "
 "données du panier dans la base de données pour chaque client."
 
-#: app/OptionsPage.php:262 app/OptionsPage.php:269 app/OptionsPage.php:276
+#: app/OptionsPage.php:272 app/OptionsPage.php:279 app/OptionsPage.php:286
 #, php-format
 msgid "%d weeks"
 msgstr "%d semaines"
 
-#: app/OptionsPage.php:263
+#: app/OptionsPage.php:273
 msgid ""
 "Stores your authentication details. Its use is limited to the admin area."
 msgstr ""
 "Stocke vos détails d'authentification. Son utilisation est limitée à la zone "
 "d'administration."
 
-#: app/OptionsPage.php:270
+#: app/OptionsPage.php:280
 msgid ""
 "This cookie indicates when you’re logged in, and who you are, for most "
 "interface use."
@@ -423,7 +472,7 @@ msgstr ""
 "Ce cookie indique quand vous êtes connecté et qui vous êtes, pour "
 "l'utilisation de la plupart des interfaces."
 
-#: app/OptionsPage.php:277
+#: app/OptionsPage.php:287
 msgid ""
 "WordPress also sets a few wp-settings-{time}-[UID] cookies. The number on "
 "the end is your individual user ID from the user’s database table. This is "
@@ -436,60 +485,60 @@ msgstr ""
 "vue de l'interface d'administration, et éventuellement aussi l'interface du "
 "site principal."
 
-#: app/OptionsPage.php:284
+#: app/OptionsPage.php:294
 msgid "Stores the current language."
 msgstr "Mémorise la langue actuelle."
 
-#: app/OptionsPage.php:290
+#: app/OptionsPage.php:300
 msgid "Analytics"
 msgstr "Analytics"
 
-#: app/OptionsPage.php:297 app/OptionsPage.php:311 app/OptionsPage.php:346
+#: app/OptionsPage.php:307 app/OptionsPage.php:321 app/OptionsPage.php:356
 msgid "years"
 msgstr "années"
 
-#: app/OptionsPage.php:298 app/OptionsPage.php:305 app/OptionsPage.php:326
+#: app/OptionsPage.php:308 app/OptionsPage.php:315 app/OptionsPage.php:336
 msgid "Google Analytics: Used to distinguish users."
 msgstr "Google Analytics : Utilisé pour distinguer les utilisateurs."
 
-#: app/OptionsPage.php:304
+#: app/OptionsPage.php:314
 msgid "hours"
 msgstr "heures"
 
-#: app/OptionsPage.php:312
+#: app/OptionsPage.php:322
 msgid "Google Analytics: Used to persist session state."
 msgstr "Google Analytics : Utilisé pour persister l'état de la session."
 
-#: app/OptionsPage.php:318 app/OptionsPage.php:332
+#: app/OptionsPage.php:328 app/OptionsPage.php:342
 msgid "days"
 msgstr "jours"
 
-#: app/OptionsPage.php:319 app/OptionsPage.php:333
+#: app/OptionsPage.php:329 app/OptionsPage.php:343
 msgid "Google Analytics: Contains campaign related information"
 msgstr "Google Analytics : Contient des informations relatives à la campagne"
 
-#: app/OptionsPage.php:325 app/OptionsPage.php:339
+#: app/OptionsPage.php:335 app/OptionsPage.php:349
 msgid "minute"
 msgstr "minute"
 
-#: app/OptionsPage.php:340
+#: app/OptionsPage.php:350
 msgid "Google Analytics: Read and filter requests from bots."
 msgstr "Google Analytics: Lire et filtrer les demandes des bots."
 
-#: app/OptionsPage.php:347
+#: app/OptionsPage.php:357
 msgid "Google Analytics: Used to distinguish users and sessions."
 msgstr "Google Analytics: Utilisé pour distinguer les utilisateurs."
 
-#: app/OptionsPage.php:353 app/OptionsPage.php:367
+#: app/OptionsPage.php:363 app/OptionsPage.php:377
 msgid "minutes"
 msgstr "minutes"
 
-#: app/OptionsPage.php:354
+#: app/OptionsPage.php:364
 msgid "Google Analytics: Used to determine new sessions/visits."
 msgstr ""
 "Google Analytics : Utilisé pour déterminer les nouvelles sessions/visites."
 
-#: app/OptionsPage.php:361
+#: app/OptionsPage.php:371
 msgid ""
 "Google Analytics: Operates in conjunction with the _utmb cookie to determine "
 "whether the user was in a new session/visit."
@@ -497,15 +546,15 @@ msgstr ""
 "Google Analytics : Fonctionne en conjonction avec le cookie _utmb pour "
 "déterminer si l'utilisateur était dans une nouvelle session/visite."
 
-#: app/OptionsPage.php:368
+#: app/OptionsPage.php:378
 msgid "Google Analytics: Used to throttle request rate."
 msgstr "Google Analytics : Utilisé pour limiter le taux de demande."
 
-#: app/OptionsPage.php:374
+#: app/OptionsPage.php:384
 msgid "months"
 msgstr "mois"
 
-#: app/OptionsPage.php:375
+#: app/OptionsPage.php:385
 msgid ""
 "Google Analytics: Stores the traffic source or campaign that explains how "
 "the user reached your site."
@@ -513,55 +562,55 @@ msgstr ""
 "Google Analytics : Stocke la source de trafic ou la campagne qui explique "
 "comment l'utilisateur a atteint votre site."
 
-#: app/OptionsPage.php:381
+#: app/OptionsPage.php:391
 msgid "Advertising"
 msgstr "Publicité"
 
-#: app/OptionsPage.php:387
+#: app/OptionsPage.php:397
 msgid "Personalization"
 msgstr "Personnalisation"
 
-#: app/OptionsPage.php:393
+#: app/OptionsPage.php:403
 msgid "Security"
 msgstr "Sécurité"
 
-#: app/OptionsPage.php:418 app/OptionsPage.php:469
+#: app/OptionsPage.php:428 app/OptionsPage.php:479
 msgid "Cookie table"
 msgstr "Table à cookies"
 
-#: app/OptionsPage.php:419 app/OptionsPage.php:452
+#: app/OptionsPage.php:429 app/OptionsPage.php:462
 msgid "Add cookie"
 msgstr "Ajouter un cookie"
 
-#: app/OptionsPage.php:423 app/OptionsPage.php:509 app/Settings.php:47
+#: app/OptionsPage.php:433 app/OptionsPage.php:519 app/Settings.php:62
 #: views/cookie-table.php:24
 msgid "Name"
 msgstr "Nom"
 
-#: app/OptionsPage.php:427 app/OptionsPage.php:510 app/Settings.php:48
+#: app/OptionsPage.php:437 app/OptionsPage.php:520 app/Settings.php:63
 #: views/cookie-table.php:25
 msgid "Domain"
 msgstr "Domaine"
 
-#: app/OptionsPage.php:431 app/OptionsPage.php:511 app/Settings.php:50
+#: app/OptionsPage.php:441 app/OptionsPage.php:521 app/Settings.php:65
 #: views/cookie-table.php:26
 msgid "Expiration"
 msgstr "Expiration"
 
-#: app/OptionsPage.php:439 app/OptionsPage.php:513
+#: app/OptionsPage.php:449 app/OptionsPage.php:523
 msgid "Regex"
 msgstr "Regex"
 
-#: app/OptionsPage.php:446
+#: app/OptionsPage.php:456
 #, php-format
 msgid "Common %s scripts"
 msgstr "Scripts communs %s"
 
-#: app/OptionsPage.php:450
+#: app/OptionsPage.php:460
 msgid "Block scripts"
 msgstr "Bloquer des scripts"
 
-#: app/OptionsPage.php:451
+#: app/OptionsPage.php:461
 msgid ""
 "This plugin can automatically add the correct cookie categorie for scripts "
 "enqueued through <code>wp_enqueue_script()</code>. You can find the ID in "
@@ -572,35 +621,34 @@ msgstr ""
 "pouvez trouver l'ID dans la source de la page ou dans le premier paramètre "
 "de <code>wp_enqueue_script()</code>"
 
-#: app/OptionsPage.php:456
+#: app/OptionsPage.php:466
 msgid "Script ID"
 msgstr "ID du script"
 
-#: app/OptionsPage.php:462
+#: app/OptionsPage.php:472
 #, php-format
 msgid ""
-"Add <code>type=\"text/plain\" data-cookiecategory=\"%s\"</code> to your "
-"script tag."
+"Add <code>type=\"text/plain\" category=\"%s\"</code> to your script tag."
 msgstr ""
-"Ajoutez <code>type=\"text/plain\" data-cookiecategory=\"%s\"</code> à votre "
-"balise script."
+"Ajoutez <code>type=\"text/plain\" data-category=\"%s\"</code> à votre balise "
+"script."
 
-#: app/OptionsPage.php:463
+#: app/OptionsPage.php:473
 #, php-format
 msgid "Adding %s scripts manually"
 msgstr "Ajout manuel de %s scripts"
 
-#: app/OptionsPage.php:468
+#: app/OptionsPage.php:478
 #, php-format
 msgid "The cookie table is only available in the default language (%s)."
 msgstr ""
 "Le tableau des cookies n'est disponible que dans la langue par défaut (%s)."
 
-#: app/OptionsPage.php:479 app/OptionsPage.php:496
+#: app/OptionsPage.php:489 app/OptionsPage.php:506
 msgid "Extra information"
 msgstr "Renseignements complémentaires"
 
-#: app/OptionsPage.php:485
+#: app/OptionsPage.php:495
 msgid ""
 "Add <code>c_darkmode</code> to <code>&lt;body&gt;</code> in order to enable "
 "darkmode."
@@ -608,32 +656,40 @@ msgstr ""
 "Ajouter <code>c_darkmode</code> à <code>&lt;body&gt;</code> afin d'activer "
 "le darkmode."
 
-#: app/OptionsPage.php:488
+#: app/OptionsPage.php:498
 #, php-format
 msgid "%s is automatically added to %s"
 msgstr "%s est automatiquement ajouté à %s"
 
-#: app/OptionsPage.php:488
+#: app/OptionsPage.php:498
 msgid "by"
 msgstr "par"
 
-#: app/OptionsPage.php:491
+#: app/OptionsPage.php:501
 msgid "Documentation"
 msgstr "Documentation"
 
-#: app/OptionsPage.php:514
+#: app/OptionsPage.php:524
 msgid "Actions"
 msgstr "Actions"
 
-#: app/OptionsPage.php:537
+#: app/OptionsPage.php:547
 msgid "Insert"
 msgstr "Insérer"
 
-#: app/OptionsPage.php:543
+#: app/OptionsPage.php:553
 msgid "No common cookies"
 msgstr "Pas de cookies communs"
 
-#: app/Settings.php:63
+#: app/Settings.php:21
+msgid "Ad user data"
+msgstr "Données sur les utilisateurs d'annonces"
+
+#: app/Settings.php:22
+msgid "Ad personalization"
+msgstr "Personnalisation"
+
+#: app/Settings.php:78
 #, php-format
 msgid ""
 "For more details relative to cookies and other sensitive data, please read "
@@ -643,7 +699,7 @@ msgstr ""
 "veuillez lire la <a href=\"%s\" class=\"cc-link\">politique de "
 "confidentialité</a> complète."
 
-#: app/Settings.php:90
+#: app/Settings.php:105
 msgid "contact us"
 msgstr "nous contacter"
 
@@ -670,11 +726,12 @@ msgstr ""
 #: views/cookie-table.php:5
 msgid ""
 "Every time you visit this website, you will be prompted to <a href=\"#\" "
-"data-cc=\"c-settings\" aria-haspopup=\"dialog\">accept or refuse cookies</a>."
+"data-cc=\"show-preferencesModal\" aria-haspopup=\"dialog\">accept or refuse "
+"cookies</a>."
 msgstr ""
 "Chaque fois que vous visitez ce site web, vous êtes invité à <a href=\"#\" "
-"cc=\"show-consentModal\" aria-haspopup=\"dialog\">accepter ou à refuser les "
-"cookies</a>."
+"cc=\"show-preferencesModal\" aria-haspopup=\"dialog\">accepter ou à refuser "
+"les cookies</a>."
 
 #: views/cookie-table.php:6
 msgid ""
@@ -701,11 +758,11 @@ msgstr "Comment pouvez-vous gérer les cookies ?"
 
 #: views/cookie-table.php:10
 msgid ""
-"<a href=\"#\" data-cc=\"c-settings\" aria-haspopup=\"dialog\">You can manage "
-"cookies for this website</a>"
+"<a href=\"#\" data-cc=\"show-preferencesModal\" aria-haspopup=\"dialog\">You "
+"can manage cookies for this website</a>"
 msgstr ""
-"<a href=\"#\" data-cc=\"c-settings\" aria-haspopup=\"dialog\">Vous pouvez "
-"gérer les cookies pour ce site web</a>"
+"<a href=\"#\" data-cc=\"show-preferencesModal\"  aria-"
+"haspopup=\"dialog\">Vous pouvez gérer les cookies pour ce site web</a>"
 
 #: views/cookie-table.php:11
 msgid ""
@@ -721,7 +778,7 @@ msgstr ""
 msgid "What cookies do we use?"
 msgstr "Quels sont les cookies que nous utilisons ?"
 
-#: views/cookie-table.php:50
+#: views/cookie-table.php:49
 #, php-format
 msgid ""
 "For more information on the privacy practices of Google, please visit the "

@@ -153,6 +153,7 @@ class Settings
             ],
             'gtmConsentMode' => Settings::generalOptionField('occ_gtm_consent_mode'),
             'revision' => Settings::generalOptionField('occ_revision'),
+            'showAllCategories' => Settings::generalOptionField('occ_show_all_categories', 'option'),
         ];
         return apply_filters('otomaties_cookie_consent_script_variables', $variables);
     }
