@@ -148,13 +148,13 @@ document.cc.run({
 		consentModal: {
 			layout: otomatiesCookieConsent.guiOptions.consentModal.layout,
 			position: otomatiesCookieConsent.guiOptions.consentModal.position,
-			flipButtons: !otomatiesCookieConsent.guiOptions.consentModal.swapButtons,
+			flipButtons: otomatiesCookieConsent.guiOptions.consentModal.swapButtons,
 			equalWeightButtons: false,
 		},
 		preferencesModal: {
 			layout: otomatiesCookieConsent.guiOptions.settingsModal.layout,
 			position: otomatiesCookieConsent.guiOptions.settingsModal.position,
-			flipButtons: !otomatiesCookieConsent.guiOptions.settingsModal.swapButtons,
+			flipButtons: otomatiesCookieConsent.guiOptions.settingsModal.swapButtons,
 			equalWeightButtons: false,
 		}
 	}
