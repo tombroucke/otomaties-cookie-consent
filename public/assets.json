@@ -1,10 +1,10 @@
 {
   "main": {
-    "css": "css/main.min.css",
-    "js": "js/main.91cbce094d976bdef27b.js"
+    "css": "css/main.efd1ed.min.css",
+    "js": "js/main.a9838f.js"
   },
   "admin": {
-    "css": "css/admin.min.css",
-    "js": "js/admin.7d2d42cba5ba6d58f208.js"
+    "css": "css/admin.d7aa0d.min.css",
+    "js": "js/admin.7d2d42.js"
   }
 }

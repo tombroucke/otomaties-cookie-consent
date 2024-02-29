@@ -13,7 +13,7 @@ module.exports = (env, argv) => ({
 	},
 	output: {
 		path: __dirname + '/public',
-		filename: 'js/[name].[contenthash].js',
+		filename: 'js/[name].[contenthash:6].js',
 		publicPath: '',
 	},
 	module: {
@@ -76,7 +76,7 @@ module.exports = (env, argv) => ({
 	},
 	plugins: [
 	new MiniCssExtractPlugin({
-		filename: "css/[name].min.css",
+		filename: "css/[name].[contenthash:6].min.css",
 		chunkFilename: "[id].css"
 	}),
 	new AssetsPlugin({

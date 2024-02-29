@@ -110,7 +110,6 @@ Object.keys(categories).forEach(key => {
 		});
 	}
 });
-console.log(categories);
 
 if (sections.moreInformation) {
 	languages[locale].preferencesModal.sections.push({
