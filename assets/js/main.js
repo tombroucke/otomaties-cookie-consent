@@ -76,7 +76,7 @@ languages[locale] = {
 }
 
 Object.keys(categories).forEach(key => {
-	if (Object.keys(sections[key].consentModeParams).length || sections[key].cookieTable.length || sections[key].forceEnable || categories[key].enabled || otomatiesCookieConsent.showAllCategories) {
+	if ((otomatiesCookieConsent.gtmConsentMode && Object.keys(sections[key].consentModeParams).length) || sections[key].cookieTable.length || sections[key].forceEnable || categories[key].enabled || otomatiesCookieConsent.showAllCategories) {
 		languages[locale].preferencesModal.sections.push({
 			title: sections[key].title,
 			description: sections[key].description,
@@ -92,7 +92,7 @@ Object.keys(categories).forEach(key => {
 			}
 		});
 
-		if (Object.keys(sections[key].consentModeParams).length) {
+		if (otomatiesCookieConsent.gtmConsentMode && Object.keys(sections[key].consentModeParams).length) {
 			Object.keys(sections[key].consentModeParams).forEach(service => {
 				categories[key].services = categories[key].services || {};
 				categories[key].services[service] = {
