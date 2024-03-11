@@ -2,6 +2,8 @@
 
 namespace Otomaties\CookieConsent;
 
+use Otomaties\CookieConsent\Database\RecordsOfConsent;
+
 /**
  * Fired during plugin activation.
  *
@@ -20,5 +22,6 @@ class Activator
      */
     public static function activate()
     {
+        RecordsOfConsent::create();
     }
 }

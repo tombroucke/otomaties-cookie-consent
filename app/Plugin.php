@@ -53,6 +53,8 @@ class Plugin
 
         $this->setLocale();
         $this->defineAdminHooks();
+        $this->updater();
+        $this->defineRestApiHooks();
         $this->defineFrontendHooks();
         $this->addOptionsPage();
         $this->addShortcodes();
@@ -84,6 +86,11 @@ class Plugin
         $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueScripts');
     }
 
+    private function updater() : void
+    {
+        $updater = (new Updater($this->getPluginName(), $this->getVersion()))->migrate();
+    }
+
     /**
      * Register all of the hooks related to the public-facing functionality
      * of the plugin.
@@ -100,6 +107,11 @@ class Plugin
         $this->loader->addAction('template_redirect', $frontend, 'customGtm4WpScript');
         $this->loader->addFilter('wp_nav_menu_items', $frontend, 'addCookieSettingsMenuItem', 10, 2);
         $this->loader->addFilter('wp_head', $frontend, 'addGoogleConsentMode', 10, 2);
+    }
+    
+    private function defineRestApiHooks() {
+        $restApi = new RestApi();        
+        $this->loader->addAction('rest_api_init', $restApi, 'registerRoutes');
     }
 
     private function addOptionsPage() : void

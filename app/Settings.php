@@ -145,6 +145,7 @@ class Settings
     {
         $variables = [
             'locale' => get_locale(),
+            'trackEndpoint' => rest_url('otomaties-cookie-consent/v1/track/'),
             'guiOptions' => $this->guiOptions(),
             'strings' => [
                 'consentModal' => $this->consentModal(),

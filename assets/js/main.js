@@ -118,7 +118,25 @@ if (sections.moreInformation) {
 	})	
 }
 
+function trackConsent() {
+	const data = {
+		consent: document.cc.getUserPreferences(),
+		version: otomatiesCookieConsent.revision,
+	};
+	fetch(otomatiesCookieConsent.trackEndpoint, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(data),
+	})
+}
+
 document.cc.run({
+	onFirstConsent: ({cookie, preferences}) => {
+		trackConsent();
+	},
+
     onConsent: ({cookie, changedCategories, changedPreferences}) => {
 		const event = new CustomEvent('cookie_consent_consent_update');
 		document.dispatchEvent(event);
@@ -131,6 +149,7 @@ document.cc.run({
 		document.dispatchEvent(event);
 
 		updateGTMConsent(CookieConsent);
+		trackConsent();
     },
 
 	page_scripts: true,
