@@ -20,7 +20,7 @@ class Updater
 
     public function migrate() {
         $dbVersion = get_option($this->pluginName . '_version');
-        if (version_compare($dbVersion, '2.2.0', '<')) {
+        if (version_compare($dbVersion, '2.3.0', '<')) {
             RecordsOfConsent::create();
             update_option($this->pluginName . '_version', $this->version);
         }

@@ -16,6 +16,7 @@ class RecordsOfConsent extends Abstracts\Table
         $sql = "CREATE TABLE $tableName (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                initial tinyint(1) NOT NULL,
                 ccVersion varchar(255) NULL,
                 userAgent varchar(255) NULL,
                 remoteAddress varchar(255) NULL,

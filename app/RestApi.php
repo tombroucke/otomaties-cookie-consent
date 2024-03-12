@@ -7,12 +7,12 @@ use Otomaties\CookieConsent\Database\RecordsOfConsent;
 class RestApi
 {
     public function registerRoutes() {
-        register_rest_route( 'otomaties-cookie-consent/v1', 'track/', array(
+        register_rest_route('otomaties-cookie-consent/v1', 'track/', [
             'methods'  => 'POST',
             'callback' => [$this, 'track'],
-            'args' => array(),
+            'args' => [],
             'permission_callback' => '__return_true',
-        ) );
+        ]);
     }
 
     public function track(\WP_REST_Request $request) {
@@ -24,11 +24,10 @@ class RestApi
             $_SERVER['REMOTE_ADDR'] ?? ''
         );
         $forwardedFor = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '';
-        
-        $requiredParams = ['consent', 'version'];
+        $requiredParams = ['initial', 'version', 'consent'];
         foreach ($requiredParams as $param) {
             if (!isset($params[$param])) {
-                wp_send_json(['successs' => false, 'message' => 'Missing required parameter: ' . $param], 400);
+                wp_send_json(['success' => false, 'message' => 'Missing required parameter: ' . $param], 400);
                 wp_die();
             }
         }
@@ -40,18 +39,13 @@ class RestApi
                 wp_die();
             }
         }
-        
-        foreach ($consentParams as $key => $param) {
-            if (is_array($params['consent'][$param])) {
-                $params['consent'][$param] = array_filter($params['consent'][$param]);
-            }
-        }
 
         (new RecordsOfConsent)->insert([
-            'ccVersion' => (int)sanitize_text_field($params['version']),
-            'userAgent' => $userAgent,
-            'remoteAddress' => $remoteAddress,
-            'forwardedFor' => $forwardedFor,
+            'initial' => (int)$params['initial'],
+            'ccVersion' => (int)$params['version'],
+            'userAgent' => sanitize_text_field($userAgent),
+            'remoteAddress' => sanitize_text_field($remoteAddress),
+            'forwardedFor' => sanitize_text_field($forwardedFor),
             'acceptType' => sanitize_text_field($params['consent']['acceptType']),
             'acceptedCategories' => sanitize_text_field($this->toDotNotation($params['consent']['acceptedCategories']) ?? ''),
             'rejectedCategories' => sanitize_text_field($this->toDotNotation($params['consent']['rejectedCategories']) ?? ''),

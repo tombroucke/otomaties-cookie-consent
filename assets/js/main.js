@@ -118,10 +118,11 @@ if (sections.moreInformation) {
 	})	
 }
 
-function trackConsent() {
+function trackConsent(initial = false) {
 	const data = {
 		consent: document.cc.getUserPreferences(),
 		version: otomatiesCookieConsent.revision,
+		initial: initial,
 	};
 	fetch(otomatiesCookieConsent.trackEndpoint, {
 		method: 'POST',
@@ -134,7 +135,7 @@ function trackConsent() {
 
 document.cc.run({
 	onFirstConsent: ({cookie, preferences}) => {
-		trackConsent();
+		trackConsent(true);
 	},
 
     onConsent: ({cookie, changedCategories, changedPreferences}) => {
