@@ -161,8 +161,10 @@ class Settings
 
     public static function generalOptionField($optionKey)
     {
-        add_filter('acf/settings/current_language', '__return_false');
-
+        if (!function_exists('bea_acf_options_for_polylang_load')) {
+            add_filter('acf/settings/current_language', '__return_false');
+        }
+        
         $fixIsNecessary = apply_filters('wpml_current_language', null) !== apply_filters('wpml_default_language', null);
         $categories = Settings::categories();
         $isCookieTableOption = false;
@@ -188,7 +190,9 @@ class Settings
             }
         }
 
-        remove_filter('acf/settings/current_language', '__return_false');
+        if (!function_exists('bea_acf_options_for_polylang_load')) {
+            remove_filter('acf/settings/current_language', '__return_false');
+        }
         return $value;
     }
 
