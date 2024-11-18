@@ -52,7 +52,7 @@ function init()
         require_once(ABSPATH . 'wp-admin/includes/plugin.php');
     }
 
-    $pluginData = \get_plugin_data(__FILE__);
+    $pluginData = \get_plugin_data(__FILE__, false, false);
     $pluginData['pluginName'] = basename(__FILE__, '.php');
 
     $plugin = new Plugin($pluginData);
