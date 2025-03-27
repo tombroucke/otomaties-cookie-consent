@@ -15,6 +15,7 @@
 ## Filters
 
 Allow editors to change settings
+
 ```
 add_filter('otomaties_cookie_consent_settings_capability', 'edit_posts'),
 ```
@@ -24,3 +25,8 @@ add_filter('otomaties_cookie_consent_settings_capability', 'edit_posts'),
 ```
 [cookie-table show="what,table,google-privacy-terms"]
 ```
+
+## Datalayer events
+
+After each consent update, the `cookie_consent_update` datalayer event is dispatched.
+You can use this event as a custom trigger in GTM to trigger tags after consent has been updated.
