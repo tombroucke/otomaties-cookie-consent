@@ -206,5 +206,10 @@ function updateGTMConsent(CookieConsent) {
 			
 		});
 		gtag('consent', 'update', gtmConsent);
+
+		window.dataLayer = window.dataLayer || [];
+		window.dataLayer.push({
+			'event': 'cookie_consent_update'
+		});
 	}
 }
