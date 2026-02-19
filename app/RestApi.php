@@ -56,7 +56,7 @@ class RestApi
         wp_die();
     }
 
-    public function toDotNotation(array $array, string $key = null) : string
+    public function toDotNotation(array $array, ?string $key = null) : string
     {
         $return = '';
         foreach ($array as $k => $v) {
