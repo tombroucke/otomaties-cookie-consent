@@ -22,6 +22,7 @@ class OptionsPage
                 'icon_url'      => Assets::find('images/cookie.png'),
                 'capability'    => apply_filters('otomaties_cookie_consent_settings_capability', 'manage_options'),
                 'redirect'      => false,
+                'autoload'      => true,
             )
         );
     }

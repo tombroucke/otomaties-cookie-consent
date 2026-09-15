@@ -22,7 +22,13 @@ class Updater
         $dbVersion = get_option($this->pluginName . '_version');
         if (version_compare($dbVersion, '2.3.0', '<')) {
             RecordsOfConsent::create();
-            update_option($this->pluginName . '_version', $this->version);
+            update_option($this->pluginName . '_version', $this->version, true);
+        }
+
+        if (version_compare($dbVersion, '2.5.0', '<')) {
+            global $wpdb;
+            $wpdb->query("UPDATE {$wpdb->options} SET autoload = 'yes' WHERE option_name LIKE '%options_occ_%'");
+            update_option($this->pluginName . '_version', $this->version, true);
         }
     }
     
