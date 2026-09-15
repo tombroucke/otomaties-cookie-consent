@@ -11,6 +11,8 @@ final class SettingsTest extends TestCase
 
     protected function setUp(): void
     {
+        global $privacyPolicyUrl;
+        $privacyPolicyUrl = 'http://example.com/privacy-policy';
         $this->settings = new Settings;
     }
 

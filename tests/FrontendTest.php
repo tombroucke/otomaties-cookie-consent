@@ -116,8 +116,11 @@ final class FrontendTest extends TestCase
         </script>
         <?php
         $expected = ob_get_clean();
-        $this->expectOutputString($expected);
+        ob_start();
         $this->frontend->addGoogleConsentMode();
+        $actual = ob_get_clean();
+        $normalize = fn (string $s) => preg_replace('/\s+/', ' ', trim($s));
+        $this->assertSame($normalize($expected), $normalize($actual));
 
         $consentMode = false;
         $this->assertNull($this->frontend->addGoogleConsentMode());

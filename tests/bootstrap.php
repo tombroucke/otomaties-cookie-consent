@@ -177,7 +177,7 @@ function get_permalink(): string
 function get_post_status(int $id): ?string
 {
     global $posts;
-    if (! array_key_exists($id, $posts)) {
+    if (! is_array($posts) || ! array_key_exists($id, $posts)) {
         return false;
     }
 
@@ -239,7 +239,6 @@ function add_action(string $tag, $function_to_add, int $priority = 10, int $acce
 function has_action(string $tag, ?string $function_to_check = null): bool
 {
     global $actions;
-    print_r($actions);
     if (! isset($actions[$tag])) {
         return false;
     }
@@ -272,11 +271,16 @@ function remove_action(string $tag, string $function_to_remove, int $priority = 
     return false;
 }
 
+function rest_url(string $path = ''): string
+{
+    return 'http://example.com/wp-json/'.$path;
+}
+
 function get_privacy_policy_url(): string
 {
     global $privacyPolicyUrl;
 
-    return $privacyPolicyUrl;
+    return $privacyPolicyUrl ?? '';
 }
 
 function apply_filters(string $tag, $value)
