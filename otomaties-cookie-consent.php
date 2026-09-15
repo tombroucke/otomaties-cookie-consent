@@ -16,12 +16,12 @@ namespace Otomaties\CookieConsent;
 
 // If this file is called directly, abort.
 if (! defined('WPINC')) {
-    die;
+    exit;
 }
 
 // Autoload files
-if (file_exists(__DIR__ . '/vendor/autoload.php')) {
-    require_once realpath(__DIR__ . '/vendor/autoload.php');
+if (file_exists(__DIR__.'/vendor/autoload.php')) {
+    require_once realpath(__DIR__.'/vendor/autoload.php');
 }
 
 // Setup / teardown
@@ -37,7 +37,7 @@ register_deactivation_hook(__FILE__, '\\Otomaties\\CookieConsent\\Deactivator::d
  */
 function init()
 {
-    if (!function_exists('get_field')) {
+    if (! function_exists('get_field')) {
         add_action('admin_notices', function () {
             ?>
             <div class="notice notice-error">
@@ -45,11 +45,12 @@ function init()
             </div>
             <?php
         });
+
         return;
     }
 
-    if (!function_exists('get_plugin_data')) {
-        require_once(ABSPATH . 'wp-admin/includes/plugin.php');
+    if (! function_exists('get_plugin_data')) {
+        require_once ABSPATH.'wp-admin/includes/plugin.php';
     }
 
     $pluginData = \get_plugin_data(__FILE__, false, false);
@@ -59,4 +60,4 @@ function init()
     $plugin->run();
 }
 
-add_action('plugins_loaded', __NAMESPACE__ . '\\init');
+add_action('plugins_loaded', __NAMESPACE__.'\\init');

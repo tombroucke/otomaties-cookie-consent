@@ -1,9 +1,9 @@
 <?php
+
 namespace Otomaties\CookieConsent;
 
 class JsonManifest
 {
-
     private $manifest;
 
     public function __construct($manifest_path)

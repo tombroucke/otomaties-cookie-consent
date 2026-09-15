@@ -1,23 +1,24 @@
 <?php
+
 if (in_array('what', $showSections)) {
-    echo '<h2>' . __('What are cookies', 'otomaties-cookie-consent') . '</h2>';
-    echo '<p>' . __('Cookies are small text files that are stored on your computer or mobile device when you visit a website.', 'otomaties-cookie-consent') . '</p>';
-    echo '<p>' . __('Every time you visit this website, you will be prompted to <a href="#" data-cc="show-preferencesModal" aria-haspopup="dialog">accept or refuse cookies</a>.', 'otomaties-cookie-consent') . '</p>';
-    echo '<p>' . __('The purpose is to enable the site to remember your preferences (such as user name, language, etc.) for a certain period of time. That way, you don’t have to re-enter them when browsing around the site during the same visit.', 'otomaties-cookie-consent') . '</p>';
-    echo '<p>' . __('Cookies can also be used to establish anonymised statistics about the browsing experience on our sites.', 'otomaties-cookie-consent') . '</p>';
-    
-    echo '<h2>' . __('How can you manage cookies?', 'otomaties-cookie-consent') . '</h2>';
-    echo '<p>' . __('<a href="#" data-cc="show-preferencesModal" aria-haspopup="dialog">You can manage cookies for this website</a>', 'otomaties-cookie-consent') . '</p>';
-    echo '<p>' . __('You can delete all cookies that are already on your device by clearing the browsing history of your browser. This will remove all cookies from all websites you have visited.', 'otomaties-cookie-consent') . '</p>';
+    echo '<h2>'.__('What are cookies', 'otomaties-cookie-consent').'</h2>';
+    echo '<p>'.__('Cookies are small text files that are stored on your computer or mobile device when you visit a website.', 'otomaties-cookie-consent').'</p>';
+    echo '<p>'.__('Every time you visit this website, you will be prompted to <a href="#" data-cc="show-preferencesModal" aria-haspopup="dialog">accept or refuse cookies</a>.', 'otomaties-cookie-consent').'</p>';
+    echo '<p>'.__('The purpose is to enable the site to remember your preferences (such as user name, language, etc.) for a certain period of time. That way, you don’t have to re-enter them when browsing around the site during the same visit.', 'otomaties-cookie-consent').'</p>';
+    echo '<p>'.__('Cookies can also be used to establish anonymised statistics about the browsing experience on our sites.', 'otomaties-cookie-consent').'</p>';
+
+    echo '<h2>'.__('How can you manage cookies?', 'otomaties-cookie-consent').'</h2>';
+    echo '<p>'.__('<a href="#" data-cc="show-preferencesModal" aria-haspopup="dialog">You can manage cookies for this website</a>', 'otomaties-cookie-consent').'</p>';
+    echo '<p>'.__('You can delete all cookies that are already on your device by clearing the browsing history of your browser. This will remove all cookies from all websites you have visited.', 'otomaties-cookie-consent').'</p>';
 }
 
 if (in_array('table', $showSections)) {
-    echo '<h2>' . __('What cookies do we use?', 'otomaties-cookie-consent') . '</h2>';
+    echo '<h2>'.__('What cookies do we use?', 'otomaties-cookie-consent').'</h2>';
     foreach ($cookiesCategories as $cookiesCategory) {
         if (empty($cookiesCategory['cookies'])) {
             continue;
         }
-        echo '<h3>' . $cookiesCategory['name'] . '</h3>';
+        echo '<h3>'.$cookiesCategory['name'].'</h3>';
         echo '<table class="table table--cookies mb-3">';
         echo '<thead>';
         echo '<tr>';
@@ -30,13 +31,13 @@ if (in_array('table', $showSections)) {
         echo '<tbody>';
         foreach ($cookiesCategory['cookies'] as $cookie) {
             echo '<tr>';
-            echo '<td>' . $cookie['name'] . '</td>';
-            echo '<td>' . $cookie['domain'] . '</td>';
-            echo '<td>' . $cookie['expiration'] . '</td>';
-            echo '<td>' . $cookie['description'] . '</td>';
+            echo '<td>'.$cookie['name'].'</td>';
+            echo '<td>'.$cookie['domain'].'</td>';
+            echo '<td>'.$cookie['expiration'].'</td>';
+            echo '<td>'.$cookie['description'].'</td>';
             echo '</tr>';
         }
-        
+
         echo '</tbody>';
         echo '</table>';
     }

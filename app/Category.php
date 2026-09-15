@@ -1,22 +1,20 @@
 <?php
+
 namespace Otomaties\CookieConsent;
 
 class Category
 {
+    public function __construct(private array $category) {}
 
-    public function __construct(private array $category)
-    {
-    }
-
-    protected function categoryName() : string
+    protected function categoryName(): string
     {
         return $this->category['key'];
     }
 
-    public function cookieTable() : array
+    public function cookieTable(): array
     {
-        $cookieTableField = Settings::generalOptionField('occ_' . $this->categoryName() . '_cookie_table');
-        if (!$cookieTableField) {
+        $cookieTableField = Settings::generalOptionField('occ_'.$this->categoryName().'_cookie_table');
+        if (! $cookieTableField) {
             return [];
         }
         $lang = apply_filters('wpml_current_language', null);
@@ -26,29 +24,29 @@ class Category
                 'name' => apply_filters(
                     'wpml_translate_single_string',
                     $cookie['name'],
-                    'admin_texts_options_occ_necessary_cookie_table_' . $key . '_name',
-                    'options_occ_necessary_cookie_table_' . $key . '_name',
+                    'admin_texts_options_occ_necessary_cookie_table_'.$key.'_name',
+                    'options_occ_necessary_cookie_table_'.$key.'_name',
                     $lang
                 ),
                 'domain' => apply_filters(
                     'wpml_translate_single_string',
                     $cookie['domain'],
-                    'admin_texts_options_occ_necessary_cookie_table_' . $key . '_domain',
-                    'options_occ_necessary_cookie_table_' . $key . '_domain',
+                    'admin_texts_options_occ_necessary_cookie_table_'.$key.'_domain',
+                    'options_occ_necessary_cookie_table_'.$key.'_domain',
                     $lang
                 ),
                 'expiration' => apply_filters(
                     'wpml_translate_single_string',
                     $cookie['expiration'],
-                    'admin_texts_options_occ_necessary_cookie_table_' . $key . '_expiration',
-                    'options_occ_necessary_cookie_table_' . $key . '_expiration',
+                    'admin_texts_options_occ_necessary_cookie_table_'.$key.'_expiration',
+                    'options_occ_necessary_cookie_table_'.$key.'_expiration',
                     $lang
                 ),
                 'description' => apply_filters(
                     'wpml_translate_single_string',
                     $cookie['description'],
-                    'admin_texts_options_occ_necessary_cookie_table_' . $key . '_description',
-                    'options_occ_necessary_cookie_table_' . $key . '_description',
+                    'admin_texts_options_occ_necessary_cookie_table_'.$key.'_description',
+                    'options_occ_necessary_cookie_table_'.$key.'_description',
                     $lang
                 ),
             ];
@@ -57,17 +55,19 @@ class Category
             }
             $cookies[] = $newCookie;
         }
+
         return $cookies;
     }
 
-    public function information() : array
+    public function information(): array
     {
         $information = [
-            'title' => DefaultStrings::value('occ_' . $this->categoryName() . '_title'),
-            'description' => DefaultStrings::value('occ_' . $this->categoryName() . '_description'),
+            'title' => DefaultStrings::value('occ_'.$this->categoryName().'_title'),
+            'description' => DefaultStrings::value('occ_'.$this->categoryName().'_description'),
             'cookieTable' => $this->cookieTable(),
             'consentModeParams' => $this->category['consentModeParams'] ?? [],
         ];
+
         return $information;
     }
 }

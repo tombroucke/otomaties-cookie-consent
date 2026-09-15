@@ -11,22 +11,20 @@ namespace Otomaties\CookieConsent;
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  */
-
 class Plugin
 {
-
     /**
      * The loader that's responsible for maintaining and registering all hooks that power
      * the plugin.
      *
-     * @var      Loader    $loader    Maintains and registers all hooks for the plugin.
+     * @var Loader Maintains and registers all hooks for the plugin.
      */
     protected $loader;
 
     /**
      * The current version of the plugin.
      *
-     * @var      string    $version    The current version of the plugin.
+     * @var string The current version of the plugin.
      */
     protected $version;
 
@@ -43,13 +41,12 @@ class Plugin
      * Set the plugin name and the plugin version that can be used throughout the plugin.
      * Load the dependencies, define the locale, and set the hooks for the admin area and
      * the public-facing side of the site.
-     *
      */
     public function __construct($pluginData)
     {
         $this->version = $pluginData['Version'];
         $this->pluginName = $pluginData['pluginName'];
-        $this->loader = new Loader();
+        $this->loader = new Loader;
 
         $this->setLocale();
         $this->defineAdminHooks();
@@ -65,20 +62,18 @@ class Plugin
      *
      * Uses the i18n class in order to set the domain and to register the hook
      * with WordPress.
-     *
      */
     private function setLocale()
     {
-        $plugin_i18n = new I18n();
+        $plugin_i18n = new I18n;
         $plugin_i18n->loadTextdomain();
     }
 
     /**
      * Register all of the hooks related to the admin-facing functionality
      * of the plugin.
-     *
      */
-    private function defineAdminHooks() : void
+    private function defineAdminHooks(): void
     {
 
         $admin = new Admin($this->getPluginName(), $this->getVersion());
@@ -86,17 +81,17 @@ class Plugin
         $this->loader->addAction('admin_enqueue_scripts', $admin, 'enqueueScripts');
     }
 
-    private function updater() : void
+    private function updater(): void
     {
-        $updater = (new Updater($this->getPluginName(), $this->getVersion()))->migrate();
+        (new Updater($this->getPluginName(), $this->getVersion()))
+            ->migrate();
     }
 
     /**
      * Register all of the hooks related to the public-facing functionality
      * of the plugin.
-     *
      */
-    private function defineFrontendHooks() : void
+    private function defineFrontendHooks(): void
     {
         $frontend = new Frontend($this->getPluginName());
         $this->loader->addAction('wp_enqueue_scripts', $frontend, 'enqueueStyles');
@@ -108,30 +103,30 @@ class Plugin
         $this->loader->addFilter('wp_nav_menu_items', $frontend, 'addCookieSettingsMenuItem', 10, 2);
         $this->loader->addFilter('wp_head', $frontend, 'addGoogleConsentMode', 10, 2);
     }
-    
-    private function defineRestApiHooks() {
-        $restApi = new RestApi();        
+
+    private function defineRestApiHooks()
+    {
+        $restApi = new RestApi;
         $this->loader->addAction('rest_api_init', $restApi, 'registerRoutes');
     }
 
-    private function addOptionsPage() : void
+    private function addOptionsPage(): void
     {
-        $options = new OptionsPage();
+        $options = new OptionsPage;
         $this->loader->addAction('acf/init', $options, 'addOptionsPage');
         $this->loader->addAction('acf/init', $options, 'addOptionsFields');
     }
 
-    private function addShortcodes() : void
+    private function addShortcodes(): void
     {
-        $shortcodes = new Shortcodes();
+        $shortcodes = new Shortcodes;
         add_shortcode('cookie-table', [$shortcodes, 'cookieTable']);
     }
 
     /**
      * Run the loader to execute all of the hooks with WordPress.
-     *
      */
-    public function run() : void
+    public function run(): void
     {
         $this->loader->run();
     }
@@ -140,14 +135,15 @@ class Plugin
      * The reference to the class that orchestrates the hooks with the plugin.
      *
      * @since     1.0.0
-     * @return    Loader    Orchestrates the hooks of the plugin.
+     *
+     * @return Loader Orchestrates the hooks of the plugin.
      */
     public function getLoader()
     {
         return $this->loader;
     }
 
-    public function getPluginName() : string
+    public function getPluginName(): string
     {
         return $this->pluginName;
     }
@@ -156,9 +152,10 @@ class Plugin
      * Retrieve the version number of the plugin.
      *
      * @since     1.0.0
-     * @return    string    The version number of the plugin.
+     *
+     * @return string The version number of the plugin.
      */
-    public function getVersion() : string
+    public function getVersion(): string
     {
         return $this->version;
     }

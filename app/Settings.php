@@ -1,4 +1,5 @@
 <?php
+
 namespace Otomaties\CookieConsent;
 
 class Settings
@@ -20,7 +21,7 @@ class Settings
                 'consentModeParams' => [
                     'ad_user_data' => __('Ad user data', 'otomaties-cookie-consent'),
                     'ad_personalization' => __('Ad personalization', 'otomaties-cookie-consent'),
-                ]
+                ],
             ],
             'personalization' => [
                 'key' => 'personalization',
@@ -31,16 +32,18 @@ class Settings
                 'label' => __('Security cookies', 'otomaties-cookie-consent'),
             ],
         ];
+
         return $categories;
     }
 
-    public function consentModal() : array
+    public function consentModal(): array
     {
         $description = DefaultStrings::value('occ_consent_modal_description');
-        $description .= ' ' . sprintf(
+        $description .= ' '.sprintf(
             '<button type="button" data-cc="show-preferencesModal">%s</button>',
             DefaultStrings::value('occ_consent_modal_settings_button_label')
         );
+
         return [
             'title' => DefaultStrings::value('occ_consent_modal_title'),
             'description' => $description,
@@ -50,44 +53,45 @@ class Settings
         ];
     }
 
-    public function settingsModal() : array
+    public function settingsModal(): array
     {
         return [
-            'title' =>  DefaultStrings::value('occ_settings_modal_title'),
-            'saveSettingsBtn' =>  DefaultStrings::value('occ_settings_modal_save_settings_button_label'),
-            'acceptAllBtn' =>  DefaultStrings::value('occ_settings_modal_accept_all_button_label'),
-            'rejectAllBtn' =>  DefaultStrings::value('occ_settings_modal_reject_all_button_label'),
-            'closeBtnlabel' =>  DefaultStrings::value('occ_settings_modal_close_button_label'),
+            'title' => DefaultStrings::value('occ_settings_modal_title'),
+            'saveSettingsBtn' => DefaultStrings::value('occ_settings_modal_save_settings_button_label'),
+            'acceptAllBtn' => DefaultStrings::value('occ_settings_modal_accept_all_button_label'),
+            'rejectAllBtn' => DefaultStrings::value('occ_settings_modal_reject_all_button_label'),
+            'closeBtnlabel' => DefaultStrings::value('occ_settings_modal_close_button_label'),
             'cookieTableHeaders' => [
                 'name' => __('Name', 'otomaties-cookie-consent'),
                 'domain' => __('Domain', 'otomaties-cookie-consent'),
                 'description' => __('Description', 'otomaties-cookie-consent'),
                 'expiration' => __('Expiration', 'otomaties-cookie-consent'),
-            ]
+            ],
         ];
     }
 
-    public function usage() : array
+    public function usage(): array
     {
         $usage = [
             'title' => DefaultStrings::value('occ_settings_modal_cookie_usage_title'),
             'description' => DefaultStrings::value('occ_settings_modal_cookie_usage_description'),
         ];
         if (get_privacy_policy_url() && get_privacy_policy_url() !== '') {
-            $usage['description'] = $usage['description'] . ' ' . sprintf(
+            $usage['description'] = $usage['description'].' '.sprintf(
                 __('For more details relative to cookies and other sensitive data, please read the full <a href="%s" class="cc-link">privacy policy</a>.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
                 get_privacy_policy_url()
             );
         }
+
         return $usage;
     }
 
-    public function moreInformation() : ?array
+    public function moreInformation(): ?array
     {
 
         $contactPage = get_field('occ_settings_modal_contact_page', 'option');
 
-        if (!$contactPage) {
+        if (! $contactPage) {
             return null;
         }
 
@@ -106,11 +110,11 @@ class Settings
             ),
             $description
         );
-        
+
         return $moreInformation;
     }
 
-    public function sections() : array
+    public function sections(): array
     {
         $sections = [
             'usage' => $this->usage(),
@@ -119,29 +123,30 @@ class Settings
         foreach (Settings::categories() as $categoryKey => $category) {
             $sections[$categoryKey] = (new Category($category))->information();
         }
-        
+
         if ($this->moreInformation()) {
             $sections['moreInformation'] = $this->moreInformation();
         }
+
         return $sections;
     }
 
-    public function guiOptions() : array
+    public function guiOptions(): array
     {
-        return[
+        return [
             'consentModal' => [
                 'layout' => self::generalOptionField('occ_consent_modal_layout') ?: 'cloud',
                 'position' => self::generalOptionField('occ_consent_modal_position') ?: 'bottom center',
-                'swapButtons' => self::generalOptionField('occ_consent_modal_swap_buttons') ?: false
+                'swapButtons' => self::generalOptionField('occ_consent_modal_swap_buttons') ?: false,
             ],
             'settingsModal' => [
                 'layout' => self::generalOptionField('occ_settings_modal_layout') ?: 'box',
                 'position' => self::generalOptionField('occ_settings_modal_position') ?: 'left',
-            ]
+            ],
         ];
     }
-    
-    public function scriptVariables() : array
+
+    public function scriptVariables(): array
     {
         $variables = [
             'locale' => get_locale(),
@@ -156,25 +161,26 @@ class Settings
             'revision' => Settings::generalOptionField('occ_revision'),
             'showAllCategories' => Settings::generalOptionField('occ_show_all_categories', 'option'),
         ];
+
         return apply_filters('otomaties_cookie_consent_script_variables', $variables);
     }
 
     public static function generalOptionField($optionKey)
     {
-        if (!function_exists('bea_acf_options_for_polylang_load')) {
+        if (! function_exists('bea_acf_options_for_polylang_load')) {
             add_filter('acf/settings/current_language', '__return_false');
         }
-        
+
         $fixIsNecessary = apply_filters('wpml_current_language', null) !== apply_filters('wpml_default_language', null);
         $categories = Settings::categories();
         $isCookieTableOption = false;
         $isBlockScriptOption = false;
         foreach ($categories as $categoryKey => $category) {
-            if ($optionKey == 'occ_' . $categoryKey . '_cookie_table') {
+            if ($optionKey == 'occ_'.$categoryKey.'_cookie_table') {
                 $isCookieTableOption = true;
                 break;
             }
-            if ($optionKey == 'occ_' . $categoryKey . '_block_scripts') {
+            if ($optionKey == 'occ_'.$categoryKey.'_block_scripts') {
                 $isBlockScriptOption = true;
                 break;
             }
@@ -190,9 +196,10 @@ class Settings
             }
         }
 
-        if (!function_exists('bea_acf_options_for_polylang_load')) {
+        if (! function_exists('bea_acf_options_for_polylang_load')) {
             remove_filter('acf/settings/current_language', '__return_false');
         }
+
         return $value;
     }
 
@@ -200,13 +207,14 @@ class Settings
     {
         $value = [];
         $count = get_field($key, 'option');
-        for ($i=0; $i < $count; $i++) {
+        for ($i = 0; $i < $count; $i++) {
             $newValue = [];
             foreach ($subKeys as $subKey) {
-                $newValue[$subKey] = get_field($key . '_' . $i . '_' . $subKey, 'option');
+                $newValue[$subKey] = get_field($key.'_'.$i.'_'.$subKey, 'option');
             }
             $value[] = $newValue;
         }
+
         return $value;
     }
 }

@@ -1,21 +1,22 @@
 <?php declare(strict_types=1);
 
-use PHPUnit\Framework\TestCase;
 use Otomaties\CookieConsent\Frontend;
+use PHPUnit\Framework\TestCase;
 
 final class FrontendTest extends TestCase
 {
-
     private $frontend;
+
     private $pluginName = 'otomaties-cookie-consent';
+
     private $version = '1.0.0';
 
-    protected function setUp() : void
+    protected function setUp(): void
     {
         $this->frontend = new Frontend($this->pluginName, $this->version);
     }
 
-    public function testFrontendScriptsAreEnqueued()
+    public function test_frontend_scripts_are_enqueued()
     {
         $this->setup();
         $this->frontend->enqueueScripts();
@@ -23,44 +24,49 @@ final class FrontendTest extends TestCase
         $this->assertTrue(wp_script_is($this->pluginName, 'localized'));
     }
 
-    public function testFrontendStylesAreEnqueued()
+    public function test_frontend_styles_are_enqueued()
     {
         $this->setup();
         $this->frontend->enqueueStyles();
         $this->assertTrue(wp_style_is($this->pluginName, 'enqueued'));
     }
 
-    public function testIfScriptIsDeferred() {
+    public function test_if_script_is_deferred()
+    {
         $tag = '<script src="http://example.com/wp-content/plugins/otomaties-cookie-consent/public/js/otomaties-cookie-consent.js?ver=1.0.0" id="otomaties-cookie-consent-js"></script>';
         $this->assertEquals($this->frontend->deferScript($tag, $this->pluginName), '<script defer src="http://example.com/wp-content/plugins/otomaties-cookie-consent/public/js/otomaties-cookie-consent.js?ver=1.0.0" id="otomaties-cookie-consent-js"></script>');
     }
 
-    public function testIfScriptIsNotDeferred() {
+    public function test_if_script_is_not_deferred()
+    {
         $tag = '<script src="http://example.com/whatever.js" id="whatever"></script>';
         $this->assertEquals($this->frontend->deferScript($tag, 'not-otomaties-cookie-consent'), $tag);
     }
 
-    public function testCookieCategoryIsAddedToScripts() {
+    public function test_cookie_category_is_added_to_scripts()
+    {
         $tag = '<script id=\'please-add-category-js\' src="blocked.js">alert("blocked");</script>';
         $this->assertEquals($this->frontend->addCookieCategoryToScripts($tag, 'please-add-category'), '<script id=\'please-add-category-js\'  type="text/plain" data-category="necessary" src="blocked.js">alert("blocked");</script>');
     }
 
-    public function testCookieCategoryIsNotAddedToScripts() {
+    public function test_cookie_category_is_not_added_to_scripts()
+    {
         $tag = '<script id=\'please-dont-add-category-js\' src="not-blocked.js">alert("not blocked");</script>';
         $this->assertEquals($this->frontend->addCookieCategoryToScripts($tag, 'not-please-add-category'), $tag);
     }
 
-    public function testAnalyticsCategoryIsAddedToGtm4WpScript() {
+    public function test_analytics_category_is_added_to_gtm4_wp_script()
+    {
         $tag = '<script src="gtm4wp.js"></script>';
         $this->assertEquals('<script type="text/plain" data-category="analytics" src="gtm4wp.js"></script>', $this->frontend->addGtm4WpScriptToAnalyticScripts($tag));
-
 
         global $consentMode;
         $consentMode = true;
         $this->assertEquals('<script src="gtm4wp.js"></script>', $this->frontend->addGtm4WpScriptToAnalyticScripts($tag));
     }
 
-    public function testGtm4WpisUpdatedAndPrinted() {
+    public function test_gtm4_wpis_updated_and_printed()
+    {
         $this->frontend->customGtm4WpScript();
         global $actions;
 
@@ -72,21 +78,23 @@ final class FrontendTest extends TestCase
         $actions['wp_head'][0]['function']();
     }
 
-    public function testIfCookieSettingsIsAddedToMenu() {
+    public function test_if_cookie_settings_is_added_to_menu()
+    {
         $items = '<li><a href="http://example.com">Home</a></li>';
-        
-        $args = (object) array('menu' => [
-            'term_id' => 69
-        ]);
-        $args = new stdClass();
-        $menu = new stdClass();
+
+        $args = (object) ['menu' => [
+            'term_id' => 69,
+        ]];
+        $args = new stdClass;
+        $menu = new stdClass;
         $menu->term_id = 69;
         $args->menu = $menu;
         $items = $this->frontend->addCookieSettingsMenuItem($items, $args);
         $this->assertEquals($items, '<li><a href="http://example.com">Home</a></li><li class="menu-item menu-item__cookie-settings"><a href="#" aria-label="Review cookie settings" data-cc="show-preferencesModal">Cookie settings</a></li>');
     }
 
-    public function testIfConsentModeIsPrinted() {
+    public function test_if_consent_mode_is_printed()
+    {
         global $consentMode;
         $consentMode = true;
 

@@ -5,14 +5,14 @@ namespace Otomaties\CookieConsent\Database;
 class RecordsOfConsent extends Abstracts\Table
 {
     const PRIMARY_KEY = 'id';
-    
+
     const TABLE_NAME = 'occ_records_of_consent';
 
-    public static function create() : void
+    public static function create(): void
     {
         global $wpdb;
-        $tableName = $wpdb->prefix . self::TABLE_NAME;
-        
+        $tableName = $wpdb->prefix.self::TABLE_NAME;
+
         $sql = "CREATE TABLE $tableName (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -29,7 +29,7 @@ class RecordsOfConsent extends Abstracts\Table
                 UNIQUE KEY id (id)
                 );";
 
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        require_once ABSPATH.'wp-admin/includes/upgrade.php';
         dbDelta($sql);
     }
 }

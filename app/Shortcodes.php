@@ -1,13 +1,14 @@
 <?php
+
 namespace Otomaties\CookieConsent;
 
 class Shortcodes
 {
     public function cookieTable($atts)
     {
-        $a = shortcode_atts(array(
+        $a = shortcode_atts([
             'show' => 'what,table,google-privacy-terms',
-        ), $atts);
+        ], $atts);
 
         $showSections = explode(',', $a['show']);
 
@@ -31,7 +32,8 @@ class Shortcodes
 
         $linkGooglePrivacyTerms = count($googleCookies) > 0;
         ob_start();
-        include __DIR__ . '/../views/cookie-table.php';
+        include __DIR__.'/../views/cookie-table.php';
+
         return ob_get_clean();
     }
 }

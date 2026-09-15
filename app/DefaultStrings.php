@@ -37,6 +37,7 @@ class DefaultStrings
             'occ_ad_personalization_title' => __('Personalized advertising', 'otomaties-cookie-consent'),
             'occ_ad_personalization_description' => __('Sets consent for personalized advertising.', 'otomaties-cookie-consent'), // phpcs:ignore Generic.Files.LineLength
         ];
+
         return $strings[$key] ?? null;
     }
 

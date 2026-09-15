@@ -1,11 +1,12 @@
-<?php declare(strict_types=1);
+<?php
 
-use PHPUnit\Framework\TestCase;
+declare(strict_types=1);
+
 use Otomaties\CookieConsent\Category;
+use PHPUnit\Framework\TestCase;
 
 final class CategoryTest extends TestCase
 {
-
     private $category;
 
     protected function setUp(): void
@@ -17,12 +18,12 @@ final class CategoryTest extends TestCase
         ]);
     }
 
-    public function testCookieTableReturnsArray()
+    public function test_cookie_table_returns_array()
     {
         $this->assertIsArray($this->category->cookieTable());
     }
 
-    public function testCookieTableReturnCorrectCookie() 
+    public function test_cookie_table_return_correct_cookie()
     {
         $this->assertEquals($this->category->cookieTable()[0]['name'], 'wordpress_test_cookie');
         $this->assertEquals($this->category->cookieTable()[0]['domain'], 'example.com');
@@ -33,7 +34,8 @@ final class CategoryTest extends TestCase
 
     }
 
-    public function testInformationIsCorrect() {
+    public function test_information_is_correct()
+    {
         $this->assertEquals($this->category->information()['title'], 'Strictly necessary cookies');
         $this->assertEquals($this->category->information()['description'], 'Necessary description');
         $this->assertEquals($this->category->information()['cookieTable'], $this->category->cookieTable());
