@@ -91,7 +91,7 @@ class RestApi
 
     public function getCookie(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
     {
-        $cookie = (new CookieTable)->find($request->get_url_params()['name']);
+        $cookie = (new CookieTable)->find($this->cookieName($request));
         if (! $cookie) {
             return new \WP_Error(
                 'occ_cookie_not_found',
@@ -116,7 +116,7 @@ class RestApi
     public function updateCookie(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
     {
         // A "name" in the body renames the cookie, the route's name identifies it
-        $cookie = (new CookieTable)->update($request->get_url_params()['name'], $this->cookieParams($request));
+        $cookie = (new CookieTable)->update($this->cookieName($request), $this->cookieParams($request));
         if (is_wp_error($cookie)) {
             return $cookie;
         }
@@ -126,12 +126,20 @@ class RestApi
 
     public function deleteCookie(\WP_REST_Request $request): \WP_REST_Response|\WP_Error
     {
-        $cookie = (new CookieTable)->delete($request->get_url_params()['name']);
+        $cookie = (new CookieTable)->delete($this->cookieName($request));
         if (is_wp_error($cookie)) {
             return $cookie;
         }
 
         return new \WP_REST_Response(['deleted' => true, 'previous' => $cookie]);
+    }
+
+    /**
+     * WordPress doesn't decode route parameters, so _ga_%2A must become _ga_*
+     */
+    private function cookieName(\WP_REST_Request $request): string
+    {
+        return rawurldecode($request->get_url_params()['name']);
     }
 
     private function cookieParams(\WP_REST_Request $request): array
