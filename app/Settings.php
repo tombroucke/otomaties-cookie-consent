@@ -190,7 +190,7 @@ class Settings
 
         if ($fixIsNecessary) {
             if ($isCookieTableOption) { // Fix for ACF bug that returns count instead of value
-                $value = self::fixRepeaterValue($optionKey, ['name', 'domain', 'expiration', 'description']);
+                $value = self::fixRepeaterValue($optionKey, ['name', 'domain', 'expiration', 'description', 'regex']);
             } elseif ($isBlockScriptOption) { // Fix for ACF bug that returns count instead of value
                 $value = self::fixRepeaterValue($optionKey, ['id']);
             }
