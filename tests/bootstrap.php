@@ -35,6 +35,8 @@ $posts = [
     ],
 ];
 $consentMode = false;
+$fieldValues = [];
+$registeredFields = [];
 $privacyPolicyUrl = 'http://example.com/privacy-policy';
 define('GTM4WP_OPTION_LOADEARLY', false);
 
@@ -84,6 +86,10 @@ function wp_style_is(string $handle, string $list = 'enqueued'): bool
 
 function get_field(string $field, string $option)
 {
+    global $fieldValues;
+    if (is_array($fieldValues) && array_key_exists($field, $fieldValues)) {
+        return $fieldValues[$field];
+    }
     if ($field == 'occ_necessary_cookie_table') {
         return [
             [
@@ -315,4 +321,39 @@ function gtm4wp_wp_header_begin($echo = true)
     <!-- End Google Tag Manager -->
     <!-- End Google Tag Manager for WordPress by gtm4wp.com -->
     <?php
+}
+
+function acf_get_field(string $selector)
+{
+    global $registeredFields;
+
+    return in_array($selector, $registeredFields ?? [], true) ? ['key' => $selector] : false;
+}
+
+function update_field(string $selector, $value, $postId = false): bool
+{
+    global $fieldValues;
+    $fieldValues[str_replace('field_cookie-consent-category-settings_', '', $selector)] = $value;
+
+    return true;
+}
+
+class WP_Error
+{
+    public function __construct(public string $code = '', public string $message = '', public $data = '') {}
+
+    public function get_error_code(): string
+    {
+        return $this->code;
+    }
+
+    public function get_error_data()
+    {
+        return $this->data;
+    }
+}
+
+function is_wp_error($thing): bool
+{
+    return $thing instanceof WP_Error;
 }
